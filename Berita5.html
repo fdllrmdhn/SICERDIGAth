@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Rewriting Simulation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f9c1d7 0%, #a8c0ff 100%);
+        }
+        .character-count {
+            transition: all 0.3s ease;
+        }
+        .textarea-animate {
+            transition: box-shadow 0.3s ease;
+        }
+        .textarea-animate:focus {
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen py-10 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto">
+        <!-- Header Section -->
+        <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">News Rewriting Workshop</h1>
+            <p class="text-gray-600 max-w-lg mx-auto">
+                Hone your journalistic skills by transforming emotional or opinionated news into neutral, factual reporting.
+            </p>
+        </div>
+
+        <!-- Simulation Card -->
+        <section class="bg-white p-6 rounded-xl shadow-lg mb-8 transform hover:-translate-y-1 transition duration-300">
+            <!-- Header -->
+            <div class="flex items-center mb-4">
+                <div class="bg-pink-100 text-pink-600 p-3 rounded-full mr-4 shadow-sm">
+                    <i class="fas fa-pen-nib text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-pink-600">Simulasi Menulis Ulang Berita Secara Objektif</h2>
+                    <p class="text-sm text-gray-500">Latihan #1: Kebijakan Pendidikan</p>
+                </div>
+            </div>
+
+            <p class="text-gray-700 mb-4">
+                Kamu akan dilatih menulis ulang sebuah teks berita yang sebelumnya mengandung opini atau bahasa emosional menjadi berita yang bersifat netral dan faktual.
+            </p>
+
+            <!-- Original Text -->
+            <div class="bg-red-50 p-4 rounded-lg text-red-800 border-l-4 border-red-500 mb-6">
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-circle mt-1 mr-2"></i>
+                    <div>
+                        <p class="font-semibold mb-1">Teks Asli (Emosional/Beropini):</p>
+                        <p class="italic">"Kebijakan sekolah daring ini jelas menyusahkan siswa. Guru-guru pun tampaknya tidak siap. Ini bukti bahwa pemerintah belum punya rencana matang!"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Box -->
+            <div class="bg-blue-50 p-4 rounded-lg text-blue-800 border-l-4 border-blue-500 mb-6">
+                <div class="flex items-start">
+                    <i class="fas fa-lightbulb mt-1 mr-2"></i>
+                    <div>
+                        <p class="font-semibold mb-1">Tips Menulis Netral:</p>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Hindari kata-kata yang menunjukkan emosi (contoh: "jelas", "tampaknya")</li>
+                            <li>Fokus pada fakta yang dapat diverifikasi</li>
+                            <li>Gunakan sumber informasi yang jelas</li>
+                            <li>Hindari penilaian pribadi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Textarea Section -->
+            <div class="mt-4">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="block font-semibold text-gray-800">Tulis ulang menjadi teks berita netral:</label>
+                    <span id="characterCount" class="text-xs font-medium text-gray-500 character-count">0/500 karakter</span>
+                </div>
+                <textarea 
+                    id="newsTextarea"
+                    class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-pink-300 textarea-animate" 
+                    rows="7" 
+                    placeholder="Contoh penulisan netral: 'Kebijakan sekolah daring yang diterapkan mulai Senin lalu mendapat tanggapan beragam dari berbagai pihak. Beberapa siswa mengaku mengalami kendala teknis selama pembelajaran...'"
+                    maxlength="500"
+                ></textarea>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-end gap-3 mt-4">
+                <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
+                    <i class="fas fa-redo mr-2"></i> Reset
+                </button>
+                <button class="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition flex items-center justify-center">
+                    <i class="fas fa-check-circle mr-2"></i> Submit Jawaban
+                </button>
+            </div>
+        </section>
+
+        <!-- Example Solution (Hidden by default) -->
+        <div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+            <button id="toggleSolution" class="flex items-center text-blue-600 font-medium mb-4">
+                <i class="fas fa-eye mr-2"></i> Lihat Contoh Solusi
+            </button>
+            <div id="solutionContent" class="hidden bg-green-50 p-4 rounded-lg text-green-800 border-l-4 border-green-500">
+                <p class="font-semibold mb-2">Contoh Penulisan Netral:</p>
+                <p>"Pemerintah menerapkan kebijakan sekolah daring mulai Senin (15/3) sebagai respons terhadap peningkatan kasus COVID-19. Menurut survei yang dilakukan oleh Asosiasi Guru, sekitar 45% pendidik mengaku membutuhkan waktu adaptasi dengan sistem baru ini. Sementara itu, perwakilan Kementerian Pendidikan menyatakan telah menyiapkan modul pelatihan untuk guru dan bantuan kuota internet bagi siswa."</p>
+                <div class="mt-3 pt-3 border-t border-green-200 text-sm text-green-700">
+                    <p><i class="fas fa-check-circle mr-2"></i> Menggunakan data dan fakta yang dapat diverifikasi</p>
+                    <p><i class="fas fa-check-circle mr-2"></i> Menyertakan sumber informasi</p>
+                    <p><i class="fas fa-check-circle mr-2"></i> Tidak mengandung kata-kata emosional</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="font-bold text-gray-800 mb-3 flex items-center">
+                <i class="fas fa-chart-line text-pink-500 mr-2"></i> Progress Belajarmu
+            </h3>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                <div class="bg-pink-600 h-2.5 rounded-full" style="width: 25%"></div>
+            </div>
+            <div class="flex justify-between text-sm text-gray-600">
+                <span>1/4 Latihan Diselesaikan</span>
+                <span>25%</span>
+            </div>
+            <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="text-center p-2 rounded-lg bg-pink-100 text-pink-700">
+                    <p class="text-xs">Latihan 1</p>
+                    <p class="font-bold"><i class="fas fa-check"></i></p>
+                </div>
+                <div class="text-center p-2 rounded-lg bg-gray-100 text-gray-500">
+                    <p class="text-xs">Latihan 2</p>
+                    <p class="font-bold"><i class="fas fa-lock"></i></p>
+                </div>
+                <div class="text-center p-2 rounded-lg bg-gray-100 text-gray-500">
+                    <p class="text-xs">Latihan 3</p>
+                    <p class="font-bold"><i class="fas fa-lock"></i></p>
+                </div>
+                <div class="text-center p-2 rounded-lg bg-gray-100 text-gray-500">
+                    <p class="text-xs">Latihan 4</p>
+                    <p class="font-bold"><i class="fas fa-lock"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Character count for textarea
+        const textarea = document.getElementById('newsTextarea');
+        const characterCount = document.getElementById('characterCount');
+        
+        textarea.addEventListener('input', function() {
+            const count = this.value.length;
+            characterCount.textContent = `${count}/500 karakter`;
+            
+            // Change color when approaching limit
+            if (count > 400) {
+                characterCount.classList.add('text-red-500');
+                characterCount.classList.remove('text-gray-500');
+            } else {
+                characterCount.classList.add('text-gray-500');
+                characterCount.classList.remove('text-red-500');
+            }
+        });
+
+        // Toggle solution visibility
+        const toggleSolution = document.getElementById('toggleSolution');
+        const solutionContent = document.getElementById('solutionContent');
+        
+        toggleSolution.addEventListener('click', function() {
+            if (solutionContent.classList.contains('hidden')) {
+                solutionContent.classList.remove('hidden');
+                this.innerHTML = '<i class="fas fa-eye-slash mr-2"></i> Sembunyikan Contoh';
+            } else {
+                solutionContent.classList.add('hidden');
+                this.innerHTML = '<i class="fas fa-eye mr-2"></i> Lihat Contoh Solusi';
+            }
+        });
+    </script>
+</body>
+</html>

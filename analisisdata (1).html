@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Data Analysis Learning Module</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4F46E5',
+            secondary: '#10B981',
+            accent: '#F59E0B',
+            dark: '#1F2937',
+            light: '#F3F4F6'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .card {
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #f6e05e 0%, #f6e05e 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 40%;
+      background-position: 0 88%;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      background-color: #cb16a1;
+      transition: width 0.5s ease;
+    }
+  </style>
+</head>
+<header class="bg-[#2D5FFF] h-16 flex items-center px-6 text-white">
+  <div class="flex items-center space-x-4 w-full">
+    <!-- Logo -->
+    <div class="relative w-10 h-10 mr-3">
+      <div class="w-full h-full rounded-full bg-white flex items-center justify-center relative">
+        <i class="fas fa-book-open text-blue-600 text-base book-animation"></i>
+        <i class="fas fa-mouse-pointer absolute text-yellow-400 text-sm" style="bottom: 5px; right: 10px;"></i>
+      </div>
+    </div>
+    <span class="font-bold ml-1 text-xl">Analisis & Visualisasi Data</span>
+    <!-- Page Title -->
+    <h1 class="text-2xl font-bold flex-grow text-center"></h1>
+    <!-- User Controls -->
+    <div class="flex items-center space-x-4">
+      <i class="fas fa-bell text-xl"></i>
+      <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+        <i class="fas fa-user text-[#2D5FFF]"></i>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Breadcrumb -->
+<div class="bg-[#F8F9FA] px-6 py-3 border-b border-[#FDCB00]">
+  <p class="text-sm text-[#3A3A3A]"><a class="text-blue-500 hover:underline" href="LINGKASAEDU.html">Beranda</a><a
+      class="text-blue-500 hover:underline" href="#areapembelajararan"> </a> / Analisis dan Visualisasi Data</p>
+  <!-- <div class="absolute bottom-0 left-0 right-0 h-1 bg-[#FDCB00]"></div> -->
+</div>
+<div class="space-y-6">
+  <!-- Introduction Card -->
+  <div class="card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in" style="animation-delay: 0.1s">
+    <div class="p-6 md:p-8">
+      <div class="flex items-start">
+        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+          <i class="fas fa-chart-pie text-indigo-600 text-xl"></i>
+        </div>
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">Mengapa Analisis Data Penting</h2>
+          <p class="text-base md:text-lg text-gray-700 leading-relaxed">
+            Dalam dunia digital saat ini, kemampuan untuk memahami data sangatlah penting. Informasi tidak hanya hadir
+            dalam bentuk teks—informasi muncul dalam bentuk angka, diagram, dan visualisasi. Kemampuan untuk membaca,
+            menginterpretasikan, dan mengomunikasikan data secara efektif telah menjadi alat penting di era informasi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Steps Before Practice -->
+  <div class="card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in" style="animation-delay: 0.2s">
+    <div class="p-6 md:p-8">
+      <div class="flex items-center mb-4">
+        <div class="bg-green-100 p-3 rounded-full mr-4">
+          <i class="fas fa-list-ol text-green-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800">Langkah Persiapan</h3>
+      </div>
+      <p class="text-gray-700 mb-4">
+        Dalam modul ini, Anda akan:
+      </p>
+      <ul class="space-y-3 pl-2">
+        <li class="flex items-start">
+          <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+          <span class="text-gray-700">Belajar memasukkan data yang dikumpulkan ke dalam tabel</span>
+        </li>
+        <li class="flex items-start">
+          <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+          <span class="text-gray-700">Visualisasikan sebagai diagram batang atau pai menggunakan Google Sheets atau
+            Excel</span>
+        </li>
+        <li class="flex items-start">
+          <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+          <span class="text-gray-700">Menarik kesimpulan logis dan komunikatif dari data</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Chart Creation Guide -->
+  <div class="card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in" style="animation-delay: 0.3s">
+    <div class="p-6 md:p-8">
+      <div class="flex items-center mb-4">
+        <div class="bg-blue-100 p-3 rounded-full mr-4">
+          <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800">Panduan Pembuatan Grafik Digital</h3>
+      </div>
+      <ol class="space-y-4 pl-2">
+        <li class="flex items-start">
+          <span
+            class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">1</span>
+          <span class="text-gray-700">Buka <strong class="text-blue-600">Google Sheets</strong> atau <strong
+              class="text-blue-600">Microsoft Excel</strong></span>
+        </li>
+        <li class="flex items-start">
+          <span
+            class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">2</span>
+          <div>
+            <span class="text-gray-700">Salin dan tempel data seperti ini:</span>
+            <div class="bg-gray-100 rounded-md p-4 mt-2 overflow-x-auto">
+              <pre class="text-sm text-gray-800 font-mono">
++---------------------+------------------+
+| Topik              | Responden      |
++---------------------+------------------+
+| Fakta VS Opini     | 15               |
+| PemeriksaanHoaks   | 18               |
+| Etika Komentar     | 12               |
+|Struktur Teks Berita| 10               |
++---------------------+------------------+</pre>
+            </div>
+          </div>
+        </li>
+        <li class="flex items-start">
+          <span
+            class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">3</span>
+          <span class="text-gray-700">Pilih Seluruh Tabel Data</span>
+        </li>
+        <li class="flex items-start">
+          <span
+            class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">4</span>
+          <span class="text-gray-700">Klik <span class="bg-gray-200 px-2 py-1 rounded">Insert</span> → select <span
+              class="bg-gray-200 px-2 py-1 rounded">Chart</span></span>
+        </li>
+        <li class="flex items-start">
+          <span
+            class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">5</span>
+          <span class="text-gray-700">Pilih <strong>bar chart</strong> atau <strong>pie chart</strong> untuk
+            memvisualisasikan hasilnya</span>
+        </li>
+      </ol>
+      <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+        <div class="flex items-start">
+          <i class="fas fa-lightbulb text-blue-500 mt-1 mr-3"></i>
+          <div>
+            <h4 class="font-bold text-blue-800 mb-2">Kiat Professional</h4>
+            <p class="text-blue-700 text-sm">Gunakan warna yang kontras untuk kategori yang berbeda agar bagan Anda
+              lebih mudah dibaca. Sebagian besar alat akan melakukannya secara otomatis!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Reading Charts & Conclusions -->
+  <div class="card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in" style="animation-delay: 0.4s">
+    <div class="p-6 md:p-8">
+      <div class="flex items-center mb-4">
+        <div class="bg-purple-100 p-3 rounded-full mr-4">
+          <i class="fas fa-search text-purple-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800">Membaca Grafik &amp; Menulis Kesimpulan</h3>
+      </div>
+      <p class="text-gray-700 mb-4">Setelah membuat bagan Anda, Anda dapat mulai menganalisis hasilnya:</p>
+      <ul class="space-y-3 pl-2 mb-6">
+        <li class="flex items-start">
+          <i class="fas fa-arrow-right text-purple-500 mt-1 mr-3"></i>
+          <span class="text-gray-700">Bandingkan kategori dengan nilai tertinggi dan terendah</span>
+        </li>
+        <li class="flex items-start">
+          <i class="fas fa-arrow-right text-purple-500 mt-1 mr-3"></i>
+          <span class="text-gray-700">Identifikasi: topik mana yang paling dipahami? Topik mana yang perlu
+            ditingkatkan?</span>
+        </li>
+        <li class="flex items-start">
+          <i class="fas fa-arrow-right text-purple-500 mt-1 mr-3"></i>
+          <span class="text-gray-700">Gunakan bahasa yang objektif dan sederhana saat menarik kesimpulan</span>
+        </li>
+      </ul>
+      <div class="bg-purple-50 rounded-lg p-5 border border-purple-100">
+        <div class="flex items-start mb-3">
+          <i class="fas fa-pen-fancy text-purple-500 mt-1 mr-3"></i>
+          <h4 class="font-bold text-purple-800">Contoh Kesimpulan</h4>
+        </div>
+        <div class="bg-white p-4 rounded border-l-4 border-purple-500">
+          <p class="text-gray-800 italic">
+            "Grafik menunjukkan bahwa 'Pemeriksaan Hoaks' merupakan topik yang paling dipahami (18 responden), sementara
+            'Struktur Teks Berita' perlu diperkuat. Hal ini menyoroti pentingnya penguatan konsep dasar struktur
+            berita."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Practice Section -->
+  <div class="card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in" style="animation-delay: 0.5s">
+    <div class="p-6 md:p-8">
+      <div class="flex items-center mb-4">
+        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+          <i class="fas fa-hands-helping text-yellow-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800">Practice Exercise</h3>
+      </div>
+      <p class="text-gray-700 mb-4">Now it's your turn to practice these skills:</p>
+      <div>
+        <h2 class="text-xl font-bold mb-4">Panduan Interaktif</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Langkah 1 -->
+          <div class="card p-5">
+            <div class="bg-[#F8F9FA] text-[#2D5FFF] w-8 h-8 rounded-full flex items-center justify-center mb-3">1</div>
+            <h3 class="font-bold mb-2">Unduh Template</h3>
+            <a class="btn-primary block w-full py-2 px-4 rounded-xl flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white"
+              href="https://docs.google.com/spreadsheets/d/1JC9qs_4Ex6hDogI0uhgFSftFAVsK1QLjMi2NBZOgZlc/edit?gid=0#gid=0"
+              target="_blank">
+              <i class="mr-2 w-4 h-4" data-feather="download"></i>
+              Unduh Template Data (Excel)
+            </a>
+          </div>
+          <!-- Langkah 2 -->
+          <div class="card p-5">
+            <div class="bg-[#F8F9FA] text-[#2D5FFF] w-8 h-8 rounded-full flex items-center justify-center mb-3">2</div>
+            <h3 class="font-bold mb-2">Input Data Siswa</h3>
+            <p class="text-sm">
+              Masukkan data seperti media favorit, waktu membaca, usia ke dalam kolom yang tersedia.
+            </p>
+          </div>
+          <!-- Langkah 3 -->
+          <div class="card p-5">
+            <div class="bg-[#F8F9FA] text-[#2D5FFF] w-8 h-8 rounded-full flex items-center justify-center mb-3">3</div>
+            <h3 class="font-bold mb-2">Buat Grafik Otomatis</h3>
+            <a class="btn-primary block w-full py-2 px-4 rounded-xl flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white"
+              href="https://sheets.new" target="_blank">
+              <i class="mr-2 w-4 h-4" data-feather="download"></i>
+              Buka Google Sheets
+            </a>
+            <p class="text-xs text-gray-600">
+              Gunakan menu <span class="font-mono">Insert → Chart</span> untuk membuat grafik batang atau lingkaran.
+            </p>
+          </div>
+          <!-- Langkah 4 -->
+          <div class="card p-5">
+            <div class="bg-[#F8F9FA] text-[#2D5FFF] w-8 h-8 rounded-full flex items-center justify-center mb-3">4</div>
+            <h3 class="font-bold mb-2">Tulis Simpulan</h3>
+            <textarea
+              class="w-full p-3 border rounded-xl text-sm focus:border-[#2D5FFF] focus:ring-0 focus:outline-none"
+              placeholder="Tulis simpulanmu berdasarkan grafik yang kamu buat (maksimal 100 kata)." rows="4"></textarea>
+            <div class="flex justify-end">
+              <span class="text-xs text-gray-500">0/100 kata</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="max-w-4xl mx-auto mb-10">
+    <div class="card p-6 md:p-8">
+      <div class="flex items-start mb-4">
+        <span class="text-3xl mr-3">🧠</span>
+        <h2 class="text-xl font-bold">Coba Jawab!</h2>
+      </div>
+    </div>
+    <!-- Card Header -->
+    <div class="bg-primary px-6 py-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold text-white">Durasi Penggunaan Media Sosial</h2>
+        <div class="flex space-x-2">
+          <button class="p-2 rounded-full bg-white/20 text-white hover:bg-white/30">
+            <i class="fas fa-info-circle"></i>
+          </button>
+          <button class="p-2 rounded-full bg-white/20 text-white hover:bg-white/30">
+            <i class="fas fa-download"></i>
+          </button>
+        </div>
+      </div>
+      <p class="text-white/90 mt-1 text-sm">Data durasi penggunaan harian dalam menit (rata-rata kelas)</p>
+    </div>
+    <!-- Card Content -->
+    <div class="p-6">
+      <!-- Chart -->
+      <div class="chart-container mb-8">
+        <canvas id="grafikDurasi"></canvas>
+      </div>
+      <!-- Info Box -->
+      <div class="bg-light border-l-4 border-accent p-4 rounded-r mb-8">
+        <div class="flex">
+          <div class="flex-shrink-0 text-accent">
+            <i class="fas fa-lightbulb text-xl"></i>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-dark">Tips Analisis</h3>
+            <p class="text-sm text-gray-600 mt-1">Perhatikan skala sumbu X untuk membandingkan durasi secara akurat.
+              Selisih kecil mungkin tidak signifikan secara statistik.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Question 1 -->
+      <div class="mb-10">
+        <div class="flex items-start mb-4">
+          <span
+            class="flex-shrink-0 bg-primary text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-3">1</span>
+          <div>
+            <h3 class="text-lg font-semibold text-dark">Dari grafik, manakah simpulan yang paling tepat secara
+              kuantitatif?</h3>
+            <p class="text-sm text-gray-500 mt-1">Pilih jawaban yang didukung oleh data numerik dari grafik</p>
+          </div>
+        </div>
+        <div class="space-y-3 ml-11">
+          <div class="option-card border rounded-lg p-4 cursor-pointer hover:border-primary">
+            <label class="flex items-start">
+              <input class="mt-1 mr-3 h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="soal1"
+                type="radio" />
+              <span class="text-gray-700">
+                TikTok memiliki selisih penggunaan 10 menit lebih tinggi dibanding Twitter.
+                <span class="block text-xs text-gray-500 mt-1">Periksa kembali perhitungan selisih antara TikTok dan
+                  Twitter</span>
+              </span>
+            </label>
+          </div>
+          <div class="option-card border rounded-lg p-4 cursor-pointer hover:border-primary">
+            <label class="flex items-start">
+              <input class="mt-1 mr-3 h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="soal1"
+                type="radio" />
+              <span class="text-gray-700">
+                Instagram digunakan hampir dua kali lipat lebih lama dibanding Twitter.
+                <span class="block text-xs text-gray-500 mt-1">60 menit vs 35 menit - hitung rasio
+                  perbandingannya</span>
+              </span>
+            </label>
+          </div>
+          <div class="option-card border rounded-lg p-4 cursor-pointer hover:border-primary">
+            <label class="flex items-start">
+              <input class="mt-1 mr-3 h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="soal1"
+                type="radio" />
+              <span class="text-gray-700">
+                Durasi Facebook dan Twitter hampir sama, perbedaannya di bawah 5 menit.
+                <span class="block text-xs text-gray-500 mt-1">Perhatikan nilai absolut Facebook (20) dan Twitter
+                  (35)</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- Question 2 -->
+      <div class="mb-6">
+        <div class="flex items-start mb-4">
+          <span
+            class="flex-shrink-0 bg-primary text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-3">2</span>
+          <div>
+            <h3 class="text-lg font-semibold text-dark">Berdasarkan grafik, manakah penilaian kritis berikut yang paling
+              tepat?</h3>
+            <p class="text-sm text-gray-500 mt-1">Pilih jawaban yang menunjukkan pemahaman mendalam tentang implikasi
+              data</p>
+          </div>
+        </div>
+        <div class="space-y-3 ml-11">
+          <div class="option-card border rounded-lg p-4 cursor-pointer hover:border-primary">
+            <label class="flex items-start">
+              <input class="mt-1 mr-3 h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="soal2"
+                type="radio" />
+              <span class="text-gray-700">
+                Dominasi Instagram menunjukkan bahwa siswa lebih suka media berbasis teks daripada visual.
+                <span class="block text-xs text-gray-500 mt-1">Instagram justru platform visual, bukan berbasis
+                  teks</span>
+              </span>
+            </label>
+          </div>
+          <div class="option-card border rounded-lg p-4 cursor-pointer hover:border-primary">
+            <label class="flex items-start">
+              <input class="mt-1 mr-3 h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="soal2"
+                type="radio" />
+              <span class="text-gray-700">
+                Perbedaan durasi penggunaan dapat menunjukkan preferensi konten serta potensi risiko kecanduan digital.
+                <span class="block text-xs text-gray-500 mt-1">Durasi tinggi bisa mengindikasikan pola penggunaan yang
+                  perlu diperhatikan</span>
+              </span>
+            </label>
+          </div>
+          <div class="option-card border rounded-lg p-4 cursor-pointer hover:border-primary">
+            <label class="flex items-start">
+              <input class="mt-1 mr-3 h-4 w-4 text-primary border-gray-300 focus:ring-primary" name="soal2"
+                type="radio" />
+              <span class="text-gray-700">
+                Facebook digunakan lebih lama karena banyak guru yang aktif di sana.
+                <span class="block text-xs text-gray-500 mt-1">Data menunjukkan Facebook justru memiliki durasi
+                  terendah</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- Navigation Buttons -->
+      <div class="flex justify-between mt-8 pt-6 border-t border-gray-200">
+        <button id="showResultBtn"
+          class="px-6 py-2.5 bg-primary text-white font-medium rounded-lg hover:bg-yellow/90 transition">
+          Cek Jawaban <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<footer class="mt-12 text-center text-gray-500 text-sm">
+  <p>© 2023 Data Analysis Learning Module. All rights reserved.</p>
+  <div class="mt-2 flex justify-center space-x-4">
+    <a class="hover:text-indigo-600" href="#"><i class="fab fa-twitter"></i></a>
+    <a class="hover:text-indigo-600" href="#"><i class="fab fa-facebook"></i></a>
+    <a class="hover:text-indigo-600" href="#"><i class="fab fa-linkedin"></i></a>
+    <a class="hover:text-indigo-600" href="#"><i class="fab fa-github"></i></a>
+  </div>
+</footer>
+
+<script>
+  // Initialize chart
+  document.addEventListener('DOMContentLoaded', function () {
+    const ctx = document.getElementById('grafikDurasi').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Instagram', 'TikTok', 'Twitter', 'Facebook'],
+        datasets: [{
+          label: 'Durasi (menit/hari)',
+          data: [60, 50, 35, 20],
+          backgroundColor: [
+            '#FF0000',  // Instagram - indigo
+            '#E1306C',  // TikTok - emerald
+            '#25F4EE',  // Twitter - amber
+            '#1877F2' // Facebook - red
+          ],
+          borderColor: [
+            'rgba(99, 102, 241, 1)',
+            'rgba(16, 185, 129, 1)',
+            'rgba(245, 158, 11, 1)',
+            'rgba(239, 68, 68, 1)'
+          ],
+          borderWidth: 1,
+          borderRadius: 6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function (context) {
+                return context.dataset.label + ': ' + context.raw + ' menit';
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Durasi Penggunaan (menit/hari)',
+              font: {
+                weight: 'bold'
+              }
+            },
+            beginAtZero: true,
+            grid: {
+              display: false
+            }
+          },
+          y: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              font: {
+                weight: 'bold'
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Add interaction effects for option cards
+    const optionCards = document.querySelectorAll('.option-card');
+    optionCards.forEach(card => {
+      const radio = card.querySelector('input[type="radio"]');
+
+      card.addEventListener('click', () => {
+        // Remove selected class from all cards in the same question
+        const questionName = radio.getAttribute('name');
+        document.querySelectorAll(`.option-card input[name="${questionName}"]`).forEach(r => {
+          r.closest('.option-card').classList.remove('selected');
+        });
+
+        // Add selected class to clicked card
+        card.classList.add('selected');
+        radio.checked = true;
+      });
+    });
+  });
+</script>
+<script>
+  // Simple animation trigger
+  document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+      card.style.animationDelay = `${0.1 + (index * 0.1)}s`;
+    });
+
+    // Add interaction for buttons
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        this.classList.add('animate-pulse');
+        setTimeout(() => {
+          this.classList.remove('animate-pulse');
+        }, 300);
+      });
+    });
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const correctAnswers = {
+    soal1: 1, // Instagram vs Twitter (Benar)
+    soal2: 1  // Preferensi dan risiko kecanduan (Benar)
+  };
+
+  const reasons = {
+    soal1: [
+      "Salah: Selisih TikTok dan Twitter hanya 15 menit (50 vs 35), bukan 10.",
+      "Benar: Instagram (60) hampir dua kali dari Twitter (35), rasio mendekati 2:1.",
+      "Salah: Facebook 20 dan Twitter 35, selisih 15 menit, bukan < 5."
+    ],
+    soal2: [
+      "Salah: Instagram justru platform visual, bukan teks.",
+      "Benar: Durasi tinggi mengindikasikan pola penggunaan dan potensi kecanduan.",
+      "Salah: Facebook memiliki durasi terendah, bukan tertinggi."
+    ]
+  };
+
+
+
+ 
+    resultContainer.innerHTML = '<h2 class="text-xl font-bold text-dark mb-4">Hasil Jawaban</h2>';
+
+    for (const key in correctAnswers) {
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      if (!selected) {
+        const p = document.createElement('p');
+        p.innerHTML = `<strong>Pertanyaan ${key.replace('soal', '')}:</strong> Belum dijawab.`;
+        resultContainer.appendChild(p);
+        continue;
+      }
+
+      const selectedIndex = Array.from(document.querySelectorAll(`input[name="${key}"]`)).indexOf(selected);
+      const correctIndex = correctAnswers[key];
+      const isCorrect = selectedIndex === correctIndex;
+      const reason = reasons[key][selectedIndex];
+
+      const p = document.createElement('p');
+      p.innerHTML = `<strong>Pertanyaan ${key.replace('soal', '')}:</strong> ${isCorrect ? '<span class="text-green-600">Benar</span>' : '<span class="text-red-600">Salah</span>'} - ${reason}`;
+      resultContainer.appendChild(p);
+    }
+  });
+
+  const container = document.querySelector('.max-w-4xl');
+  container.appendChild(button);
+  container.appendChild(resultContainer);
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const correctAnswers = {
+    soal1: 1,
+    soal2: 1
+  };
+
+  const reasons = {
+    soal1: [
+      "❌ TikTok dan Twitter memiliki selisih 15 menit, bukan 10.",
+      "✅ Instagram digunakan hampir 2x lebih lama dari Twitter (60 vs 35 menit).",
+      "❌ Facebook (20 menit) dan Twitter (35 menit) tidak mendekati selisih <5 menit."
+    ],
+    soal2: [
+      "❌ Instagram adalah platform visual, bukan teks.",
+      "✅ Durasi tinggi menandakan preferensi konten dan potensi kecanduan digital.",
+      "❌ Facebook memiliki durasi terendah, bukan tertinggi."
+    ]
+  };
+
+  const resultContainer = document.createElement('div');
+  resultContainer.className = 'grid gap-4 mt-10';
+
+  const showResultBtn = document.getElementById('showResultBtn');
+  showResultBtn.addEventListener('click', () => {
+    resultContainer.innerHTML = '';
+
+    Object.keys(correctAnswers).forEach((key, i) => {
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const questionNum = key.replace('soal', '');
+      const correctIndex = correctAnswers[key];
+
+      let card = document.createElement('div');
+      card.className = 'p-4 rounded-xl shadow-md bg-white border-l-4';
+
+      if (!selected) {
+        card.classList.add('border-gray-400');
+        card.innerHTML = `
+          <div class="flex items-center">
+            <i class="fas fa-exclamation-circle text-gray-500 mr-3 text-xl"></i>
+            <div>
+              <h4 class="text-md font-semibold text-gray-700">Pertanyaan ${questionNum}</h4>
+              <p class="text-gray-500 text-sm mt-1">❗ Belum dijawab.</p>
+            </div>
+          </div>
+        `;
+      } else {
+        const selectedIndex = Array.from(document.querySelectorAll(`input[name="${key}"]`)).indexOf(selected);
+        const isCorrect = selectedIndex === correctIndex;
+        const reason = reasons[key][selectedIndex];
+
+        card.classList.add(isCorrect ? 'border-green-500' : 'border-red-500');
+        card.innerHTML = `
+          <div class="flex items-start">
+            <i class="fas ${isCorrect ? 'fa-check-circle text-green-600' : 'fa-times-circle text-red-600'} text-xl mr-3 mt-1"></i>
+            <div>
+              <h4 class="text-md font-semibold ${isCorrect ? 'text-green-700' : 'text-red-700'}">Pertanyaan ${questionNum} - ${isCorrect ? 'Benar' : 'Salah'}</h4>
+              <p class="text-sm text-gray-600 mt-1">${reason}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      resultContainer.appendChild(card);
+    });
+
+    document.querySelector('.max-w-4xl').appendChild(resultContainer);
+  });
+});
+</script>
+
+</html>

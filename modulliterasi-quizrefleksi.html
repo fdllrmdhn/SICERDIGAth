@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz & Refleksi - LINGKASA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5FFF',
+                        accent: '#FDCB00',
+                        background: '#F8F9FA',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8F9FA;
+            color: #333;
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .option {
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            transform: translateX(5px);
+        }
+        .btn-primary {
+            background-color: #2D5FFF;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #204fd9;
+            transform: scale(1.03);
+        }
+        .btn-accent {
+            background-color: #FDCB00;
+            transition: all 0.3s ease;
+        }
+        .btn-accent:hover {
+            background-color: #e6b700;
+            transform: scale(1.03);
+        }
+        .text-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .xp-badge {
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body class="bg-background">
+    <div class="max-w-3xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <header class="text-center py-8">
+            <div class="w-20 h-20 mx-auto bg-primary rounded-full flex items-center justify-center text-4xl text-white mb-4">
+                <i class="fas fa-pen"></i>
+            </div>
+            <h1 class="text-4xl font-bold text-primary">Quiz & Refleksi</h1>
+            <p class="text-lg mt-3 max-w-xl mx-auto">Uji pemahamanmu dengan 5 soal interaktif tentang literasi digital bahasa Indonesia.</p>
+        </header>
+
+        <!-- Panduan Kuis -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 card">
+            <div class="flex items-start">
+                <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mr-4">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg">Panduan Quiz</h3>
+                    <p class="mt-2 text-gray-600">
+                        Terdapat 5 soal pilihan ganda. Jawabanmu akan langsung dievaluasi. 
+                        Di akhir, kamu akan diajak menulis refleksi singkat tentang pembelajaranmu.
+                    </p>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 mt-3">
+                        <i class="fas fa-clock mr-2"></i> Estimasi waktu: 10 menit
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium">Progress</span>
+                <span class="text-sm font-medium"><span id="current-question">1</span>/5</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="quiz-progress" class="bg-primary h-2.5 rounded-full" style="width: 20%"></div>
+            </div>
+        </div>
+
+        <!-- Questions Container -->
+        <div id="questions-container" class="space-y-6">
+            <!-- Questions will be generated here -->
+        </div>
+
+        <!-- Reflection Section -->
+        <div id="reflection-container" class="bg-white rounded-2xl shadow-lg p-6 mb-8 card hidden">
+            <div class="flex items-start">
+                <div class="w-10 h-10 bg-yellow-50 rounded-full flex items-center justify-center text-yellow-600 mr-4">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="w-full">
+                    <h3 class="font-semibold text-lg text-primary mb-4">🧠 Refleksi Pembelajaran</h3>
+                    <p class="mb-4 text-gray-600">Tulis satu hal baru yang kamu pelajari hari ini dan bagaimana kamu akan menggunakannya di kehidupan digitalmu.</p>
+                    <textarea id="reflection-text" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" rows="5" placeholder="Tulis refleksi pembelajaranmu di sini..."></textarea>
+                    <div class="flex justify-between items-center mt-2">
+                        <div>
+                            <span id="char-count" class="text-sm text-gray-500">0/300</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <span id="xp-badge" class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full hidden">
+                                <i class="fas fa-medal mr-1"></i> +10 XP (skor sempurna)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button id="next-btn" class="btn-accent text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center">
+                            Berikutnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Container -->
+        <div id="results-container" class="bg-white rounded-2xl shadow-lg p-8 mb-8 text-center hidden">
+            <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center text-2xl text-white mx-auto mb-6">
+                <i class="fas fa-medal"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4">🎉 Hasil Quiz</h3>
+            <div class="bg-blue-50 rounded-xl p-6 mb-6">
+                <p class="text-5xl font-bold text-primary mb-2"><span id="score-result">0</span>/5</p>
+                <p class="text-xl font-medium" id="feedback-text">Pemahamanmu sudah bagus. Terus eksplorasi modul lainnya.</p>
+            </div>
+            <div id="retry-badge" class="hidden">
+                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 mb-4">
+                    <i class="fas fa-redo mr-2"></i> Kamu bisa coba ulang kuis nanti.
+                </span>
+            </div>
+            
+            <!-- XP Badge -->
+            <div id="xp-reward" class="bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full py-2 px-4 text-white font-bold inline-flex items-center mb-6 hidden">
+                <i class="fas fa-star mr-2"></i> +10 XP
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button id="retry-btn" class="btn-accent text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-redo mr-2"></i> Ulangi Quiz
+                </button>
+                <button id="home-btn" class="btn-primary text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-home mr-2"></i> Kembali ke Modul
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                question: "Manakah ciri-ciri informasi digital yang valid?",
+                options: [
+                    "Mengandung opini pribadi",
+                    "Memiliki sumber yang jelas dan netral",
+                    "Disampaikan oleh akun anonim",
+                    "Viral di media sosial"
+                ],
+                correct: 1
+            },
+            {
+                question: "Apa yang perlu diperhatikan agar konten edukasi singkat di media sosial menjadi efektif?",
+                options: [
+                    "Menggunakan istilah teknis sebanyak mungkin",
+                    "Menyisipkan informasi panjang dalam satu paragraf",
+                    "Menulis dengan kalimat pendek, jelas, dan ada ajakan",
+                    "Membuat judul dengan gaya puisi"
+                ],
+                correct: 2
+            },
+            {
+                question: "Ketika membaca sebuah artikel digital, kamu menemukan penulisnya menggunakan kata-kata seperti \"bodoh\" dan \"tidak berguna\" untuk menyebut pihak lain. Apa yang harus kamu pahami?",
+                options: [
+                    "Artikel itu sangat objektif",
+                    "Penulis tidak tahu apa-apa",
+                    "Teks tersebut kemungkinan mengandung bias",
+                    "Teks tersebut adalah fakta mutlak"
+                ],
+                correct: 2
+            },
+            {
+                question: "Bagian awal dalam sebuah artikel blog yang bertujuan menarik minat pembaca disebut…",
+                options: [
+                    "Paragraf Penutup",
+                    "Isi Utama",
+                    "Judul Visual",
+                    "Pembuka atau Lead"
+                ],
+                correct: 3
+            },
+            {
+                question: "Mengapa penggunaan infografik penting dalam menyampaikan informasi digital?",
+                options: [
+                    "Agar tulisan terlihat ramai",
+                    "Supaya pembaca tertarik hanya pada desainnya",
+                    "Untuk menyederhanakan informasi agar mudah dipahami",
+                    "Karena teks panjang tidak bisa dipercaya"
+                ],
+                correct: 2
+            }
+        ];
+
+        // App state
+        let currentQuestion = 0;
+        let userAnswers = Array(quizData.length).fill(null);
+        let score = 0;
+        let reflectionText = "";
+
+        // DOM elements
+        const questionsContainer = document.getElementById('questions-container');
+        const reflectionContainer = document.getElementById('reflection-container');
+        const resultsContainer = document.getElementById('results-container');
+        const scoreResult = document.getElementById('score-result');
+        const feedbackText = document.getElementById('feedback-text');
+        const retryBadge = document.getElementById('retry-badge');
+        const xpReward = document.getElementById('xp-reward');
+        const currentQuestionSpan = document.getElementById('current-question');
+        const quizProgress = document.getElementById('quiz-progress');
+        const xpBadge = document.getElementById('xp-badge');
+        const charCount = document.getElementById('char-count');
+        const retryBtn = document.getElementById('retry-btn');
+        const homeBtn = document.getElementById('home-btn');
+        const reflectionTextarea = document.getElementById('reflection-text');
+
+        // Initialize the quiz
+        function initQuiz() {
+            renderQuestion();
+        }
+
+        // Render current question
+        function renderQuestion() {
+            const q = quizData[currentQuestion];
+            
+            // Update progress
+            currentQuestionSpan.textContent = currentQuestion + 1;
+            quizProgress.style.width = ((currentQuestion + 1) / quizData.length * 100) + '%';
+            
+            const answers = q.options.map((option, i) => {
+                // Check if this option has been selected
+                const isSelected = userAnswers[currentQuestion] === i;
+                // Check if this is the correct answer and question is answered
+                const isCorrect = i === q.correct;
+                // Determine if we should show correct answer
+                const showAnswer = userAnswers[currentQuestion] !== null;
+                
+                let statusClass = '';
+                let statusIcon = '';
+                
+                if (showAnswer) {
+                    if (isSelected) {
+                        if (isCorrect) {
+                            statusClass = 'border-green-500 bg-green-50';
+                            statusIcon = '<span class="text-green-500 text-xl">✓</span>';
+                        } else {
+                            statusClass = 'border-red-500 bg-red-50';
+                            statusIcon = '<span class="text-red-500 text-xl">✕</span>';
+                        }
+                    } else if (isCorrect) {
+                        statusClass = 'border-green-500 bg-green-50';
+                        statusIcon = '<span class="text-green-500 text-xl">✓</span>';
+                    }
+                }
+                
+                return `
+                    <div class="option p-4 rounded-xl border-2 bg-white ${statusClass} ${
+                        userAnswers[currentQuestion] === null ? 'cursor-pointer' : ''
+                    } flex items-start" onclick="selectAnswer(${i})">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-full border mr-4 flex-shrink-0">${i+1}</div>
+                        <div class="flex-grow">${option}</div>
+                        <div class="ml-2">${statusIcon}</div>
+                    </div>
+                `;
+            }).join('');
+
+            const feedback = userAnswers[currentQuestion] !== null ? `
+                <div class="mt-4 p-4 rounded-lg ${
+                    userAnswers[currentQuestion] === q.correct ? 
+                    'bg-green-100 border border-green-200' : 
+                    'bg-red-100 border border-red-200'
+                }">
+                    ${userAnswers[currentQuestion] === q.correct ? 
+                    '<span class="text-green-700">✓ Jawaban Benar! Penjelasan:</span>' : 
+                    '<span class="text-red-700">✕ Coba Lagi! Penjelasan:</span>'}
+                    <p class="mt-2">${getExplanation(currentQuestion)}</p>
+                </div>
+            ` : '';
+
+            const nextBtn = `
+                <div class="mt-6 text-right">
+                    <button 
+                        class="btn-primary py-2 px-6 rounded-lg text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                        onclick="nextQuestion()" 
+                        ${userAnswers[currentQuestion] === null ? 'disabled' : ''}
+                    >
+                        ${currentQuestion === quizData.length - 1 ? 'Selesai' : 'Selanjutnya'} 
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            `;
+
+            questionsContainer.innerHTML = `
+                <div class="bg-white rounded-2xl shadow-lg p-6 card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mr-4">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Soal ${currentQuestion+1}</h3>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-6">${q.question}</p>
+                    
+                    <div class="space-y-4">
+                        ${answers}
+                    </div>
+                    
+                    ${feedback}
+                    ${nextBtn}
+                </div>
+            `;
+        }
+
+        // Select an answer
+        function selectAnswer(index) {
+            if (userAnswers[currentQuestion] !== null) return; // Prevent changing answers
+            userAnswers[currentQuestion] = index;
+            renderQuestion();
+        }
+
+        // Move to next question
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        // Finish quiz and show reflection
+        function finishQuiz() {
+            // Calculate score
+            score = userAnswers.reduce((total, answer, index) => {
+                return total + (answer === quizData[index].correct ? 1 : 0);
+            }, 0);
+            
+            // Hide questions and show reflection
+            questionsContainer.classList.add('hidden');
+            reflectionContainer.classList.remove('hidden');
+            
+            // Auto focus the textarea
+            reflectionTextarea.focus();
+        }
+
+        // Show results after reflection
+        function showResults() {
+            reflectionContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            
+            scoreResult.textContent = score;
+            
+            // Set feedback based on score
+            if (score === quizData.length) {
+                feedbackText.textContent = "Kamu ahli literasi digital! Pertahankan prestasimu!";
+                feedbackText.classList.add('text-green-600');
+                xpReward.classList.remove('hidden');
+                xpBadge.classList.remove('hidden');
+            } else if (score >= Math.floor(quizData.length * 0.6)) {
+                feedbackText.textContent = "Pemahamanmu sudah bagus. Terus eksplorasi modul lainnya.";
+                feedbackText.classList.add('text-blue-600');
+            } else {
+                feedbackText.textContent = "Tetap semangat belajar literasi digital! Yuk coba ulang quiz!";
+                feedbackText.classList.add('text-primary');
+                retryBadge.classList.remove('hidden');
+            }
+        }
+
+        // Reset quiz
+        function resetQuiz() {
+            currentQuestion = 0;
+            userAnswers = Array(quizData.length).fill(null);
+            score = 0;
+            reflectionText = "";
+            
+            // Reset UI elements
+            questionsContainer.classList.remove('hidden');
+            reflectionContainer.classList.add('hidden');
+            resultsContainer.classList.add('hidden');
+            reflectionTextarea.value = "";
+            charCount.textContent = "0/300";
+            xpReward.classList.add('hidden');
+            retryBadge.classList.add('hidden');
+            xpBadge.classList.add('hidden');
+            
+            renderQuestion();
+        }
+
+        // Get explanation for a question
+        function getExplanation(index) {
+            const explanations = [
+                "Informasi yang valid harus memiliki sumber jelas dan terpercaya serta disampaikan secara netral tanpa memihak.",
+                "Verifikasi kebenaran berita penting untuk mencegah penyebaran informasi yang tidak akurat atau hoax.",
+                "Melindungi data pribadi dengan tidak mengisi data penting di situs tidak resmi membantu mencegah penyalahgunaan identitas.",
+                "Penyebaran hoax menyebabkan ketidakpercayaan publik dan kepanikan yang dapat mengganggu ketertiban sosial.",
+                "Menghargai perbedaan pendapat adalah bagian penting dari etika berkomunikasi di ruang digital."
+            ];
+            return explanations[index];
+        }
+
+        // Event listeners
+        retryBtn.addEventListener('click', resetQuiz);
+        
+        homeBtn.addEventListener('click', () => {
+            window.location.href = "LINGKASAEDU.html";
+        });
+        
+        // reflectionTextarea.addEventListener('input', (e) => {
+        //     reflectionText = e.target.value;
+        //     charCount.textContent = `${reflectionText.length}/300`;
+        //     charCount.classList.toggle('text-red-500', reflectionText.length >= 290);
+            
+        //     if (reflectionText.length > 0) {
+        //         showResults();
+        //     }
+        // });
+
+        reflectionTextarea.addEventListener('input', (e) => {
+            reflectionText = e.target.value;
+            charCount.textContent = `${reflectionText.length}/300`;
+            charCount.classList.toggle('text-red-500', reflectionText.length >= 290);
+
+            // Tampilkan tombol jika ada teks
+            const submitBtn = document.getElementById('submit-reflection');
+            if (reflectionText.trim().length > 0) {
+                submitBtn.classList.remove('hidden');
+            } else {
+                submitBtn.classList.add('hidden');
+            }
+        });
+        document.getElementById('next-btn').addEventListener('click', showResults);
+
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', initQuiz);
+        window.selectAnswer = selectAnswer;
+        window.nextQuestion = nextQuestion;
+    </script>
+</body>
+</html>

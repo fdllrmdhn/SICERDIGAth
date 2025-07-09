@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIGI Chatbot - LINGKASA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .chat-popup {
+      animation: slideUp 0.3s ease-out;
+      transform-origin: bottom right;
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(100%) scale(0.8); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    
+    .message-bubble {
+      max-width: 80%;
+      word-wrap: break-word;
+      animation: fadeIn 0.2s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .typing-indicator {
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #3b82f6;
+      border-radius: 50%;
+      margin: 0 2px;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dot:nth-child(1) {
+      animation-delay: 0s;
+    }
+    
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes typingAnimation {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+    
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="relative">
+
+<!-- Tombol Chatbot -->
+<button id="chatButton" class="fixed bottom-1 right-1 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg transition-all hover:scale-110 pulse">
+  <i class="fas fa-robot text-2xl"></i>
+</button>
+
+<!-- Jendela Chat -->
+<div id="chatWindow" class="hidden fixed bottom-24 right-6 w-96 max-h-[500px] bg-white shadow-md rounded-xl overflow-hidden flex flex-col z-50 chat-popup border border-gray-200">
+  <!-- Header -->
+  <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-4 flex items-center gap-3">
+    <div class="relative">
+      <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+        <i class="fas fa-robot text-blue-600 text-xl"></i>
+      </div>
+      <span class="absolute -bottom-1 -right-1 bg-green-400 border-2 border-white rounded-full w-3 h-3"></span>
+    </div>
+    <div class="flex-1">
+      <h3 class="text-white font-semibold text-lg">DIGI – Digital Guide</h3>
+      <p class="text-blue-100 text-xs">Asisten virtual LINGKASA</p>
+    </div>
+    <!-- <button id="closeChat" class="text-blue-100 hover:text-white">
+      <i class="fas fa-times"></i>
+    </button> -->
+  </div>
+  
+  <!-- Chat Content -->
+  <div id="chatContent" class="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50 text-sm scrollbar-hide">
+    <div class="flex">
+      <div class="message-bubble bg-blue-100 p-3 rounded-xl rounded-tl-none text-gray-700">
+        Halo! 👋 Saya DIGI, asisten virtual LINGKASA. Ada yang bisa saya bantu hari ini?
+      </div>
+    </div>
+
+    <!-- ⬇️ Ini adalah response statis dengan id="response" -->
+    <div class="flex">
+      <div class="message-bubble bg-blue-100 p-3 rounded-xl rounded-tl-none text-gray-700 hidden">
+        <!-- Ini adalah balasan dari DIGI yang bisa kamu ubah dari JavaScript atau HTML. -->
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Input Area -->
+  <div class="p-3 border-t bg-white">
+    <form id="chatForm" class="flex items-center gap-2">
+      <div class="flex-1 relative">
+        <input type="text" id="userInput" placeholder="Tulis pesan..." class="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+      </div>
+      <button onclick="sendMessage()" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </form>
+    <div class="text-xs text-gray-500 mt-2 text-center">
+      DIGI mungkin memberikan jawaban yang tidak akurat. Mohon verifikasi informasi penting.
+    </div>
+  </div>
+</div>
+
+
+<script>
+  //agar icon chat bot menyesuaikan iframe
+  document.getElementById('chatButton')?.addEventListener('click', () => {
+    window.parent.postMessage('buka-chatbot', '*');
+    console.log('tombol ditekan');
+  });
+
+
+  // DOM Elements
+  const chatButton = document.getElementById("chatButton");
+  const chatWindow = document.getElementById("chatWindow");
+  // const closeChat = document.getElementById("closeChat");
+  const chatForm = document.getElementById("chatForm");
+  const chatContent = document.getElementById("chatContent");
+  
+  // Toggle chat window
+  chatButton.addEventListener("click", () => {
+    chatWindow.classList.toggle("hidden");
+    
+    if (!chatWindow.classList.contains("hidden")) {
+      // Scroll to bottom when opening
+      setTimeout(() => {
+        chatContent.scrollTop = chatContent.scrollHeight;
+      }, 100);
+    }
+  });
+  
+  // Close chat window
+  // closeChat.addEventListener("click", () => {
+  //   chatWindow.classList.add("hidden");
+  // });
+  
+  // Handle form submission
+  chatForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const input = this.querySelector("input");
+    const message = input.value.trim();
+    if (message === "") return;
+
+    // Tambahkan pesan user
+    addMessage(message, "user");
+    input.value = "";
+
+    // Tampilkan bubble response yang sudah ada
+    document.getElementById("response").classList.remove("hidden");
+  });
+  
+  // Quick action buttons
+  document.querySelectorAll('.quick-action-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const actionText = button.textContent.trim();
+      addMessage(actionText, "user");
+      
+      // Simulate AI response
+      setTimeout(() => {
+        addMessage(`Anda memilih: ${actionText}. Berikut informasinya...`, "ai");
+      }, 1000);
+    
+    });
+  });
+  
+
+  async function sendMessage() {
+    const inputElement = document.getElementById('userInput');
+    const chatContent = document.getElementById('chatContent');
+    const input = inputElement.value.trim();
+
+    if (!input) return;
+
+    // Tambahkan pesan user ke chat
+    addMessage(input, 'user');
+    inputElement.value = '';
+
+    // Tambahkan indikator loading AI
+    const aiWrapper = document.createElement('div');
+    aiWrapper.className = 'flex';
+
+    const aiBubble = document.createElement('div');
+    aiBubble.className = 'message-bubble bg-blue-100 text-gray-700 p-3 rounded-xl rounded-tl-none';
+    aiBubble.textContent = '...';
+
+    // Simpan elemen ini untuk update nanti
+    aiWrapper.appendChild(aiBubble);
+    chatContent.appendChild(aiWrapper);
+    chatContent.scrollTop = chatContent.scrollHeight;
+
+    try {
+      const response = await fetch(
+        'https://openrouter.ai/api/v1/chat/completions',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer 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',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'deepseek/deepseek-r1:free',
+            messages: [
+              {
+                role: 'system',
+                content: 'Anda adalah DIGI, asisten virtual sekolah bernama LINGKASA. Jawaban Anda harus ramah, jelas, dan mendidik. Anda hanya menjawab pertanyaan seputar Bahasa Indonesia, literasi digital, dan teknologi informasi dasar. Jika ada pertanyaan di luar topik, tolong arahkan pengguna untuk bertanya hal lain.'
+              },
+              { 
+                role: 'user', 
+                content: input 
+              }
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+      const markdownText = data.choices?.[0]?.message?.content || 'Tidak ada balasan.';
+      aiBubble.innerHTML = marked.parse(markdownText);
+
+    } catch (error) {
+      aiBubble.textContent = 'Terjadi kesalahan: ' + error.message;
+    }
+
+    chatContent.scrollTop = chatContent.scrollHeight;
+  }
+
+  // Add message to chat
+  function addMessage(text, sender) {
+    const chatContent = document.getElementById('chatContent');
+
+    const wrapper = document.createElement('div');
+    wrapper.className = sender === 'user' ? 'flex justify-end' : 'flex';
+
+    const bubble = document.createElement('div');
+    bubble.className =
+      'message-bubble p-3 rounded-xl ' +
+      (sender === 'user'
+        ? 'bg-blue-600 text-white rounded-tr-none'
+        : 'bg-blue-100 text-gray-700 rounded-tl-none');
+    bubble.innerText = text;
+
+    wrapper.appendChild(bubble);
+    chatContent.appendChild(wrapper);
+    chatContent.scrollTop = chatContent.scrollHeight;
+  }
+
+</script>
+
+</body>
+</html>

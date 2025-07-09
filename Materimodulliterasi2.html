@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menulis Konten Efektif - LINGKASA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5FFF',
+                        accent: '#FDCB00',
+                        background: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9FA;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .nunito {
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-preview {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            border: 1px solid #e2e8f0;
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .simulation-border {
+            border: 2px dashed #e2e8f0;
+        }
+        
+        .check-item {
+            transition: all 0.3s ease;
+        }
+        
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(45, 95, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header -->
+    <header class="bg-white py-6 px-4 sm:px-8 shadow-sm">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mr-4">
+                    <i class="fas fa-edit text-primary text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-primary font-bold text-2xl sm:text-3xl">Menulis Konten Efektif</h1>
+                    <p class="text-gray-600 mt-1 nunito">Pelajari teknik penyusunan paragraf & judul yang menarik untuk ruang digital</p>
+                </div>
+            </div>
+            <div class="flex space-x-1 items-center">
+                <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
+                    <span class="text-xs font-semibold">U</span>
+                </div>
+                <p class="text-sm font-medium">User Lingkasa</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Tips Menulis Konten -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Tips Menulis Konten</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Tip 1 -->
+                <div class="content-card p-5 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                            <i class="fas fa-pen text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Paragraf Singkat</h3>
+                            <p class="mt-2 text-gray-600 nunito">2-3 kalimat per gagasan untuk menjaga pembaca tetap fokus dan mudah dimengerti</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tip 2 -->
+                <div class="content-card p-5 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center mr-4">
+                            <i class="fas fa-bullseye text-accent"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Judul Padat</h3>
+                            <p class="mt-2 text-gray-600 nunito">Maks. 8 kata, langsung ke poin untuk memancing minat baca</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tip 3 -->
+                <div class="content-card p-5 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                            <i class="fas fa-redo text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">CTA (Ajakan Bertindak)</h3>
+                            <p class="mt-2 text-gray-600 nunito">"Bagikan info ini!" atau "Coba sekarang!" untuk meningkatkan interaksi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulasi Penulisan Konten -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <section class="mb-10">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Simulasi Penulisan Konten</h2>
+                <div class="content-card p-6 simulation-border">
+                    <p class="text-gray-600 mb-4 nunito">Tulis caption edukatif tentang bijak bermedia sosial (maks. 280 karakter)</p>
+                    <div class="relative">
+                        <textarea 
+                            id="contentInput" 
+                            class="w-full h-40 p-4 rounded-lg border border-gray-200 nunito bg-gray-50 focus:border-primary transition" 
+                            placeholder="Tulis konten Anda di sini..."
+                            maxlength="280"
+                            oninput="updateCharacterCount()"
+                        ></textarea>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-sm text-gray-500" id="charCount">0/280</div>
+                            <button onclick="clearContent()" class="text-primary text-sm hover:underline">
+                                <i class="fas fa-trash-alt mr-1"></i> Hapus
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Checklist -->
+                    <div class="mt-6">
+                        <p class="font-medium text-gray-700 mb-3">Ceklis Otomatis:</p>
+                        <ul>
+                            <li class="check-item flex items-center my-2">
+                                <span id="ctaCheck" class="w-5 h-5 border border-gray-300 rounded mr-3 flex items-center justify-center"></span>
+                                <span class="nunito">Ada kalimat ajakan</span>
+                            </li>
+                            <li class="check-item flex items-center my-2">
+                                <span id="politeCheck" class="w-5 h-5 border border-gray-300 rounded mr-3 flex items-center justify-center"></span>
+                                <span class="nunito">Bahasa sopan</span>
+                            </li>
+                            <li class="check-item flex items-center my-2">
+                                <span id="titleCheck" class="w-5 h-5 border border-gray-300 rounded mr-3 flex items-center justify-center"></span>
+                                <span class="nunito">Judul ringkas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Evaluasi Otomatis -->
+                <div class="content-card p-6 mt-6">
+                    <button id="evaluateBtn" onclick="evaluateContent()" class="w-full py-3 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg transition flex items-center justify-center">
+                        <i class="fas fa-search mr-2"></i> Periksa Konten Saya
+                    </button>
+                    
+                    <div id="feedbackContainer" class="mt-4 space-y-3 hidden">
+                        <div class="flex items-center bg-green-50 p-3 rounded-lg">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="nunito text-green-700">Bahasa sopan dan komunikatif 👍</span>
+                        </div>
+                        <div class="flex items-center bg-red-50 p-3 rounded-lg">
+                            <i class="fas fa-exclamation-circle text-red-500 mr-2"></i>
+                            <span class="nunito text-red-700">Judul masih terlalu panjang, coba diringkas</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Preview Konten -->
+            <section>
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Preview Konten</h2>
+                <div class="content-card p-6">
+                    <p class="text-gray-600 mb-4 nunito">Ini tampilan kontenmu di platform digital:</p>
+                    
+                    <!-- Social Media Preview -->
+                    <div class="social-preview rounded-xl p-5 max-w-md mx-auto">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-300 flex-shrink-0"></div>
+                            <div class="ml-3">
+                                <div class="h-4 bg-gray-300 rounded w-24 mb-1"></div>
+                                <div class="h-2 bg-gray-200 rounded w-16"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="previewContent" class="bg-white rounded-lg p-4 min-h-40 nunito">
+                            <p class="text-gray-500 text-center py-8">Konten yang kamu ketik akan muncul di sini...</p>
+                        </div>
+                        
+                        <div class="flex justify-between mt-4 text-gray-500">
+                            <div class="flex space-x-4">
+                                <span><i class="far fa-heart"></i> 0</span>
+                                <span><i class="far fa-comment"></i> 0</span>
+                                <span><i class="far fa-share-square"></i> 0</span>
+                            </div>
+                            <span><i class="far fa-bookmark"></i></span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-center text-sm text-gray-500 mt-3">Tampilan simulasi Instagram/Threads</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Navigasi -->
+    <div class="container mx-auto px-4 py-8 flex flex-col sm:flex-row justify-between gap-4">
+        <a href="Materimodulliterasi1.html">
+        <button class="content-card px-6 py-3 flex items-center justify-center text-primary hover:bg-gray-50 transition">
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke materi sebelumnya
+        </button>
+        </a>
+     <a href="ModulLiterasi.html" class="nav-button bg-primary hover:bg-blue-700 text-white font-poppins py-3 px-6 text-center flex items-center justify-center gap-2">
+                        Kembali ke Modul Literasi <i class="fas fa-book"></i>
+    </a>
+    </div>
+    
+    <script>
+        // Update character count
+        function updateCharacterCount() {
+            const input = document.getElementById('contentInput');
+            const charCount = document.getElementById('charCount');
+            const preview = document.getElementById('previewContent');
+            
+            const content = input.value;
+            charCount.textContent = content.length + '/280';
+            
+            // Display in preview
+            preview.innerHTML = content || '<p class="text-gray-500 text-center py-8">Konten yang kamu ketik akan muncul di sini...</p>';
+            
+            // Update character count color
+            if (content.length > 250) {
+                charCount.classList.add('text-yellow-600');
+            } else {
+                charCount.classList.remove('text-yellow-600');
+            }
+            
+            if (content.length > 280) {
+                charCount.classList.add('text-red-500');
+            } else {
+                charCount.classList.remove('text-red-500');
+            }
+            
+            // Check for CTA
+            const ctaCheck = document.getElementById('ctaCheck');
+            if (content.match(/bagikan|coba|ayo|mari|ikut|dapatkan|!/i)) {
+                ctaCheck.innerHTML = '✓';
+                ctaCheck.classList.add('border-green-500', 'text-green-500');
+                ctaCheck.classList.remove('border-gray-300');
+            } else {
+                ctaCheck.innerHTML = '';
+                ctaCheck.classList.remove('border-green-500', 'text-green-500');
+                ctaCheck.classList.add('border-gray-300');
+            }
+            
+            // Check for polite language
+            const politeCheck = document.getElementById('politeCheck');
+            if (!content.match(/bodoh|tolol|goblok|idiot|bangsat|anjing|babi|dasar/i)) {
+                politeCheck.innerHTML = '✓';
+                politeCheck.classList.add('border-green-500', 'text-green-500');
+                politeCheck.classList.remove('border-gray-300');
+            } else {
+                politeCheck.innerHTML = '';
+                politeCheck.classList.remove('border-green-500', 'text-green-500');
+                politeCheck.classList.add('border-gray-300');
+            }
+            
+            // Check for concise title
+            const titleCheck = document.getElementById('titleCheck');
+            if (content.includes('\n')) {
+                const lines = content.split('\n');
+                const title = lines[0].trim();
+                if (title.split(' ').length <= 8) {
+                    titleCheck.innerHTML = '✓';
+                    titleCheck.classList.add('border-green-500', 'text-green-500');
+                    titleCheck.classList.remove('border-gray-300');
+                } else {
+                    titleCheck.innerHTML = '';
+                    titleCheck.classList.remove('border-green-500', 'text-green-500');
+                    titleCheck.classList.add('border-gray-300');
+                }
+            } else {
+                titleCheck.innerHTML = '';
+                titleCheck.classList.remove('border-green-500', 'text-green-500');
+                titleCheck.classList.add('border-gray-300');
+            }
+        }
+        
+        // Clear content
+        function clearContent() {
+            const input = document.getElementById('contentInput');
+            input.value = '';
+            updateCharacterCount();
+        }
+        
+        // Evaluate content
+        function evaluateContent() {
+            const input = document.getElementById('contentInput');
+            const content = input.value;
+            
+            // Check content validity
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            feedbackContainer.classList.remove('hidden');
+            
+            // For demonstration purposes, we'll just show the feedback
+            // In a real scenario, this would have more advanced logic
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('contentInput');
+            
+            // Add example text if you want a starting point
+            input.value = "Bijak Bermedia Sosial:\nPahami bahwa apa yang kamu bagikan di media sosial bisa berdampak jangka panjang. Berpikirlah sebelum memposting, bagikan konten yang positif, dan jadilah pengguna yang bertanggung jawab!\n\nAyo mulai lebih bijak bermedia sosial!";
+            
+            updateCharacterCount();
+        });
+    </script>
+</body>
+</html>

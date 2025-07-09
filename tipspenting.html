@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips Penting - Modul Zona Keamanan Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5FFF',
+                        accent: '#FDCB00',
+                        background: '#F8F9FA',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .checklist-item input:checked + span::before {
+            background-color: #2D5FFF;
+            border-color: #2D5FFF;
+        }
+        .reflection-textarea {
+            border-radius: 12px;
+            min-height: 120px;
+        }
+        .progress-circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        .circle-bg {
+            fill: none;
+            stroke: #e6e6e6;
+            stroke-width: 8;
+        }
+        .circle-progress {
+            fill: none;
+            stroke: #2D5FFF;
+            stroke-width: 8;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 0.5s ease-in-out;
+        }
+        .progress-count {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #2D5FFF;
+        }
+    </style>
+</head>
+<body class="bg-background font-sans">
+    <!-- Header Section -->
+    <header class="text-center py-10 md:py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="inline-block bg-primary p-4 rounded-full mb-6">
+                <span class="text-3xl text-white">🛡️</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tips Penting</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-xl mx-auto">Panduan lengkap menjaga keamanan digitalmu sehari-hari</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-16">
+        <!-- Progress Section -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-10 flex flex-col items-center md:flex-row justify-between gap-6">
+            <div class="text-center md:text-left">
+                <h3 class="font-semibold text-xl text-gray-800 mb-2">Progress Keamanan Digitalmu</h3>
+                <p class="text-gray-600 max-w-md">Lengkapi checklist untuk meningkatkan perlindungan akunmu</p>
+            </div>
+            <div class="relative">
+                <div class="progress-circle">
+                    <svg viewBox="0 0 120 120">
+                        <circle class="circle-bg" cx="60" cy="60" r="52"></circle>
+                        <circle class="circle-progress" cx="60" cy="60" r="52" 
+                                stroke-dasharray="326.7" 
+                                stroke-dashoffset="326.7"></circle>
+                    </svg>
+                    <div class="progress-count">0/6</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content - 2 Column Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Left Column - Tips Checklist -->
+            <div class="order-2 lg:order-1">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Langkah Keamanan Digital</h2>
+                
+                <div class="space-y-4">
+                    <!-- Tips Item 1 -->
+                    <div class="checklist-item card-hover bg-white rounded-xl p-4 border-l-4 border-primary shadow-sm">
+                        <label class="flex items-center gap-4 cursor-pointer">
+                            <input type="checkbox" class="sr-only" name="checklist" value="1">
+                            <span class="relative w-7 h-7 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white pointer-events-none hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="text-primary mr-2">🔑</span>
+                                <span class="font-medium text-gray-800">Gunakan password kuat dan unik untuk setiap akun</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Tips Item 2 -->
+                    <div class="checklist-item card-hover bg-white rounded-xl p-4 border-l-4 border-primary shadow-sm">
+                        <label class="flex items-center gap-4 cursor-pointer">
+                            <input type="checkbox" class="sr-only" name="checklist" value="2">
+                            <span class="relative w-7 h-7 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white pointer-events-none hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="text-primary mr-2">📱</span>
+                                <span class="font-medium text-gray-800">Aktifkan autentikasi dua langkah (2FA)</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Tips Item 3 -->
+                    <div class="checklist-item card-hover bg-white rounded-xl p-4 border-l-4 border-primary shadow-sm">
+                        <label class="flex items-center gap-4 cursor-pointer">
+                            <input type="checkbox" class="sr-only" name="checklist" value="3">
+                            <span class="relative w-7 h-7 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white pointer-events-none hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="text-primary mr-2">🚫</span>
+                                <span class="font-medium text-gray-800">Jangan klik tautan dari sumber tak dikenal</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Tips Item 4 -->
+                    <div class="checklist-item card-hover bg-white rounded-xl p-4 border-l-4 border-primary shadow-sm">
+                        <label class="flex items-center gap-4 cursor-pointer">
+                            <input type="checkbox" class="sr-only" name="checklist" value="4">
+                            <span class="relative w-7 h-7 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white pointer-events-none hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="text-primary mr-2">🧹</span>
+                                <span class="font-medium text-gray-800">Bersihkan cache dan data browser secara rutin</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Tips Item 5 -->
+                    <div class="checklist-item card-hover bg-white rounded-xl p-4 border-l-4 border-primary shadow-sm">
+                        <label class="flex items-center gap-4 cursor-pointer">
+                            <input type="checkbox" class="sr-only" name="checklist" value="5">
+                            <span class="relative w-7 h-7 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white pointer-events-none hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="text-primary mr-2">🌐</span>
+                                <span class="font-medium text-gray-800">Hindari login di WiFi publik tanpa VPN</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <!-- Tips Item 6 -->
+                    <div class="checklist-item card-hover bg-white rounded-xl p-4 border-l-4 border-primary shadow-sm">
+                        <label class="flex items-center gap-4 cursor-pointer">
+                            <input type="checkbox" class="sr-only" name="checklist" value="6">
+                            <span class="relative w-7 h-7 rounded-full border-2 border-gray-300 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white pointer-events-none hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="text-primary mr-2">🤫</span>
+                                <span class="font-medium text-gray-800">Jangan sembarang unggah data pribadi ke media sosial</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Checklist Saya & Refleksi -->
+            <div class="order-1 lg:order-2">
+                <!-- Checklist Saya -->
+                <div class="bg-white rounded-2xl shadow-sm p-6 mb-8 border-t-4 border-accent">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Checklist Saya</h2>
+                    <p class="text-gray-600 mb-4">Periksa pengetahuanmu tentang keamanan digital:</p>
+                    
+                    <div class="space-y-4">
+                        <label class="flex items-start gap-3">
+                            <div class="mt-0.5">
+                                <input type="checkbox" class="w-5 h-5 accent-primary rounded">
+                            </div>
+                            <span class="text-gray-700">Saya sudah menggunakan password berbeda untuk tiap akun</span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3">
+                            <div class="mt-0.5">
+                                <input type="checkbox" class="w-5 h-5 accent-primary rounded">
+                            </div>
+                            <span class="text-gray-700">Saya tahu cara mengaktifkan 2FA</span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3">
+                            <div class="mt-0.5">
+                                <input type="checkbox" class="w-5 h-5 accent-primary rounded">
+                            </div>
+                            <span class="text-gray-700">Saya bisa mengenali email phishing</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Refleksi -->
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Refleksi Keamanan</h3>
+                    <p class="text-gray-700 mb-4">
+                        "Apa satu hal yang akan kamu ubah untuk memperbaiki keamanan digitalmu?"
+                    </p>
+                    
+                    <div class="relative">
+                        <textarea class="reflection-textarea w-full p-4 border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20" rows="4" maxlength="250" placeholder="Tuliskan rencanamu untuk meningkatkan keamanan digital..."></textarea>
+                        <div class="text-right text-sm text-gray-500 mt-1">
+                            <span id="char-count">0</span>/250 karakter
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Section -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
+            <button id="finish-btn" class="flex items-center justify-center gap-2 w-full sm:w-60 py-3 px-6 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition shadow-md hover:shadow-lg">
+                <i class="fas fa-flag-checkered"><a href="cardzonakeamanandigital.html"></i> Selesai dan Kembali ke Beranda
+            </button>
+        </div>
+    </main>
+
+    <!-- Floating Action Button for Mobile -->
+    <div class="fixed bottom-4 right-4 z-10 sm:hidden">
+        <button id="mobile-finish" class="bg-primary text-white p-4 rounded-full shadow-lg">
+            <i class="fas fa-flag-checkered text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update character count
+            const textarea = document.querySelector('textarea');
+            const charCount = document.getElementById('char-count');
+            
+            textarea.addEventListener('input', function() {
+                charCount.textContent = this.value.length;
+            });
+            
+            // Update progress circle based on checklist
+            const checkboxes = document.querySelectorAll('input[name="checklist"]');
+            const circle = document.querySelector('.circle-progress');
+            const countElement = document.querySelector('.progress-count');
+            const total = checkboxes.length;
+            const circumference = 2 * Math.PI * 52; // Radius 52
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgress);
+            });
+            
+            function updateProgress() {
+                const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+                const percentage = completed / total;
+                const offset = circumference - (percentage * circumference);
+                
+                circle.style.strokeDasharray = circumference;
+                circle.style.strokeDashoffset = offset;
+                countElement.textContent = `${completed}/${total}`;
+                
+                // Add glow effect when all are complete
+                if (completed === total) {
+                    document.querySelector('.progress-circle').classList.add('animate-pulse');
+                } else {
+                    document.querySelector('.progress-circle').classList.remove('animate-pulse');
+                }
+            }
+            
+            // Initialize progress circle
+            circle.style.strokeDasharray = circumference;
+            circle.style.strokeDashoffset = circumference;
+            
+            // Custom checkbox styling
+            const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            checklistItems.forEach(item => {
+                item.addEventListener('change', function() {
+                    const checkIcon = this.nextElementSibling.querySelector('svg');
+                    if (this.checked) {
+                        this.nextElementSibling.classList.add('border-primary', 'bg-primary');
+                        checkIcon.classList.remove('hidden');
+                    } else {
+                        this.nextElementSibling.classList.remove('border-primary', 'bg-primary');
+                        checkIcon.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Button interactions
+            document.getElementById('finish-btn').addEventListener('click', function() {
+                alert('Selamat! Anda telah menyelesaikan modul ini. Siap mengamankan dunia digitalmu!');
+            });
+            
+            document.getElementById('repeat-btn').addEventListener('click', function() {
+                alert('Modul akan diulang. Yuk pelajari lagi tips keamanan digital!');
+            });
+            
+            document.getElementById('mobile-finish').addEventListener('click', function() {
+                alert('Selamat! Anda telah menyelesaikan modul ini. Siap mengamankan dunia digitalmu!');
+            });
+        });
+    </script>
+</body>
+</html>

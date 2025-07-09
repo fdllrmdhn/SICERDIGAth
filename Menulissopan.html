@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menulis Sopan Online - LINGKASA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5FFF',
+                        accent: '#FDCB00',
+                        cream: '#F8F9FA',
+                        darktext: '#3A3A3A',
+                        impolite: '#FFE4E6',
+                        polite: '#E0F4EA'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Nunito:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #F8F9FA;
+            color: #3A3A3A;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        .section-title {
+            border-left: 4px solid #2D5FFF;
+            padding-left: 12px;
+        }
+        
+        .unpolite-bg {
+            background-color: #FFE4E6;
+            color: #E53E3E;
+        }
+        
+        .polite-bg {
+            background-color: #E0F4EA;
+            color: #34D399;
+        }
+        
+        .bubble-badge {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .highlighted {
+            background-color: rgba(253, 203, 0, 0.3);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .suggestion:hover {
+            transform: translateY(-2px);
+            transition: transform 0.2s;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background-color: #2D5FFF;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar-right {
+                display: none;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .examples-container {
+                flex-direction: column;
+            }
+            
+            .writing-exercise {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Bar -->
+    <header class="bg-primary h-[60px] flex items-center px-4 fixed w-full top-0 z-50">
+        <div class="flex items-center justify-between w-full max-w-7xl mx-auto">
+            <div class="flex items-center">
+                <div class="text-white text-2xl font-bold mr-4">LINGKASA</div>
+            </div>
+            
+            <h1 class="text-white text-xl md:text-2xl font-bold">Menulis Sopan Online (Lanjut)</h1>
+            
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <i class="fa-solid fa-bell text-white text-xl cursor-pointer"></i>
+                    <span class="absolute -top-1 -right-1 bg-accent text-darktext rounded-full w-4 h-4 flex items-center justify-center text-xs">3</span>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center cursor-pointer">
+                    <span class="text-darktext font-bold">A</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="pt-[60px] bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="text-sm flex space-x-2 text-darktext">
+                <span class="cursor-pointer hover:text-primary">Beranda</span>
+                <span>&gt;</span>
+                <span>&gt;</span>
+                <span class="font-medium text-primary relative pb-1">
+                    Menulis Sopan
+                    <span class="absolute bottom-0 left-0 w-full h-[3px] bg-accent"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 pb-8 pt-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-6">
+            <!-- Left Content -->
+            <div class="space-y-8">
+                <!-- Section A: Pengantar Teori -->
+                <div class="bg-white rounded-xl shadow-sm p-6 relative">
+                    <div class="floating-icon">
+                        <i class="fas fa-pencil-alt text-2xl"></i>
+                    </div>
+                    <div class="ml-10">
+                        <h2 class="text-xl font-bold text-primary section-title">Teknik Menulis Komentar & Pesan yang Efektif</h2>
+                        <p class="mt-4 text-darktext text-base md:text-lg">
+                            Pelajari cara merangkai kalimat positif, menggunakan tanda baca tepat, dan menjaga nada tulisan agar sopan. Komunikasi online yang santun memerlukan pemahaman yang lebih dalam tentang konteks sosial dan cara menyampaikan pendapat tanpa menyinggung.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Section B: Contoh & Analisis -->
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-bold text-primary section-title mb-4">Contoh & Analisis</h3>
+                    
+                    <div class="examples-container flex gap-6 mb-8">
+                        <div class="unpolite-bg rounded-lg p-4 flex-1 min-h-[120px]">
+                            <h4 class="font-bold mb-2">Contoh Komentar Kurang Sopan</h4>
+                            <p class="italic">"Gak usah sok pintar, lu ngga ngerti apa-apa."</p>
+                        </div>
+                        
+                        <div class="polite-bg rounded-lg p-4 flex-1 min-h-[120px]">
+                            <h4 class="font-bold mb-2">Versi Komentar Sopan</h4>
+                            <p class="italic">"Saya setuju pendapat Anda, namun mungkin ada perspektif lain yang perlu dipertimbangkan."</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="font-bold text-primary mt-6 mb-3">Analisis Komentar Sopan:</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <div class="mt-1 mr-3 text-primary">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span>Gunakan kata <span class="font-bold">"Saya"</span> agar terdengar personal tanpa menyinggung</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mt-1 mr-3 text-primary">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span>Tambahkan frasa <span class="font-bold">"Namun"</span> untuk memberi nuansa perbedaan pendapat yang lebih halus</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mt-1 mr-3 text-primary">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span>Hindari kata <span class="font-bold">"lu"</span> atau bentuk ejekan lainnya yang bisa dianggap merendahkan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mt-1 mr-3 text-primary">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span>Gunakan bentuk pasif untuk mengungkapkan saran tanpa menyalahkan langsung</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Section C: Latihan Menulis -->
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-bold text-primary section-title mb-4">Latihan Menulis</h3>
+                    
+                    <div class="writing-exercise flex gap-6 mb-6">
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-darktext mb-2">Tulis komentar asli (Anda boleh pakai contoh sendiri)</label>
+                            <textarea 
+                                id="original-comment" 
+                                class="w-full h-32 p-4 bg-cream rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary resize-none"
+                                placeholder="Tuliskan komentar di sini..."
+                            ></textarea>
+                        </div>
+                        
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-darktext mb-2">Perbaiki komentar agar terdengar lebih sopan</label>
+                            <textarea 
+                                id="polished-comment" 
+                                class="w-full h-32 p-4 bg-cream rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary resize-none"
+                                placeholder="Perbaiki menjadi versi yang lebih sopan..."
+                            ></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <button id="check-button" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-check-circle mr-2"></i>Periksa Sopan
+                        </button>
+                    </div>
+                    
+                    <div id="feedback-container" class="mt-6 p-4 rounded-lg hidden">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-primary">Analisis Komentar Anda</h4>
+                            <span id="result-badge" class="px-3 py-1 rounded-full text-white font-bold text-sm"></span>
+                        </div>
+                        <div id="suggestion-content" class="mt-3"></div>
+                    </div>
+                </div>
+                
+                <!-- Section D: Umpan Balik & Rangkuman -->
+                <div class="bg-cream rounded-xl shadow-sm p-6">
+                    <h3 class="text-lg font-bold text-primary section-title mb-4">Kiat Menulis Sopan Pendek</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="suggestion bg-white p-4 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="bg-accent rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                                    <span class="text-darktext font-bold">1</span>
+                                </div>
+                                <p>Mulailah dengan sapaan singkat (<span class="italic">"Halo,"</span> atau <span class="italic">"Terima kasih atas komentar Anda..."</span>)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="suggestion bg-white p-4 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="bg-accent rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                                    <span class="text-darktext font-bold">2</span>
+                                </div>
+                                <p>Gunakan kalimat aktif, hindari kata kasar dan kata yang bisa dianggap merendahkan orang lain</p>
+                            </div>
+                        </div>
+                        
+                        <div class="suggestion bg-white p-4 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="bg-accent rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                                    <span class="text-darktext font-bold">3</span>
+                                </div>
+                                <p>Sertakan penghargaan (<span class="italic">"Saya menghargai pendapat Anda, namun..."</span> atau <span class="italic">"Terima kasih atas perhatian Anda"</span>)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="suggestion bg-white p-4 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="bg-accent rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                                    <span class="text-darktext font-bold">4</span>
+                                </div>
+                                <p>Akhiri dengan penutup positif (<span class="italic">"Semoga penjelasan ini bermanfaat,"</span> atau <span class="italic">"Salam hangat,"</span>)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-blue-50 border-l-4 border-primary p-4">
+                        <p class="text-sm text-darktext">
+                            <strong class="font-bold">Catatan:</strong> Menulis sopan tidak hanya tentang kata-kata yang digunakan tapi juga tentang sikap menghargai. Gunakan waktu untuk membaca ulang komentar sebelum dipublikasikan, pastikan nada dan substansinya tepat untuk konteks pembicaraan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar-right hidden lg:block">
+                <div class="bg-white rounded-xl shadow-sm p-4 border border-gray-200">
+                    <h3 class="font-bold text-primary border-b pb-2 mb-4">Statistik Sopan</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-primary w-8 h-8 rounded-full flex items-center justify-center text-white mr-3">
+                                <i class="fas fa-pen"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Komentar Terbaik</p>
+                                <p class="font-bold text-darktext">3</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-accent w-8 h-8 rounded-full flex items-center justify-center text-darktext mr-3">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Skor Sopan</p>
+                                <p class="font-bold text-darktext">90%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-bold text-primary border-b pb-2 mt-8 mb-4">Link Cepat</h3>
+                    
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center text-darktext hover:text-primary transition-colors">
+                            <div class="w-5 mr-3 text-green-500">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <span>Etika Digital</span>
+                        </a>
+                        
+                        <a href="#" class="flex items-center text-darktext hover:text-primary transition-colors">
+                            <div class="w-5 mr-3 text-primary">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <span>Fakta atau Opini</span>
+                        </a>
+                        
+                        <a href="#" class="flex items-center text-darktext hover:text-primary transition-colors">
+                            <div class="w-5 mr-3 text-accent">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span>Zona Aman</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-cream rounded-xl shadow-sm p-4 mt-6">
+                    <h4 class="font-bold text-primary mb-3">Pencapaian</h4>
+                    <div class="flex items-center">
+                        <div class="mr-3 text-accent">
+                            <i class="fas fa-medal text-xl"></i>
+                        </div>
+                        <p class="text-sm">"Pengguna Sopan Level Lanjut"</p>
+                    </div>
+                    <div class="mt-2 w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-primary h-2 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <p class="text-xs mt-2 text-gray-500">1 lagi untuk naik level!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-cream py-6 px-4 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-darktext">© 2025 LINGKASA – Literasi Bahasa dan Komunikasi di Era Digital.</p>
+                
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-darktext hover:text-accent transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-darktext hover:text-accent transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-darktext hover:text-accent transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-darktext hover:text-accent transition-colors">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkButton = document.getElementById('check-button');
+            const feedbackContainer = document.getElementById('feedback-container');
+            const resultBadge = document.getElementById('result-badge');
+            const suggestionContent = document.getElementById('suggestion-content');
+            const polishedComment = document.getElementById('polished-comment');
+            
+            checkButton.addEventListener('click', function() {
+                // Reset feedback container
+                feedbackContainer.classList.remove('hidden');
+                feedbackContainer.classList.remove('bg-red-50', 'bg-green-50');
+                resultBadge.classList.remove('bg-green-500', 'bg-red-500');
+                resultBadge.textContent = '';
+                suggestionContent.innerHTML = '';
+                
+                // Get the comment text
+                const comment = polishedComment.value.trim().toLowerCase();
+                
+                if (comment === '') {
+                    // Empty comment handling
+                    feedbackContainer.classList.add('bg-red-50');
+                    resultBadge.classList.add('bg-red-500');
+                    resultBadge.textContent = 'Belum diperiksa';
+                    suggestionContent.innerHTML = '<p class="text-darktext">Silakan tulis komentar pada kolom kanan untuk diperiksa.</p>';
+                    return;
+                }
+                
+                // Simple analysis simulation (in a real app, this would use actual AI/NLP)
+                const warnings = [];
+                
+                // Check for rude words
+                const rudeWords = ['gak', 'ngga', 'nggak', 'lu', 'elo', 'sok', 'dasar', 'bodoh', 'goblok'];
+                let foundRudeWords = [];
+                
+                rudeWords.forEach(word => {
+                    if (comment.includes(word)) {
+                        foundRudeWords.push(word);
+                    }
+                });
+                
+                // Check for polite features
+                const politeFeatures = ['saya', 'terima kasih', 'tolong', 'mohon', 'maaf', 'permisi', 'salam', 'hormat', 'silahkan'];
+                let foundPoliteFeatures = [];
+                
+                politeFeatures.forEach(feature => {
+                    if (comment.includes(feature)) {
+                        foundPoliteFeatures.push(feature);
+                    }
+                });
+                
+                // Generate feedback
+                if (foundRudeWords.length === 0 && foundPoliteFeatures.length >= 2) {
+                    // Polite comment
+                    feedbackContainer.classList.add('bg-green-50');
+                    resultBadge.classList.add('bg-green-500');
+                    resultBadge.textContent = '👍 Sopan';
+                    
+                    suggestionContent.innerHTML = `
+                        <p class="text-darktext mb-2">Selamat! Komentar Anda sudah cukup sopan dengan ciri:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            ${foundPoliteFeatures.map(f => `<li>Menggunakan kata <span class="font-bold">${f}</span></li>`).join('')}
+                        </ul>
+                    `;
+                } else {
+                    // Needs improvement
+                    feedbackContainer.classList.add('bg-red-50');
+                    resultBadge.classList.add('bg-red-500');
+                    resultBadge.textContent = 'Perlu Perbaikan';
+                    
+                    let warningHtml = '';
+                    
+                    if (foundRudeWords.length > 0) {
+                        warningHtml += `
+                            <div class="mb-3">
+                                <p class="text-darktext font-medium mb-1">Kata yang perlu diperbaiki:</p>
+                                <p>${highlightWords(comment, foundRudeWords)}</p>
+                            </div>
+                            <div class="flex items-start mt-2">
+                                <div class="mt-1 mr-2 text-sm text-red-500">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <p class="text-sm text-darktext">Pertimbangkan untuk mengganti dengan kata yang lebih formal</p>
+                            </div>
+                        `;
+                    } else {
+                        warningHtml += `
+                            <p class="text-darktext mb-3">Komentar Anda cukup baik, tapi bisa lebih sopan dengan beberapa perbaikan:</p>
+                        `;
+                    }
+                    
+                    const suggestions = [
+                        'Tambahkan kata <span class="font-bold">"saya"</span> untuk membuat pendapat terasa lebih personal',
+                        'Awali dengan <span class="font-bold">sapaan</span> seperti "Hai" atau "Halo"',
+                        'Gunakan kata <span class="font-bold">"tolong"</span> atau <span class="font-bold">"mohon"</span> jika meminta sesuatu',
+                        'Sertakan <span class="font-bold">terima kasih</span> di akhir komentar',
+                        'Hindari kata <span class="font-bold">"gak"</span> atau <span class="font-bold">"ngga"</span>, gunakan "tidak" atau "bukan"'
+                    ];
+                    
+                    warningHtml += `
+                        <div class="mt-4">
+                            <p class="text-sm font-medium text-darktext mb-2">Saran Perbaikan:</p>
+                            <ul class="list-disc pl-5 space-y-1 text-sm">
+                                ${suggestions.map(s => `<li>${s}</li>`).slice(0, 3).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    
+                    suggestionContent.innerHTML = warningHtml;
+                }
+            });
+            
+            // Function to highlight specific words in text
+            function highlightWords(text, wordsToHighlight) {
+                wordsToHighlight.forEach(word => {
+                    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                    text = text.replace(regex, `<span class="highlighted">${word}</span>`);
+                });
+                return text;
+            }
+            
+            // Add placeholder examples after a delay
+            setTimeout(() => {
+                if (!polishedComment.value) {
+                    polishedComment.value = "Hai, saya setuju dengan sebagian poin yang Anda sampaikan, namun menurut saya ada beberapa hal yang perlu diklarifikasi lebih lanjut.";
+                }
+                if (!document.getElementById('original-comment').value) {
+                    document.getElementById('original-comment').value = "Aku rasa pendapatmu ngga akurat banget, lu mungkin kurang ngerti tentang topik ini.";
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

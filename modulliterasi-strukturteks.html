@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Teks Digital - Panduan Lengkap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'Noto Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @layer components {
+            .section-card {
+                @apply bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+            }
+            
+            .floating-nav {
+                @apply fixed right-6 bottom-6 z-20 flex flex-col gap-2 transition-transform;
+            }
+            
+            .nav-button {
+                @apply w-12 h-12 rounded-full bg-primary-600 text-white flex items-center justify-center shadow-lg transition-all hover:bg-primary-700 hover:scale-110;
+            }
+            
+            .structure-element {
+                @apply bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300;
+            }
+        }
+        
+        body {
+            @apply bg-white text-gray-800;
+            scroll-behavior: smooth;
+        }
+        
+        .highlight-box {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: all 0.6s;
+        }
+        
+        .highlight-box:hover::before {
+            left: 100%;
+        }
+        
+        #header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
+        }
+        
+        .chart-line {
+            height: 2px;
+            @apply bg-primary-300 w-full;
+            position: relative;
+        }
+        
+        .chart-line::after {
+            content: "";
+            position: absolute;
+            top: -4px;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            @apply bg-primary-500;
+        }
+        
+        @media (max-width: 768px) {
+            .flexible-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header" class="text-white py-16 md:py-24 px-6" style="padding-top: 200px; padding-bottom: 200px;">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="flex-1">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Struktur Teks Digital</h1>
+                    <h2 class="text-xl md:text-2xl font-medium mb-6 opacity-90">Pelajari Bagian-Bagian Penting dalam Artikel, Blog, dan Postingan</h2>
+                    <p class="text-lg mb-8 max-w-2xl">
+                        Teknik penyusunan konten digital yang efektif untuk meningkatkan keterbacaan, keterlibatan, dan dampak pesan Anda kepada audiens.
+                    </p>
+                    <a href="#struktur_teks" class="bg-white text-primary-700 px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 shadow-lg hover:bg-gray-100 transition-all">
+                        Mulai Pelajari <i class="fas fa-arrow-down"></i>
+                    </a>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <div class="relative">
+                        <div class="bg-white/20 backdrop-blur-sm rounded-full p-6 w-56 h-56 md:w-72 md:h-72 flex items-center justify-center">
+                            <div class="bg-white/30 backdrop-blur-sm rounded-full p-4 w-44 h-44 md:w-60 md:h-60 flex items-center justify-center">
+                                <div class="bg-white rounded-full p-3 w-32 h-32 md:w-48 md:h-48 flex flex-col items-center justify-center gap-3 text-center">
+                                    <div class="text-primary-600">
+                                        <i class="fas fa-file-alt text-4xl mb-2"></i>
+                                        <div class="font-bold">Struktur Efektif</div>
+                                        <div class="text-xs font-medium">Artikel • Blog • Postingan</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-3 -left-3 w-20 h-20 rounded-lg bg-secondary-500 rotate-12 z-[-1]"></div>
+                        <div class="absolute -bottom-3 -right-3 w-24 h-24 rounded-lg bg-primary-500 -rotate-12 z-[-1]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <!-- Introduction -->
+        <section class="mb-20"  id="struktur_teks">
+            <div class="text-center mb-12">
+                <div class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full mb-3 font-medium">
+                    Pengenalan
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Mengapa Struktur Teks Penting?</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Struktur teks yang baik membuat konten lebih mudah dipahami, meningkatkan retensi informasi, dan membuat audiens tetap terlibat. Di era digital dengan tingkat perhatian yang rendah, penyusunan konten yang tepat sangat penting.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="section-card">
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center mb-4">
+                            <i class="fas fa-brain text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Keterbacaan</h3>
+                        <p class="text-gray-600">
+                            Struktur yang baik membantu pembaca memindai konten dengan cepat dan menemukan informasi yang mereka butuhkan.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-secondary-100 text-secondary-600 flex items-center justify-center mb-4">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Keterlibatan</h3>
+                        <p class="text-gray-600">
+                            Pembaca lebih cenderung membaca hingga akhir jika konten mudah diikuti dan dirancang dengan baik.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mb-4">
+                            <i class="fas fa-search text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">SEO</h3>
+                        <p class="text-gray-600">
+                            Struktur yang tepat membantu mesin pencari memahami konten Anda dan meningkatkan peringkat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Articles Section -->
+        <section id="articles" class="mb-20">
+            <div class="mb-10 pb-4 border-b border-gray-200 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-500 text-white flex items-center justify-center">
+                    <i class="fas fa-file-alt text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold">Struktur Artikel</h2>
+                    <p class="text-gray-600">Format tradisional untuk konten panjang dan informatif</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10">
+                <div class="flex flex-col gap-6">
+                    <div class="structure-element">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mt-1 flex-shrink-0">
+                                <i class="fas fa-heading"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Judul Menarik</h3>
+                                <p class="text-gray-600 text-sm">Menangkap perhatian dan memberi gambaran konten</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mt-1 flex-shrink-0">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Pendahuluan</h3>
+                                <p class="text-gray-600 text-sm">Menetapkan konteks dan tujuan artikel</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mt-1 flex-shrink-0">
+                                <i class="fas fa-list"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Bagian Utama</h3>
+                                <p class="text-gray-600 text-sm">Pembagian menjadi subjudul dan paragraf pendek</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mt-1 flex-shrink-0">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Kutipan dan Data</h3>
+                                <p class="text-gray-600 text-sm">Mendukung argumen dengan bukti</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mt-1 flex-shrink-0">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Kesimpulan</h3>
+                                <p class="text-gray-600 text-sm">Rangkuman dan pemikiran akhir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 rounded-lg p-8">
+                    <div class="flex flex-col gap-6 max-w-lg mx-auto">
+                        <h3 class="text-2xl font-bold text-center mb-4">Contoh Struktur Artikel</h3>
+                        
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-blue-500 text-white flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-heading"></i>
+                                </div>
+                                <div class="font-semibold text-lg">Masa Depan Energi Terbarukan di Indonesia</div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3 mb-4 ml-8">
+                                <div class="w-8 h-8 rounded-lg bg-blue-300 text-white flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <div>
+                                    <p><span class="font-medium">Pendahuluan:</span> Indonesia memiliki potensi energi terbarukan yang besar, namun pemanfaatannya masih rendah.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3 mb-4 ml-8">
+                                <div class="w-8 h-8 rounded-lg bg-blue-300 text-white flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-list"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Kondisi Saat Ini:</p>
+                                    <p class="text-sm ml-4">- Kapasitas terpasang energi terbarukan baru mencapai 10%</p>
+                                    <p class="text-sm ml-4">- Potensi panas bumi terbesar di dunia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3 mb-4 ml-8">
+                                <div class="w-8 h-8 rounded-lg bg-blue-300 text-white flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-list"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Tantangan:</p>
+                                    <p class="text-sm ml-4">- Investasi yang besar</p>
+                                    <p class="text-sm ml-4">- Infrastruktur yang terbatas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3 mb-4 ml-8">
+                                <div class="w-8 h-8 rounded-lg bg-blue-300 text-white flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <p><span class="font-medium">Kesimpulan:</span> Dengan dukungan kebijakan dan investasi, Indonesia dapat menjadi pemimpin energi terbarukan di Asia.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blogs Section -->
+        <section id="blogs" class="mb-20">
+            <div class="mb-10 pb-4 border-b border-gray-200 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg bg-purple-500 text-white flex items-center justify-center">
+                    <i class="fas fa-blog text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold">Struktur Blog</h2>
+                    <p class="text-gray-600">Format yang lebih pribadi dan mudah diakses untuk pembaca online</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-6 mb-10">
+                <div class="grid flexible-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="structure-element">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0">
+                                1
+                            </div>
+                            <h3 class="font-semibold">Headline Menarik</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">Membangkitkan minat pembaca untuk mengklik dan membaca</p>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0">
+                                2
+                            </div>
+                            <h3 class="font-semibold">Gambar Utama</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">Visual yang menarik perhatian dan berkaitan dengan konten</p>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0">
+                                3
+                            </div>
+                            <h3 class="font-semibold">Paragraf Pembuka</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">Hook yang kuat untuk mempertahankan pembaca setelah headline</p>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0">
+                                4
+                            </div>
+                            <h3 class="font-semibold">Body yang Terstruktur</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">Gunakan heading, subheading, dan paragraf pendek</p>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0">
+                                5
+                            </div>
+                            <h3 class="font-semibold">Elemen Multimedia</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">Gambar, video, infografis, atau kutipan untuk variasi</p>
+                    </div>
+                    
+                    <div class="structure-element">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center flex-shrink-0">
+                                6
+                            </div>
+                            <h3 class="font-semibold">Call to Action</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">Ajakan untuk berkomentar, membagikan, atau membaca lebih</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 border border-purple-100 shadow-sm">
+                <h3 class="text-xl font-bold mb-4 text-purple-700">Tip Menulis Blog yang Efektif</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mt-1 flex-shrink-0">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Gaya Percakapan</h4>
+                            <p class="text-gray-600 text-sm">Gunakan bahasa yang lebih santai dan personal untuk membangun hubungan dengan pembaca.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mt-1 flex-shrink-0">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Visual Berkualitas</h4>
+                            <p class="text-gray-600 text-sm">Setiap gambar atau video harus menambah nilai, bukan hanya sebagai hiasan.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mt-1 flex-shrink-0">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Promosikan</h4>
+                            <p class="text-gray-600 text-sm">Bagikan postingan blog Anda di berbagai platform untuk menjangkau lebih banyak audiens.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mt-1 flex-shrink-0">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Tanggapi Komentar</h4>
+                            <p class="text-gray-600 text-sm">Bangun komunitas dengan merespon komentar dan pertanyaan pembaca.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Posts Section -->
+        <section id="posts">
+            <div class="mb-10 pb-4 border-b border-gray-200 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg bg-green-500 text-white flex items-center justify-center">
+                    <i class="fas fa-comment-alt text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold">Struktur Postingan Media Sosial</h2>
+                    <p class="text-gray-600">Format pendek namun berdampak untuk media sosial</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Formula POST yang Efektif</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="relative">
+                                <div class="w-10 h-10 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold flex-shrink-0">
+                                    P
+                                </div>
+                                <div class="absolute top-10 left-1/2 -translate-x-1/2 h-8 chart-line"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Perhatian (Attention)</h4>
+                                <p class="text-gray-600 text-sm">Tangkap perhatian dengan visual atau kata pembuka yang mengejutkan/menarik.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="relative">
+                                <div class="w-10 h-10 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold flex-shrink-0">
+                                    O
+                                </div>
+                                <div class="absolute top-10 left-1/2 -translate-x-1/2 h-8 chart-line"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Tawaran (Offer)</h4>
+                                <p class="text-gray-600 text-sm">Beri nilai atau tawarkan sesuatu yang bermanfaat bagi pembaca.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="relative">
+                                <div class="w-10 h-10 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold flex-shrink-0">
+                                    S
+                                </div>
+                                <div class="absolute top-10 left-1/2 -translate-x-1/2 h-8 chart-line"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Jelaskan (Story/Setup)</h4>
+                                <p class="text-gray-600 text-sm">Beri konteks atau cerita pendek yang relevan (opsional untuk postingan pendek).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="relative">
+                                <div class="w-10 h-10 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold flex-shrink-0">
+                                    T
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Ajakan (Trigger)</h4>
+                                <p class="text-gray-600 text-sm">Beri instruksi jelas apa yang Anda ingin pembaca lakukan (like, comment, share, klik link).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contoh Postingan Media Sosial</h3>
+                    <div class="bg-gradient-to-br from-green-50 to-white rounded-lg border border-green-200 p-6 max-w-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-dashed"></div>
+                            <div>
+                                <div class="font-semibold">Digital Writing Tips</div>
+                                <div class="text-xs text-gray-500">10 jam yang lalu</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="font-semibold text-lg mb-2">5 Kesalahan Fatal dalam Menulis Konten Digital!</div>
+                            <p class="mb-3">🚫 Anda mungkin melakukan kesalahan ini tanpa sadar...</p>
+                            <p class="mb-3">👉 Menghindari 5 kesalahan ini bisa tingkatkan engagement hingga 200%!</p>
+                            <p>Yang paling penting adalah nomor 3 ⬇️</p>
+                        </div>
+                        
+                        <div class="aspect-video bg-gradient-to-r from-green-200 to-blue-200 rounded flex items-center justify-center mb-4">
+                            <div class="bg-white/50 backdrop-blur rounded px-4 py-2 font-bold text-green-800">
+                                Gambar/Video Thumbnail
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between text-gray-500">
+                            <button class="flex items-center gap-1">
+                                <i class="far fa-heart"></i> 56
+                            </button>
+                            <button class="flex items-center gap-1">
+                                <i class="far fa-comment"></i> 7
+                            </button>
+                            <button class="flex items-center gap-1">
+                                <i class="far fa-share-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mt-20" >
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <a href="cardmodulliterasi.html" class="btn w-full md:w-auto flex items-center justify-center py-3 px-6 border border-primary text-primary font-semibold rounded-full hover:bg-blue-50">
+                    <i class="fas fa-arrow-left mr-2"></i> Kembali ke Modul Literasi
+                </a>
+            </div>
+        </section>
+    </main>
+
+    
+
+
+    <script>
+        // Floating nav hide/show on scroll
+        let lastScrollTop = 0;
+        const floatingNav = document.getElementById('floatingNav');
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                floatingNav.style.transform = 'translateY(80px)';
+            } else {
+                floatingNav.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add highlight effect to elements on view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('highlight-box');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.structure-element').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

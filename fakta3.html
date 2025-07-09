@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz: Facts, Opinions, or Hoaxes?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .option-selected {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .correct-answer {
+            background-color: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+        .wrong-answer {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8 px-4">
+    <div class="max-w-3xl mx-auto">
+        <section class="bg-white p-6 rounded-xl shadow-md mb-10">
+            <!-- Header -->
+            <div class="flex items-center mb-4">
+                <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full mr-4">
+                    <i class="fas fa-question-circle text-xl"></i>
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-yellow-600">Latihan Interaktif & Refleksi: Fakta, Opini, atau Hoaks?</h2>
+            </div>
+
+            <!-- Deskripsi -->
+            <p class="text-gray-700 mb-6">
+                Uji pemahamanmu dengan soal interaktif, lalu lanjutkan dengan refleksi untuk memperkuat kesadaranmu sebagai pembaca yang kritis dan bijak di era digital.
+            </p>
+
+            <!-- Progress Bar -->
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm font-medium text-gray-700">Progress</span>
+                    <span id="progress-text" class="text-sm font-medium text-gray-700">0/3</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-yellow-400 h-2.5 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Latihan Soal -->
+            <div class="space-y-6" id="quiz-container">
+                <!-- Soal 1 -->
+                <div class="quiz-question bg-gray-100 p-4 rounded-lg" data-correct="C">
+                    <p class="font-semibold mb-3">1.“Sudah terbukti! Jika kamu tidur di dekat ponsel yang menyala, radiasi yang dipancarkannya bisa merusak otak dalam jangka panjang. Banyak pasien yang kini mengalami gangguan saraf, terutama pelajar yang sering tidur dekat gadget. Informasi ini diambil dari penelitian di Eropa, meski belum banyak diberitakan di media.”
+
+Artikel ini telah dibagikan lebih dari 12.000 kali dan disertai pesan untuk tidak menggunakan ponsel saat malam hari.</p>
+                    <div class="space-y-2">
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="A">
+                            <span class="font-medium">A.</span> Fakta
+                        </div>
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="B">
+                            <span class="font-medium">B.</span> Opini
+                        </div>
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="C">
+                            <span class="font-medium">C.</span> Hoaks
+                        </div>
+                    </div>
+                    <div class="explanation mt-3 hidden fade-in">
+                        <div class="bg-yellow-50 p-3 rounded-lg border-l-4 border-yellow-400">
+                            <p class="text-yellow-800 text-sm">
+                                <span class="font-bold">Penjelasan:</span> Isi artikel mencampurkan bahasa ilmiah dan menakut-nakuti pembaca tanpa menyebut sumber resmi. Kalimat seperti “sudah terbukti” dan “meski belum banyak diberitakan di media” adalah ciri khas hoaks. Tidak ada referensi valid, dan justru meminta pembaca menyebarkan tanpa verifikasi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soal 2 -->
+                <div class="quiz-question bg-gray-100 p-4 rounded-lg" data-correct="B">
+                    <p class="font-semibold mb-3">2.Dalam siaran konferensi pers, Gubernur mengatakan:
+“Kami telah membangun 120 sekolah digital baru di seluruh provinsi ini sejak 2022. Dengan transformasi ini, kualitas pendidikan di daerah tertinggal akan meningkat drastis. Saya yakin ini adalah langkah besar menuju keadilan pendidikan.”
+Cuplikan ini dimuat dalam artikel berita nasional.</p>
+                    <div class="space-y-2">
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="A">
+                            <span class="font-medium">A.</span> Fakta
+                        </div>
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="B">
+                            <span class="font-medium">B.</span> Opini
+                        </div>
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="C">
+                            <span class="font-medium">C.</span> Hoaks
+                        </div>
+                    </div>
+                    <div class="explanation mt-3 hidden fade-in">
+                        <div class="bg-yellow-50 p-3 rounded-lg border-l-4 border-yellow-400">
+                            <p class="text-yellow-800 text-sm">
+                                <span class="font-bold">Penjelasan:</span> Klaim “kami telah membangun 120 sekolah” bisa jadi fakta jika didukung data. Namun fokus utama pernyataan adalah keyakinan pribadi sang gubernur bahwa “kualitas pendidikan akan meningkat drastis” dan bahwa ini “langkah besar”. Itu adalah penilaian pribadi yang tidak bisa dibuktikan saat itu juga—maka termasuk opini.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soal 3 -->
+                <div class="quiz-question bg-gray-100 p-4 rounded-lg" data-correct="A">
+                    <p class="font-semibold mb-3">3. “Indonesia Negara dengan Pertumbuhan Ekonomi Tertinggi di Asia Tenggara 2023”, ditampilkan data yang menunjukkan Indonesia memiliki pertumbuhan 5,2%, di atas Vietnam dan Malaysia. Sumber data ditulis berasal dari Badan Pusat Statistik (BPS) dan Bank Dunia.</p>
+                    <div class="space-y-2">
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="A">
+                            <span class="font-medium">A.</span> Fakta
+                        </div>
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="B">
+                            <span class="font-medium">B.</span> Opini
+                        </div>
+                        <div class="option p-3 rounded cursor-pointer hover:bg-gray-200 transition" data-value="C">
+                            <span class="font-medium">C.</span> Hoaks
+                        </div>
+                    </div>
+                    <div class="explanation mt-3 hidden fade-in">
+                        <div class="bg-yellow-50 p-3 rounded-lg border-l-4 border-yellow-400">
+                            <p class="text-yellow-800 text-sm">
+                                <span class="font-bold">Penjelasan:</span> Data berasal dari lembaga resmi yang kredibel (BPS dan Bank Dunia), dapat diverifikasi, dan ditampilkan secara terbuka oleh institusi negara. Ini merupakan informasi objektif yang tidak bersifat manipulatif, sehingga tergolong fakta.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section (Initially Hidden) -->
+            <div id="results-section" class="hidden mt-8">
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-3">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-blue-600">Hasil Latihan Kamu</h3>
+                    </div>
+                    <div class="mt-3">
+                        <p class="text-blue-800">
+                            Kamu menjawab <span id="correct-count" class="font-bold">0</span> dari <span id="total-questions" class="font-bold">3</span> pertanyaan dengan benar!
+                        </p>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                            <div id="score-bar" class="h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General Explanation -->
+                <div class="mt-6 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                    <p class="text-yellow-800 font-semibold">
+                        <i class="fas fa-info-circle mr-2"></i> Kalimat hoaks seringkali menyamar sebagai fakta. Opini bisa terlihat meyakinkan padahal hanya pendapat. Kamu harus jeli membedakannya!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Refleksi -->
+            <div class="mt-10" id="reflection-section">
+                <h3 class="text-lg font-bold text-green-600 mb-3 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i> Refleksi Diri
+                </h3>
+                <p class="text-gray-700 mb-4">
+                    Setelah mengerjakan latihan di atas, renungkan pertanyaan-pertanyaan berikut untuk mengevaluasi kebiasaanmu dalam membaca dan membagikan informasi:
+                </p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    <li class="flex items-start">
+                        <span class="mr-2">🔍</span>
+                        <span>Apakah saya pernah membagikan berita tanpa memeriksa kebenarannya terlebih dahulu?</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">🧠</span>
+                        <span>Apakah saya bisa mengenali opini yang dibungkus seolah-olah sebagai fakta?</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">📚</span>
+                        <span>Sumber informasi seperti apa yang biasanya saya percayai?</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">🔄</span>
+                        <span>Setelah belajar ini, kebiasaan apa yang perlu saya ubah?</span>
+                    </li>
+                </ul>
+                
+                <!-- Reflection Form -->
+                <div class="mt-6 bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                    <h4 class="font-semibold text-purple-700 mb-2">Bagikan Refleksimu:</h4>
+                    <textarea id="reflection-text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-200 focus:border-purple-400" rows="3" placeholder="Tuliskan refleksi atau komitmenmu setelah mengerjakan latihan ini..."></textarea>
+                    <button id="submit-reflection" class="mt-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition">
+                        <i class="fas fa-paper-plane mr-2"></i> Kirim Refleksi
+                    </button>
+                    <div id="reflection-thanks" class="hidden mt-2 text-purple-700">
+                        <i class="fas fa-check-circle mr-1"></i> Terima kasih atas refleksimu!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Penutup -->
+            <div class="mt-6 bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                <p class="text-green-800 font-semibold">
+                    <i class="fas fa-hands-helping mr-2"></i> Dengan berpikir kritis dan merefleksikan kebiasaan kita sendiri, kita bisa menjadi pengguna digital yang cerdas, adil, dan bertanggung jawab.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.quiz-question');
+            const quizContainer = document.getElementById('quiz-container');
+            const resultsSection = document.getElementById('results-section');
+            const progressText = document.getElementById('progress-text');
+            const progressBar = document.getElementById('progress-bar');
+            const correctCount = document.getElementById('correct-count');
+            const totalQuestions = document.getElementById('total-questions');
+            const scoreBar = document.getElementById('score-bar');
+            const submitReflection = document.getElementById('submit-reflection');
+            const reflectionThanks = document.getElementById('reflection-thanks');
+            
+            let answeredQuestions = 0;
+            let correctAnswers = 0;
+            totalQuestions.textContent = questions.length;
+            
+            // Add event listeners to all options
+            questions.forEach(question => {
+                const options = question.querySelectorAll('.option');
+                const correctAnswer = question.getAttribute('data-correct');
+                const explanation = question.querySelector('.explanation');
+                
+                options.forEach(option => {
+                    option.addEventListener('click', function() {
+                        // If already answered, ignore
+                        if (question.classList.contains('answered')) return;
+                        
+                        const selectedValue = this.getAttribute('data-value');
+                        
+                        // Mark all options
+                        options.forEach(opt => {
+                            opt.classList.remove('option-selected', 'correct-answer', 'wrong-answer');
+                            
+                            if (opt.getAttribute('data-value') === selectedValue) {
+                                opt.classList.add('option-selected');
+                            }
+                            
+                            if (opt.getAttribute('data-value') === correctAnswer) {
+                                opt.classList.add('correct-answer');
+                            }
+                            
+                            if (opt.getAttribute('data-value') === selectedValue && selectedValue !== correctAnswer) {
+                                opt.classList.add('wrong-answer');
+                            }
+                        });
+                        
+                        // Show explanation
+                        explanation.classList.remove('hidden');
+                        
+                        // Mark question as answered
+                        question.classList.add('answered');
+                        
+                        // Update progress
+                        answeredQuestions++;
+                        if (selectedValue === correctAnswer) {
+                            correctAnswers++;
+                        }
+                        
+                        updateProgress();
+                        
+                        // If all questions answered, show results
+                        if (answeredQuestions === questions.length) {
+                            showResults();
+                        }
+                    });
+                });
+            });
+            
+            function updateProgress() {
+                progressText.textContent = `${answeredQuestions}/${questions.length}`;
+                const progressPercent = (answeredQuestions / questions.length) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+            }
+            
+            function showResults() {
+                // Calculate score
+                const scorePercent = (correctAnswers / questions.length) * 100;
+                
+                // Update results display
+                correctCount.textContent = correctAnswers;
+                scoreBar.style.width = `${scorePercent}%`;
+                
+                // Set color based on score
+                if (scorePercent >= 80) {
+                    scoreBar.classList.add('bg-green-500');
+                    scoreBar.classList.remove('bg-yellow-500', 'bg-red-500');
+                } else if (scorePercent >= 50) {
+                    scoreBar.classList.add('bg-yellow-500');
+                    scoreBar.classList.remove('bg-green-500', 'bg-red-500');
+                } else {
+                    scoreBar.classList.add('bg-red-500');
+                    scoreBar.classList.remove('bg-green-500', 'bg-yellow-500');
+                }
+                
+                // Show results section
+                resultsSection.classList.remove('hidden');
+                
+                // Scroll to results
+                setTimeout(() => {
+                    resultsSection.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+            
+            // Handle reflection submission
+            submitReflection.addEventListener('click', function() {
+                const reflectionText = document.getElementById('reflection-text').value.trim();
+                
+                if (reflectionText) {
+                    // In a real app, you would send this to a server
+                    reflectionThanks.classList.remove('hidden');
+                    submitReflection.disabled = true;
+                    
+                    // Hide thanks after 3 seconds
+                    setTimeout(() => {
+                        reflectionThanks.classList.add('hidden');
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

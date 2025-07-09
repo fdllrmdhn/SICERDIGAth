@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Interaktif: Identifikasi Struktur Berita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .draggable {
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+        .draggable:active {
+            cursor: grabbing;
+        }
+        .dropzone {
+            min-height: 60px;
+            transition: background-color 0.3s ease;
+        }
+        .dropzone.highlight {
+            background-color: rgba(253, 230, 138, 0.3);
+        }
+        .correct {
+            border-left: 4px solid #10b981;
+        }
+        .incorrect {
+            border-left: 4px solid #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-4 md:p-8">
+    <div class="max-w-3xl mx-auto">
+        <!-- Interactive Exercise -->
+        <section class="bg-white p-6 rounded-xl shadow-md mb-10">
+            <!-- Header -->
+            <div class="flex items-center mb-4">
+                <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full mr-4">
+                    <i class="fas fa-check-circle text-xl"></i>
+                </div>
+                <h2 class="text-xl font-bold text-yellow-600">Latihan Interaktif: Identifikasi Struktur</h2>
+            </div>
+
+            <p class="text-gray-700 mb-4">
+                Perhatikan cuplikan berita berikut ini, lalu tentukan bagian mana yang merupakan <strong>Judul</strong>, <strong>Teras</strong>, dan <strong>Isi Berita</strong>:
+            </p>
+
+            <div class="bg-gray-100 p-4 rounded-lg text-gray-800 mb-6">
+                <p class="font-semibold">Ratusan Siswa Keracunan Usai Santap Makanan di Kantin Sekolah</p>
+                <p class="mt-2">Sebanyak 120 siswa sebuah sekolah menengah pertama di Kota Semarang dilarikan ke rumah sakit usai mengonsumsi makanan dari kantin sekolah pada Selasa pagi (28/6). Kejadian ini langsung menjadi perhatian pihak sekolah dan Dinas Kesehatan setempat.</p>
+                <p class="mt-2">Menurut keterangan Kepala Sekolah, para siswa mulai mengeluhkan mual dan pusing sekitar 30 menit setelah istirahat pertama. Sebagian siswa mengalami muntah dan diare, sehingga segera mendapatkan pertolongan medis dari puskesmas terdekat sebelum dirujuk ke rumah sakit.
+
+Pihak Dinas Kesehatan kini tengah menyelidiki kandungan makanan yang dikonsumsi, khususnya nasi goreng dan minuman kemasan yang dibeli dari salah satu stan kantin. Sementara itu, kegiatan belajar mengajar untuk kelas 7 dan 8 dihentikan selama dua hari guna keperluan penyelidikan dan sterilisasi lingkungan sekolah.</p>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="font-semibold text-gray-700 mb-3">Drag bagian berita ke kolom yang sesuai:</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="draggable bg-blue-50 p-3 rounded-lg border border-blue-200 cursor-move" draggable="true" data-type="title" id="drag-title">
+                        <div class="flex items-center">
+                            <i class="fas fa-grip-lines text-blue-400 mr-2"></i>
+                            <span class="text-blue-700">Judul</span>
+                        </div>
+                    </div>
+                    <div class="draggable bg-green-50 p-3 rounded-lg border border-green-200 cursor-move" draggable="true" data-type="lead" id="drag-lead">
+                        <div class="flex items-center">
+                            <i class="fas fa-grip-lines text-green-400 mr-2"></i>
+                            <span class="text-green-700">Teras</span>
+                        </div>
+                    </div>
+                    <div class="draggable bg-purple-50 p-3 rounded-lg border border-purple-200 cursor-move" draggable="true" data-type="body" id="drag-body">
+                        <div class="flex items-center">
+                            <i class="fas fa-grip-lines text-purple-400 mr-2"></i>
+                            <span class="text-purple-700">Isi Berita</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="dropzone bg-blue-50 p-4 rounded-lg border-2 border-dashed border-blue-200" data-type="title">
+                    <p class="text-sm text-blue-600 mb-2">Ratusan Siswa Keracunan Usai Santap Makanan di Kantin Sekolah</p>
+                    <div class="drop-content min-h-10"></div>
+                </div>
+                <div class="dropzone bg-green-50 p-4 rounded-lg border-2 border-dashed border-green-200" data-type="lead">
+                    <h4 class="font-medium text-green-700 mb-2"></h4>
+                    <p class="text-sm text-green-600 mb-2">Sebanyak 120 siswa sebuah sekolah menengah pertama di Kota Semarang dilarikan ke rumah sakit usai mengonsumsi makanan dari kantin sekolah pada Selasa pagi (28/6). Kejadian ini langsung menjadi perhatian pihak sekolah dan Dinas Kesehatan setempat.</p>
+                    <div class="drop-content min-h-10"></div>
+                </div>
+                <div class="dropzone bg-purple-50 p-4 rounded-lg border-2 border-dashed border-purple-200" data-type="body">
+                    <h4 class="font-medium text-purple-700 mb-2"></h4>
+                    <p class="text-sm text-purple-600 mb-2">Menurut keterangan Kepala Sekolah, para siswa mulai mengeluhkan mual dan pusing sekitar 30 menit setelah istirahat pertama. Sebagian siswa mengalami muntah dan diare, sehingga segera mendapatkan pertolongan medis dari puskesmas terdekat sebelum dirujuk ke rumah sakit.
+
+Pihak Dinas Kesehatan kini tengah menyelidiki kandungan makanan yang dikonsumsi, khususnya nasi goreng dan minuman kemasan yang dibeli dari salah satu stan kantin. Sementara itu, kegiatan belajar mengajar untuk kelas 7 dan 8 dihentikan selama dua hari guna keperluan penyelidikan dan sterilisasi lingkungan sekolah.
+
+</p>
+                    <div class="drop-content min-h-10"></div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <button id="check-answers" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition">
+                    <i class="fas fa-check-circle mr-2"></i> Periksa Jawaban
+                </button>
+                <button id="reset" class="text-gray-500 hover:text-gray-700 px-4 py-2 rounded-lg transition">
+                    <i class="fas fa-redo mr-2"></i> Ulangi
+                </button>
+            </div>
+
+            <div id="feedback" class="hidden mt-4 p-4 rounded-lg"></div>
+        </section>
+
+        <!-- Explanation Section -->
+        <section class="bg-white p-6 rounded-xl shadow-md">
+            <h3 class="text-lg font-bold text-gray-700 mb-4 flex items-center">
+                <i class="fas fa-info-circle text-blue-500 mr-2"></i> Penjelasan Struktur Berita
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-blue-700 mb-2">Judul (Headline)</h4>
+                    <p class="text-gray-700">Bagian paling mencolok yang merangkum inti berita secara singkat dan menarik perhatian pembaca.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-green-700 mb-2">Teras (Lead)</h4>
+                    <p class="text-gray-700">Paragraf pembuka yang memuat informasi paling penting (5W+1H) dan menjadi inti dari seluruh berita.</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-purple-700 mb-2">Isi Berita (Body)</h4>
+                    <p class="text-gray-700">Penjelasan lebih rinci yang mengembangkan informasi dari teras berita dengan fakta-fakta pendukung.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Drag and Drop functionality
+            const draggables = document.querySelectorAll('.draggable');
+            const dropzones = document.querySelectorAll('.dropzone');
+            const checkButton = document.getElementById('check-answers');
+            const resetButton = document.getElementById('reset');
+            const feedbackDiv = document.getElementById('feedback');
+            
+            // Store original news text
+            const originalNews = {
+                title: document.getElementById('news-title').textContent,
+                lead: document.getElementById('news-lead').textContent,
+                body: document.getElementById('news-body').textContent
+            };
+            
+            // Drag events
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', () => {
+                    draggable.classList.add('opacity-50', 'shadow-lg');
+                    setTimeout(() => draggable.classList.add('hidden'), 0);
+                });
+                
+                draggable.addEventListener('dragend', () => {
+                    draggable.classList.remove('opacity-50', 'shadow-lg', 'hidden');
+                });
+            });
+            
+            // Dropzone events
+            dropzones.forEach(dropzone => {
+                dropzone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    dropzone.classList.add('highlight');
+                });
+                
+                dropzone.addEventListener('dragleave', () => {
+                    dropzone.classList.remove('highlight');
+                });
+                
+                dropzone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    dropzone.classList.remove('highlight');
+                    
+                    const draggableType = document.querySelector('.draggable.dragging').dataset.type;
+                    const dropzoneType = dropzone.dataset.type;
+                    
+                    // Clear any existing content in this dropzone
+                    const dropContent = dropzone.querySelector('.drop-content');
+                    dropContent.innerHTML = '';
+                    
+                    // Add the dragged element
+                    const draggedElement = document.querySelector(`.draggable.dragging`);
+                    const clone = draggedElement.cloneNode(true);
+                    clone.classList.remove('draggable', 'cursor-move');
+                    clone.setAttribute('draggable', 'false');
+                    
+                    // Add the actual news content
+                    const newsContent = document.createElement('div');
+                    newsContent.classList.add('mt-2', 'p-2', 'bg-white', 'rounded', 'text-sm');
+                    
+                    switch(draggableType) {
+                        case 'title':
+                            newsContent.textContent = originalNews.title;
+                            break;
+                        case 'lead':
+                            newsContent.textContent = originalNews.lead;
+                            break;
+                        case 'body':
+                            newsContent.textContent = originalNews.body;
+                            break;
+                    }
+                    
+                    dropContent.appendChild(clone);
+                    dropContent.appendChild(newsContent);
+                    
+                    // Store the answer
+                    dropzone.dataset.answer = draggableType;
+                });
+            });
+            
+            // Set dragging class during drag
+            document.addEventListener('dragstart', e => {
+                if (e.target.classList.contains('draggable')) {
+                    e.target.classList.add('dragging');
+                }
+            });
+            
+            document.addEventListener('dragend', e => {
+                if (e.target.classList.contains('draggable')) {
+                    e.target.classList.remove('dragging');
+                }
+            });
+            
+            // Check answers
+            checkButton.addEventListener('click', () => {
+                let correct = 0;
+                
+                dropzones.forEach(dropzone => {
+                    const dropzoneType = dropzone.dataset.type;
+                    const answer = dropzone.dataset.answer;
+                    
+                    if (dropzoneType === answer) {
+                        dropzone.classList.add('correct');
+                        dropzone.classList.remove('incorrect');
+                        correct++;
+                    } else {
+                        dropzone.classList.add('incorrect');
+                        dropzone.classList.remove('correct');
+                    }
+                });
+                
+                // Show feedback
+                feedbackDiv.classList.remove('hidden');
+                if (correct === 3) {
+                    feedbackDiv.innerHTML = `
+                        <div class="bg-green-100 text-green-800 p-3 rounded-lg flex items-center">
+                            <i class="fas fa-check-circle text-green-600 mr-2 text-xl"></i>
+                            <span class="font-medium">Bagus! Kamu sudah mengidentifikasi semua struktur berita dengan benar.</span>
+                        </div>
+                    `;
+                } else {
+                    feedbackDiv.innerHTML = `
+                        <div class="bg-red-100 text-red-800 p-3 rounded-lg flex items-center">
+                            <i class="fas fa-exclamation-circle text-red-600 mr-2 text-xl"></i>
+                            <span class="font-medium">Masih ada yang kurang tepat. Coba periksa kembali jawabanmu!</span>
+                        </div>
+                    `;
+                }
+            });
+            
+            // Reset button
+            resetButton.addEventListener('click', () => {
+                dropzones.forEach(dropzone => {
+                    const dropContent = dropzone.querySelector('.drop-content');
+                    dropContent.innerHTML = '';
+                    dropzone.classList.remove('correct', 'incorrect', 'highlight');
+                    delete dropzone.dataset.answer;
+                });
+                
+                feedbackDiv.classList.add('hidden');
+                feedbackDiv.innerHTML = '';
+            });
+        });
+    </script>
+</body>
+</html>

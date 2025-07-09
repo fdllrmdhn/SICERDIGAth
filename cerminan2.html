@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Composition Tips</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, #f59e0b, #f97316);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-3xl w-full">
+        <!-- Main Card -->
+        <section class="bg-white p-8 rounded-2xl shadow-lg mb-10 border-l-8 border-yellow-400 transform transition-all hover:scale-[1.01] hover:shadow-xl">
+            <div class="flex flex-col md:flex-row items-start md:items-center mb-6">
+                <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 text-yellow-600 p-4 rounded-full mr-6 float-animation mb-4 md:mb-0">
+                    <i class="fas fa-pencil-alt text-2xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold gradient-text">Teknik Menyusun Komentar yang Baik</h2>
+                    <p class="text-gray-500 mt-1">Tips untuk berkomunikasi secara efektif dan positif</p>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 rounded-xl p-6">
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <div class="bg-yellow-100 text-yellow-600 p-2 rounded-full mr-4 mt-1">
+                            <i class="fas fa-thumbs-up text-sm"></i>
+                        </div>
+                        <span class="text-gray-700 flex-1">Gunakan bahasa yang sopan dan mudah dipahami. Hindari kata-kata kasar atau mengintimidasi. <span class="text-yellow-600 font-medium block mt-1">“Saya kurang sependapat dengan pandangan ini, namun saya menghargai argumennya. Mungkin bisa dipertimbangkan pendekatan yang lebih sederhana agar semua pengguna bisa memahami.”</span></span>
+                    </li>
+                    
+                    <li class="flex items-start">
+                        <div class="bg-yellow-100 text-yellow-600 p-2 rounded-full mr-4 mt-1">
+                            <i class="fas fa-smile text-sm"></i>
+                        </div>
+                        <span class="text-gray-700 flex-1">Fokus pada topik diskusi, bukan pada pribadi orang lain. Kritiklah ide, bukan individunya. <span class="text-yellow-600 font-medium block mt-1">“Menurut saya, usulan tentang fitur baru ini masih kurang efisien jika diterapkan pada platform yang kita gunakan. Bagaimana jika kita ubah sedikit alurnya?”</span></span>
+                    </li>
+                    
+                    <li class="flex items-start">
+                        <div class="bg-yellow-100 text-yellow-600 p-2 rounded-full mr-4 mt-1">
+                            <i class="fas fa-volume-down text-sm"></i>
+                        </div>
+                        <span class="text-gray-700 flex-1">Sebelum mengirim, baca ulang komentar Anda. Pastikan tidak ada salah paham yang mungkin timbul. <span class="text-gray-500 italic block mt-1"></span></span>
+                    </li>
+                    
+                    <li class="flex items-start">
+                        <div class="bg-yellow-100 text-yellow-600 p-2 rounded-full mr-4 mt-1">
+                            <i class="fas fa-lightbulb text-sm"></i>
+                        </div>
+                        <span class="text-gray-700 flex-1">Hargai perbedaan pendapat. Tidak semua orang harus setuju dengan Anda. <span class="text-yellow-600 font-medium block mt-1">“Saya mengerti bahwa pendapat Anda berbeda. Menarik juga melihatnya dari sudut pandang itu. Terima kasih sudah berbagi.”</span></span>
+                    </li>
+                    
+                </ul>
+                
+                <div class="mt-6 pt-4 border-t border-yellow-200 flex flex-col sm:flex-row justify-between items-center">
+                    <div class="flex items-center mb-4 sm:mb-0">
+                        <div class="bg-yellow-100 text-yellow-600 p-2 rounded-full mr-3">
+                            <i class="fas fa-share-alt text-sm"></i>
+                        </div>
+                        <span class="text-gray-600 text-sm">Bagikan tips ini dengan teman Anda</span>
+                    </div>
+                    <button class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-6 py-2 rounded-full font-medium hover:from-yellow-500 hover:to-yellow-600 transition-all shadow-md hover:shadow-lg">
+                        <i class="fas fa-check-circle mr-2"></i> Saya Mengerti
+                    </button>
+                <!-- Interactive Quiz Preview -->
+                <div id="quizPreview" class="mt-6 hidden">
+                    <h4 class="text-lg font-medium text-[#2D5FFF] mb-3">Latihan Interaktif</h4>
+                    <div class="bg-white p-4 rounded-lg shadow-inner border border-gray-200">
+                        <p class="font-medium mb-3">Contoh situasi: Seseorang membagikan pendapat yang sangat berbeda dengan Anda tentang topik yang sensitif. Apa yang sebaiknya Anda lakukan?</p>
+                        <div class="space-y-3">
+                            <button class="quiz-option w-full text-left px-4 py-3 rounded border border-gray-200 hover:bg-blue-50">
+                                A. Langsung menyerang pendapat tersebut dengan komentar tajam
+                            </button>
+                            <button class="quiz-option w-full text-left px-4 py-3 rounded border border-gray-200 hover:bg-blue-50">
+                                B. Abaikan saja dan tidak memberi komentar
+                            </button>
+                            <button class="correct-option w-full text-left px-4 py-3 rounded border border-gray-200 hover:bg-blue-50 bg-green-50 border-green-200">
+                                C. Menyampaikan pendapat berbeda dengan sopan dan memberikan argumen yang logis
+                            </button>
+                        </div>
+                        <div id="feedback" class="mt-4 hidden">
+                            <div class="flex items-center bg-green-50 text-green-700 p-3 rounded-md">
+                                <i class="fas fa-check-circle text-xl mr-3"></i>
+                                <span>Bagus! Ini adalah pilihan terbaik untuk menjaga diskusi tetap produktif.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Additional Tip -->
+        <div class="bg-blue-50 rounded-xl p-6 border-l-4 border-blue-400 flex items-start">
+            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+            <div>
+                <h3 class="font-bold text-blue-700 mb-1">Bonus Tip!</h3>
+                <p class="text-gray-700">Tambahkan emoji yang sesuai untuk membantu menyampaikan nada positif 😊. Tapi jangan berlebihan!</p>
+            </div>
+          
+        </div>
+      <section class="flex flex-col sm:flex-row justify-between gap-4 mb-12">
+    <div class="container mx-auto px-4 py-8">
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="cardkomentarmucerminanmu.html">
+                    <button class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center transition-all shadow-md hover:shadow-lg">
+                        <i class="fas fa-thumbtack mr-2"></i> Kembali ke Modul
+                    </button>
+                </div>
+            </a>
+    </section>
+    </div>
+</body>
+</html>

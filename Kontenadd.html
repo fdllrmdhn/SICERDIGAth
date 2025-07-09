@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Content Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6b46c1 0%, #4299e1 100%);
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        @media (max-width: 640px) {
+            .mobile-stack {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5FFF',
+                        accent: '#FDCB00',
+                        dark: '#3A3A3A',
+                        cream: '#F8F9FA',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'nunito': ['Nunito', 'sans-serif']
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-[#2D5FFF] h-16 flex items-center px-6 text-white">
+        <div class="flex items-center space-x-4 w-full">
+            <!-- Logo -->
+              <div class="relative w-10 h-10 mr-3">
+                        <div class="w-full h-full rounded-full bg-white flex items-center justify-center relative">
+                            <i class="fas fa-book-open text-blue-600 text-base book-animation"></i>
+                            <i class="fas fa-mouse-pointer absolute text-yellow-400 text-sm"
+                                style="bottom: 5px; right: 10px;"></i>
+                        </div>
+                    </div>
+            <span class="font-bold ml-1 text-xl">Suara Digital Edukatif</span>
+            
+            <!-- Page Title -->
+            <h1 class="text-2xl font-bold flex-grow text-center"></h1>
+            
+            <!-- User Controls -->
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-bell text-xl"></i>
+                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+                    <i class="fas fa-user text-[#2D5FFF]"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-[#F8F9FA] px-6 py-3 border-b border-[#FDCB00]">
+        <p class="text-sm text-[#3A3A3A]"><a href="LINGKASAEDU.html" class="text-blue-500 hover:underline">Beranda</a><a href="#areapembelajararan" class="text-blue-500 hover:underline"> </a> / Modul Literasi</p>
+        <!-- <div class="absolute bottom-0 left-0 right-0 h-1 bg-[#FDCB00]"></div> -->
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-xl custom-shadow hover-scale p-6 mb-8">
+            <div class="flex items-start">
+                <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-info-circle text-indigo-600 text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-800">Kenali Konten Edukasi Digital</h2>
+                    <p class="mt-3 text-gray-600 leading-relaxed">
+                        Sebelum kamu mulai membuat konten edukasi digital, penting untuk memahami karakteristik konten yang efektif. Konten edukasi harus memiliki tujuan yang jelas, menggunakan bahasa yang mudah dimengerti, dan disampaikan secara ringkas namun tetap bermakna.
+                    </p>
+                    <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r">
+                        <p class="font-medium text-gray-800">
+                        <i class="fas fa-lightbulb text-primary mr-2"></i>
+                        Di era digital, banyak informasi berseliweran. Maka dari itu, kemampuan menyusun pesan yang edukatif dan menghindari potensi misinformasi menjadi kunci utama.
+                        </p>
+                    </div>
+                       <p class="mt-3 text-gray-600 leading-relaxed">
+                        Dalam konteks literasi digital, konten edukatif juga berfungsi sebagai sarana menyampaikan fakta yang terverifikasi dan membangun pola pikir kritis di kalangan audiens. Misalnya, melalui caption informatif, infografik yang lugas, atau rangkaian konten carousel yang mendorong aksi.</p>
+                     <p class="mt-3 text-gray-600 leading-relaxed">
+                        Sebelum kamu mulai membuat konten edukasi digital, penting untuk memahami karakteristik konten yang efektif. Konten edukasi harus memiliki tujuan yang jelas, menggunakan bahasa yang mudah dimengerti, dan disampaikan secara ringkas namun tetap bermakna.
+                    </p>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-xl custom-shadow hover-scale p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-question-circle text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-indigo-700">Apa itu Konten Edukasi?</h3>
+                </div>
+                <p class="text-gray-600">
+                    Konten edukasi bertujuan untuk menyampaikan pengetahuan, wawasan, atau pesan positif secara jelas dan mudah dipahami. Konten tersebut dapat berupa teks pendek, infografis, poster digital, atau slide carousel yang umum ditemukan di media sosial.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl custom-shadow hover-scale p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-purple-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-bullseye text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-indigo-700">Prinsip Pembuatan Konten Edukasi </h3>
+                </div>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                    <li>Fokus pada satu topik atau pesan utama</li>
+                    <li>Gunakan bahasa yang sopan, ringkas, dan mudah dipahami</li>
+                    <li>Sertakan fakta atau data yang dapat diverifikasi</li>
+                    <li>Berisi ajakan untuk bertindak seperti "Periksa faktanya!" atau "Bagikan dengan teman!"</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl custom-shadow hover-scale p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="bg-green-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-pen-fancy text-green-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-indigo-700">Memilih Topik dan Menulis Judul</h3>
+            </div>
+            <p class="text-gray-600 mb-3">
+               Pilih topik yang relevan dan bermanfaat seperti: bahasa dan budaya digital, cara menghindari hoax, kiat belajar efektif, atau etika komunikasi daring. Kemudian tulis caption (maksimal 300 karakter) yang berisi:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-info-circle text-indigo-500 mr-2"></i>
+                        <h4 class="font-medium">Kunci Informasi</h4>
+                    </div>Informasi penting singkat yang perlu diketahui</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-comment-dots text-indigo-500 mr-2"></i>
+                        <h4 class="font-medium">Bahasa Sopan</h4>
+                    </div>
+                    <p class="text-sm text-gray-600">Kalimat sopan yang tidak menyinggung</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-share-alt text-indigo-500 mr-2"></i>
+                        <h4 class="font-medium">Ajakan Untuk Bertindak</h4>
+                    </div>
+                    <p class="text-sm text-gray-600">Dorongan untuk menyebarkan informasi yang akurat</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl custom-shadow hover-scale p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-palette text-yellow-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-indigo-700">Menambahkan Visual: Infografis atau Desain</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+                Visual sangat penting untuk memperkuat pesan. Gunakan alat seperti  <a href="https://www.canva.com" target="_blank" class="text-blue-500 hover:underline font-medium">Canva</a> untuk membuat infografis yang mendukung teks Anda. Pastikan desainnya sederhana, tidak banyak teks, dan mudah dipahami sekilas.
+            </p>
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                <div class="flex items-center">
+                    <i class="fas fa-lightbulb text-blue-500 mr-3 text-xl"></i>
+                    <p class="text-blue-700 font-medium">Tips: Gunakan warna yang kontras dan font yang mudah dibaca untuk aksesibilitas yang lebih baik!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-xl custom-shadow hover-scale p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-search text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-indigo-700">Evaluasi Konten Sebelum Mengunggah</h3>
+                </div>
+                <p class="text-gray-600 mb-3">Sebelum mengunggah konten Anda, periksa:</p>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                    <li>Apakah informasi yang Anda tulis dapat dipercaya?</li>
+                    <li>Apakah ada potensi salah tafsir atau kesalahan penulisan?</li>
+                    <li>Apakah konten Anda sopan dan tidak menyinggung kelompok tertentu?</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl custom-shadow hover-scale p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-teal-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-share-square text-teal-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-indigo-700">Etika Berbagi Konten</h3>
+                </div>
+                <p class="text-gray-600">
+                    Pastikan Anda menggunakan gambar atau data yang bebas hak cipta, atau mengutip sumbernya dengan benar. Hindari menyebarkan informasi tanpa memverifikasi kebenarannya.
+                </p>
+                <div class="mt-4 flex items-center text-sm text-gray-500">
+                    <i class="fas fa-exclamation-triangle mr-2 text-yellow-500"></i>
+                    Ingat: Selalu periksa fakta sebelum berbagi!
+                </div>
+            </div>
+        </div>
+ <!-- Langkah demi Langkah -->
+            <div class="flex flex-col gap-6">
+                <h2 class="text-xl md:text-2xl font-bold text-dark flex items-center gap-2">
+                    <i class="fas fa-play-circle text-accent"></i> Langkah Demi Langkah
+                </h2>
+                
+                <!-- Langkah 1 -->
+                <div class="step-box bg-white rounded-xl shadow-sm p-6 border-2 border-transparent active">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">1</span>
+                            Tentukan Topik
+                        </h3>
+                        <button class="text-primary">
+                            <i class="fas fa-check-circle text-lg"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 space-y-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Pilih Topik Edukasi:</label>
+                            <div class="relative">
+                                <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary appearance-none">
+                                    <option>Bahasa dan Budaya</option>
+                                    <option>Anti Hoaks</option>
+                                    <option>Tips Belajar</option>
+                                    <option>Teknologi & Literasi</option>
+                                </select>
+                                <i class="fas fa-chevron-down absolute right-3 top-3.5 text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2">Judul Konten Edukasi (maks. 10 kata):</label>
+                            <input type="text" id="inputJudul" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Contoh: 5 Tips Anti Hoaks di Media Sosial">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Langkah 2 -->
+                <div class="step-box bg-white rounded-xl shadow-sm p-6 border-2 border-transparent">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">2</span>
+                            Tulis Caption Konten Edukasi
+                        </h3>
+                        <button class="text-gray-400">
+                            <i class="far fa-check-circle text-lg"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label class="block text-gray-700 mb-2">Tulis Captionmu di sini (maks 300 karakter):</label>
+                        <div class="relative">
+                            <textarea maxlength="300" id="content-editor" class="w-full h-40 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Tulis konten edukasimu..."></textarea>
+                            <div id="char-counter" class="char-counter">0/300</div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h4 class="font-semibold text-gray-700 mb-3">Pastikan kontenmu memiliki:</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-3 checkbox-container">
+                                    <input type="checkbox" class="hidden">
+                                    <span class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center checkmark">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </span>
+                                    <span>Sudah ada fakta atau data singkat</span>
+                                </label>
+                                
+                                <label class="flex items-center gap-3 checkbox-container">
+                                    <input type="checkbox" class="hidden">
+                                    <span class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center checkmark">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </span>
+                                    <span>Menggunakan bahasa sopan & jelas</span>
+                                </label>
+                                
+                                <label class="flex items-center gap-3 checkbox-container">
+                                    <input type="checkbox" class="hidden">
+                                    <span class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center checkmark">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </span>
+                                    <span>Mengajak pembaca melakukan sesuatu (call to action)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Langkah 3 -->
+                <div class="step-box bg-white rounded-xl shadow-sm p-6 border-2 border-transparent">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">3</span>
+                            Tambahkan Desain atau Template (Opsional)
+                        </h3>
+                        <button class="text-gray-400">
+                            <i class="far fa-check-circle text-lg"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button class="bg-accent hover:bg-amber-500 text-white font-medium py-3 rounded-lg transition flex items-center justify-center gap-2">
+                            <i class="fab fa-canva"></i> Buka Canva Template
+                        </button>
+                        <button class="bg-primary hover:bg-blue-600 text-white font-medium py-3 rounded-lg transition flex items-center justify-center gap-2">
+                            <i class="fas fa-image"></i> Unggah Gambar/Infografis
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Preview Section -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mt-4">
+                <h3 class="text-xl font-bold flex items-center gap-2">
+                    <i class="fas fa-eye text-primary"></i> Preview Konten
+                </h3>
+                
+                <p class="text-gray-600 mt-1 mb-4">Ini tampilan kontenmu di media sosial:</p>
+                
+                <div class="social-preview bg-gray-100 rounded-xl p-4 w-full max-w-md mx-auto shadow">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold">LINGKASA Edu</div>
+                            <div class="text-xs text-gray-500">15 menit lalu</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm mb-3">
+                        <div class="p-4">
+                            <h4 id="preview-title" class="font-bold mb-2">Judul Konten Anda</h4>
+                            <p id="preview-text" class="text-sm">Mulailah menulis konten edukasi Anda di langkah 2...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between text-gray-500 px-2">
+                        <div class="flex items-center gap-1">
+                            <i class="far fa-heart"></i>
+                            <span>120</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="far fa-comment"></i>
+                            <span>45</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-retweet"></i>
+                            <span>84</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Penilaian Otomatis -->
+            <div id="penilaian-section" class="bg-white rounded-xl shadow-sm p-6 hidden">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <h2 class="text-xl md:text-2xl font-bold flex items-center gap-3">
+                        <i class="fas fa-chart-bar text-primary text-xl"></i>
+                        Cek Kualitas Kontenmu
+                    </h2>
+                    <button id="check-content-btn" class="mt-2 md:mt-0 bg-primary hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition flex items-center gap-2">
+                        <i class="fas fa-search"></i> Periksa Konten
+                    </button>
+                </div>
+
+                <div id="penilaian-result" class="mt-6 hidden">
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-green-500 rounded-full w-20 h-20 flex items-center justify-center text-white text-xl font-bold">
+                                <span id="quality-score">84%</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-1">Konten Edukatif <i class="fas fa-hands-clapping text-yellow-500"></i></h3>
+                                <p class="text-green-700" id="quality-feedback">Bagus! Kontenmu sudah informatif dan menarik</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h4 class="font-bold mb-2">Poin Penguatan:</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                    <span>Bahasa sudah sopan dan komunikatif</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                    <span>Penyampaian fakta sudah jelas</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-exclamation-circle text-accent mt-1"></i>
+                                    <span>Perlu sedikit penyesuaian untuk membuat kalimat lebih ringkas</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pengumpulan Konten -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mt-4">
+                <h2 class="text-xl md:text-2xl font-bold flex items-center gap-3">
+                    <i class="fas fa-paper-plane text-primary text-xl"></i>
+                    Pengumpulan Konten
+                </h2>
+                
+                <div class="mt-4 space-y-6">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Unggah Gambar/Infografis:</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 flex flex-col items-center justify-center">
+                            <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500 text-center">Seret & lepas file gambar/desain di sini<br>atau</p>
+                            <button class="mt-3 bg-accent hover:bg-amber-500 text-white font-medium py-2 px-4 rounded-lg transition">
+                                Pilih File
+                            </button>
+                            <p class="text-xs text-gray-500 mt-2">Format: JPG, PNG (max. 5MB)</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2">Tautan Canva (opsional):</label>
+                        <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="https://">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2">Caption Final:</label>
+                        <textarea id="input-final" maxlength="300" class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Tulis caption untuk kontenmu..."></textarea>
+                        <div id="char-counter-final" class="char-counter">0/300</div>
+                    </div>
+                    
+                    <button onclick="kirimInput()" class="w-full bg-gradient-to-r from-primary to-[#1a4aff] hover:from-blue-600 hover:to-blue-800 text-white font-bold py-3 rounded-lg transition flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i> Kirim Konten Saya
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="bg-indigo-50 rounded-xl p-6 text-center">
+            <h3 class="text-xl font-bold text-indigo-800 mb-3">Ready to Create Your Educational Content?</h3>
+            <p class="text-indigo-600 mb-4">Start applying these principles to make impactful digital content!</p>
+            <button class="gradient-bg text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition">
+                <i class="fas fa-rocket mr-2"></i> Get Started
+            </button>
+        </div>
+    </div>
+
+    <footer class="gradient-bg text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-twitter text-xl"></i></a>
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-facebook text-xl"></i></a>
+                <a href="#" class="hover:text-yellow-200"><i class="fab fa-linkedin text-xl"></i></a>
+            </div>
+            <p class="text-sm opacity-80">© 2023 Digital Education Content Guide. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+       // Character count for textarea
+        const textarea = document.getElementById('content-editor');
+        const characterCount = document.getElementById('char-counter');
+        
+        textarea.addEventListener('input', function() {
+            const count = this.value.length;
+            characterCount.textContent = `${count}/300`;
+            
+            // Change color when approaching limit
+            if (count >= 300) {
+                characterCount.classList.add('text-red-500');
+                characterCount.classList.remove('text-gray-500');
+            } else {
+                characterCount.classList.add('text-gray-500');
+                characterCount.classList.remove('text-red-500');
+            }
+        }); 
+
+        // Character count for textarea final
+        const textareafinal = document.getElementById('input-final');
+        const characterCountfinal = document.getElementById('char-counter-final');
+        
+        textareafinal.addEventListener('input', function() {
+            const count = this.value.length;
+            characterCountfinal.textContent = `${count}/300`;
+            
+            // Change color when approaching limit
+            if (count >= 300) {
+                characterCountfinal.classList.add('text-red-500');
+                characterCountfinal.classList.remove('text-gray-500');
+            } else {
+                characterCountfinal.classList.add('text-gray-500');
+                characterCountfinal.classList.remove('text-red-500');
+            }
+        }); 
+
+        //Judul Preview
+        const judulInput = document.getElementById('inputJudul');
+        const judulPreview = document.getElementById('preview-title');
+        
+        judulInput.addEventListener('input', () => {
+            judulPreview.textContent = judulInput.value || 'Judul Konten Anda';
+        });
+
+        //Isi preview
+        const isiInput = document.getElementById('content-editor');
+        const isiPreview = document.getElementById('preview-text');
+        
+        isiInput.addEventListener('input', () => {
+            isiPreview.textContent = isiInput.value || 'Mulailah menulis konten edukasi Anda di langkah 2...';
+        });
+
+        //Modal Berhasil Kirim
+
+        function kirimInput() {
+            const input = document.getElementById('input-final');
+
+            if (input.value.trim() === "") {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops!',
+                text: 'Input tidak boleh kosong.',
+                confirmButtonColor: '#f59e0b'
+            });
+            } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'Input berhasil dikirim.',
+                confirmButtonColor: '#3b82f6'
+            });
+
+            // Optional: reset input setelah terkirim
+            input.value = '';
+            }
+        }
+
+
+    </script>
+</body>
+</html>

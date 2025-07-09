@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deteksi Phishing - Zona Keamanan Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5FFF',
+                        accent: '#FDCB00',
+                        background: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9FA;
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .header-bg {
+            background: linear-gradient(135deg, #2D5FFF 0%, #1e40af 100%);
+        }
+        
+        .email-card {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #FDCB00;
+        }
+        
+        .tip-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checkbox-container label {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            display: block;
+            margin-bottom: 12px;
+        }
+        
+        .checkbox-container input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+        
+        .checkbox-container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+        
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: #FDCB00;
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .checkbox-container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 7px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+        
+        .answer-option {
+            transition: all 0.3s ease;
+        }
+        
+        .answer-option:hover {
+            background-color: #e0e7ff;
+            transform: scale(1.02);
+        }
+        
+        .explosion {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            pointer-events: none;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .explosion-content {
+            background-color: rgba(45, 95, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            animation: popIn 0.5s ease-out;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #FDCB00;
+            border-radius: 50%;
+            animation: firework 1s ease-out;
+            z-index: 10;
+        }
+        
+        @keyframes firework {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Explosion Animation Element -->
+    <div id="explosion" class="explosion hidden">
+        <div class="explosion-content">
+            <i class="fas fa-award text-6xl mb-4"></i>
+            <h2 class="text-3xl font-bold mb-4">Selamat!</h2>
+            <p class="text-xl">Anda berhasil mendeteksi email phishing dengan benar.</p>
+            <button id="close-explosion" class="mt-6 bg-accent text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-yellow-300 transition-all">Lanjutkan</button>
+        </div>
+    </div>
+
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="header-bg text-white">
+            <div class="container mx-auto px-4 py-8 md:py-12 text-center">
+                <div class="flex justify-center">
+                    <i class="fas fa-envelope text-5xl mb-4 animate-bounce"></i>
+                </div>
+                <h1 class="font-poppins font-bold text-3xl md:text-4xl lg:text-5xl">Deteksi Phishing</h1>
+                <p class="font-nunito text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto mt-4">
+                    Pelajari cara mengenali email palsu, link mencurigakan, dan lampiran berbahaya
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <!-- Apa itu Phishing? Section -->
+            <section class="mb-12 bg-white rounded-2xl p-6 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mr-4">
+                        <i class="fas fa-fish text-white text-2xl"></i>
+                    </div>
+                    <h2 class="font-poppins font-bold text-2xl text-gray-800">Apa itu Phishing?</h2>
+                </div>
+                <p class="font-nunito text-gray-700 text-lg md:text-xl leading-relaxed">
+                    Phishing adalah teknik penipuan digital dengan menyamar sebagai pihak terpercaya agar kamu menyerahkan data pribadi secara tidak sadar. Pelaku phishing biasanya mengirim email atau pesan yang tampak sah untuk mencuri informasi sensitif seperti kata sandi, nomor rekening, atau data kartu kredit.
+                </p>
+                <div class="mt-6 flex justify-center">
+                    <div class="bg-primary bg-opacity-10 rounded-xl p-4 max-w-lg">
+                        <p class="text-primary font-bold flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-3"></i>
+                            Indonesia menjadi negara dengan serangan phishing tertinggi di Asia Tenggara dengan 500+ kasus setiap bulan
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contoh Kasus Section -->
+            <section class="mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mr-4">
+                        <i class="fas fa-exclamation-circle text-white text-2xl"></i>
+                    </div>
+                    <h2 class="font-poppins font-bold text-2xl text-gray-800">Contoh Kasus Email Phishing</h2>
+                </div>
+                
+                <div class="bg-white email-card rounded-xl p-6 md:p-8 max-w-3xl mx-auto mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full mr-4"></div>
+                        <div>
+                            <p class="font-bold">Dukungan Amazon <span class="text-gray-500 font-normal">&lt;support@amazn.com&gt;</span></p>
+                            <p class="text-gray-600 text-sm">Kepada: pelanggan@email.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-b border-gray-200 py-4 my-4">
+                        <h3 class="font-bold text-xl text-red-600">Akun Anda Akan Ditutup Dalam 24 Jam</h3>
+                        <p class="mt-4 mb-6 text-gray-700">
+                            Kami mendeteksi aktivitas mencurigakan pada akun Amazon Anda. Untuk menghindari penutupan akun, segera verifikasi identitas Anda melalui link berikut:
+                        </p>
+                        <a href="#" id="phishing-link" class="inline-block bg-red-100 text-red-700 px-4 py-2 rounded-lg font-semibold mb-6">bit.ly/verifikasi-akun-amzn</a>
+                        <p class="text-gray-700">
+                            Jangan abaikan pesan ini! Akun Anda akan segera ditutup secara permanen jika tidak di verifikasi.
+                        </p>
+                        <p class="text-gray-700 mt-6">
+                            Hormat kami,<br>
+                            <strong>Tim Keamanan Amazon</strong>
+                        </p>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button class="text-blue-500 mr-4 hover:text-blue-700">
+                            <i class="fas fa-paperclip mr-2"></i>Lampiran (1)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="max-w-3xl mx-auto">
+                    <h3 class="font-bold text-xl text-gray-800 mb-4">Apa yang mencurigakan dari email ini?</h3>
+                    <div class="checkbox-container bg-blue-50 rounded-xl p-6">
+                        <label class="block font-nunito text-gray-700 text-lg mb-4">
+                            <input type="checkbox" class="phishing-checkbox" value="1">
+                            <span class="checkmark"></span>
+                            Penggunaan kata panik/ancaman
+                        </label>
+                        <label class="block font-nunito text-gray-700 text-lg mb-4">
+                            <input type="checkbox" class="phishing-checkbox" value="2">
+                            <span class="checkmark"></span>
+                            Alamat email pengirim (bukan dari domain resmi)
+                        </label>
+                        <label class="block font-nunito text-gray-700 text-lg mb-4">
+                            <input type="checkbox" class="phishing-checkbox" value="3">
+                            <span class="checkmark"></span>
+                            Tautan pendek tidak jelas dan mencurigakan
+                        </label>
+                        <label class="block font-nunito text-gray-700 text-lg">
+                            <input type="checkbox" class="phishing-checkbox" value="4">
+                            <span class="checkmark"></span>
+                            Ada kesalahan ketik pada email (penulisan "verifikasi")
+                        </label>
+                    </div>
+                    
+                    <div class="mt-6 flex justify-center">
+                        <button id="check-answers" class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg">
+                            Periksa Jawaban
+                        </button>
+                    </div>
+                    
+                    <div id="feedback" class="mt-6 hidden bg-blue-50 border-l-4 border-blue-500 p-4 text-blue-800"></div>
+                </div>
+            </section>
+
+            <!-- Tips Mendeteksi Section -->
+            <section class="mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mr-4">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h2 class="font-poppins font-bold text-2xl text-gray-800">Tips Mendeteksi Phishing</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="tip-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="w-16 h-16 rounded-xl bg-blue-100 text-primary flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-gray-800 mb-2">Jangan Klik Link Sembarangan</h3>
+                        <p class="text-gray-700">
+                            Selalu arahkan kursor ke link tanpa mengklik untuk melihat alamat tujuan yang sesungguhnya. Hati-hati dengan tautan pendek yang menyembunyikan URL asli.
+                        </p>
+                    </div>
+                    
+                    <div class="tip-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="w-16 h-16 rounded-xl bg-blue-100 text-primary flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-at"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-gray-800 mb-2">Cek Alamat Email & Domain</h3>
+                        <p class="text-gray-700">
+                            Perhatikan akhiran domain email. Email resmi biasanya menggunakan domain khusus perusahaan bukan domain umum seperti Gmail atau Yahoo.
+                        </p>
+                    </div>
+                    
+                    <div class="tip-card bg-white p-6 rounded-xl shadow-md">
+                        <div class="w-16 h-16 rounded-xl bg-blue-100 text-primary flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-file-download"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-gray-800 mb-2">Jangan Unduh Lampiran Tak Dikenal</h3>
+                        <p class="text-gray-700">
+                            Lampiran file eksekusi (.exe, .scr) dan dokumen makro (.docm, .xlsm) bisa mengandung malware. Verifikasi terlebih dahulu keamanan lampiran.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latihan Cepat Section -->
+            <section class="mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mr-4">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h2 class="font-poppins font-bold text-2xl text-gray-800">Latihan Cepat</h2>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 max-w-3xl mx-auto shadow-md">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6">Apa langkah paling aman saat menerima email mencurigakan?</h3>
+                    
+                    <div class="quiz-options grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <div class="answer-option cursor-pointer border-2 border-gray-200 p-4 rounded-xl">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex-shrink-0 mr-3"></div>
+                                <span>Langsung klik dan verifikasi</span>
+                            </div>
+                        </div>
+                        
+                        <div class="answer-option cursor-pointer border-2 border-gray-200 p-4 rounded-xl">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex-shrink-0 mr-3"></div>
+                                <span>Abaikan dan laporkan</span>
+                            </div>
+                        </div>
+                        
+                        <div class="answer-option cursor-pointer border-2 border-gray-200 p-4 rounded-xl">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex-shrink-0 mr-3"></div>
+                                <span>Balas email untuk bertanya</span>
+                            </div>
+                        </div>
+                        
+                        <div class="answer-option cursor-pointer border-2 border-gray-200 p-4 rounded-xl">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex-shrink-0 mr-3"></div>
+                                <span>Bagikan ke grup keluarga</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="quiz-feedback" class="hidden p-4 rounded-lg mb-6">
+                        <p class="font-bold"></p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="check-quiz" class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-all">Periksa Jawaban</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Navigation -->
+        <footer class="bg-gray-100">
+            <div class="container mx-auto px-4 py-8">
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="cardzonakeamanandigital.html">
+                    <button class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center transition-all shadow-md hover:shadow-lg">
+                        <i class="fas fa-thumbtack mr-2"></i> Kembali ke Modul Keamananan Digital
+                    </button>
+                </div>
+            </a>
+            </div>
+            <div class="border-t border-gray-300 py-4 text-center text-gray-600">
+                <p>© 2023 Modul Zona Keamanan Digital - Tim Pendidikan Cyber Security Indonesia</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Proses phishing link
+            const phishingLink = document.getElementById('phishing-link');
+            phishingLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('feedback').innerHTML = `
+                    <div class="flex items-start">
+                        <i class="fas fa-exclamation-triangle text-yellow-500 mt-1 mr-2"></i>
+                        <div>
+                            <p class="font-bold">Bahaya!</p>
+                            <p>Anda seharusnya tidak mengklik tautan mencurigakan tanpa verifikasi</p>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('feedback').classList.remove('hidden');
+                
+                // Show explosion animation with fireworks
+                document.getElementById('explosion').classList.remove('hidden');
+                createFireworks();
+            });
+            
+            // Proses checkbox jawaban
+            const checkAnswersBtn = document.getElementById('check-answers');
+            checkAnswersBtn.addEventListener('click', function() {
+                const checkboxes = document.querySelectorAll('.phishing-checkbox');
+                let allChecked = true;
+                let correctCount = 0;
+                
+                checkboxes.forEach(checkbox => {
+                    if(checkbox.value !== '2') {
+                        if(!checkbox.checked) allChecked = false;
+                        else correctCount++;
+                    } else {
+                        if(checkbox.checked) correctCount++;
+                        else allChecked = false;
+                    }
+                });
+                
+                const feedbackElement = document.getElementById('feedback');
+                
+                if(correctCount === 4) {
+                    feedbackElement.innerHTML = `
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <div>
+                                <p class="font-bold">Sangat Tepat!</p>
+                                <p>Semua tanda phishing pada email tersebut berhasil anda identifikasi. Anda sudah lebih siap menghadapi upaya phishing!</p>
+                            </div>
+                        </div>
+                    `;
+                    feedbackElement.classList.add('bg-green-50', 'border-l-4', 'border-green-500');
+                    feedbackElement.classList.remove('hidden');
+                    
+                    // Show celebration animation
+                    document.getElementById('explosion').classList.remove('hidden');
+                    createFireworks();
+                } else if(correctCount >= 2) {
+                    feedbackElement.innerHTML = `
+                        <div class="flex items-start">
+                            <i class="fas fa-info-circle text-blue-500 mt-1 mr-2"></i>
+                            <div>
+                                <p class="font-bold">Bagus!</p>
+                                <p>Anda menemukan ${correctCount} dari 4 tanda phishing. Perhatikan lagi alamat email pengirim dan kesalahan ketik.</p>
+                            </div>
+                        </div>
+                    `;
+                    feedbackElement.classList.add('bg-blue-50', 'border-l-4', 'border-blue-500');
+                    feedbackElement.classList.remove('hidden');
+                } else {
+                    feedbackElement.innerHTML = `
+                        <div class="flex items-start">
+                            <i class="fas fa-exclamation-circle text-red-500 mt-1 mr-2"></i>
+                            <div>
+                                <p class="font-bold">Perlu belajar lebih</p>
+                                <p>Sepertinya Anda perlu mempelajari lagi karakteristik email phishing. Perhatikan penggunaan ancaman, alamat email, tautan pendek, dan kesalahan ketik.</p>
+                            </div>
+                        </div>
+                    `;
+                    feedbackElement.classList.add('bg-red-50', 'border-l-4', 'border-red-500');
+                    feedbackElement.classList.remove('hidden');
+                }
+            });
+            
+            // Proses kuis
+            const quizOptions = document.querySelectorAll('.answer-option');
+            const checkQuizBtn = document.getElementById('check-quiz');
+            const quizFeedback = document.getElementById('quiz-feedback');
+            let selectedAnswer = null;
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    quizOptions.forEach(o => {
+                        o.classList.remove('border-blue-500', 'bg-blue-50');
+                        const circle = o.querySelector('.w-8');
+                        circle.classList.remove('border-blue-500');
+                        circle.classList.add('border-gray-300');
+                    });
+                    
+                    this.classList.add('border-blue-500', 'bg-blue-50');
+                    const circle = this.querySelector('.w-8');
+                    circle.classList.remove('border-gray-300');
+                    circle.classList.add('border-blue-500');
+                    
+                    selectedAnswer = this;
+                });
+            });
+            
+            checkQuizBtn.addEventListener('click', function() {
+                if(!selectedAnswer) {
+                    quizFeedback.innerHTML = '<p class="text-red-600">Silakan pilih jawaban terlebih dahulu!</p>';
+                    quizFeedback.classList.remove('hidden');
+                    return;
+                }
+                
+                const answerText = selectedAnswer.querySelector('span').textContent;
+                
+                if(answerText === "Abaikan dan laporkan") {
+                    quizFeedback.innerHTML = `
+                        <div class="flex items-center bg-green-50 border-l-4 border-green-500 p-4 rounded-lg">
+                            <i class="fas fa-check-circle text-green-500 text-2xl mr-4"></i>
+                            <div>
+                                <p class="font-bold text-green-800">Jawaban Tepat!</p>
+                                <p class="text-green-700">Mengabaikan dan melaporkan email mencurigakan adalah langkah paling aman untuk menghindari phishing dan malware.</p>
+                            </div>
+                        </div>
+                    `;
+                    quizFeedback.classList.remove('hidden');
+                    
+                    // Add a checkmark to the selected answer
+                    const circle = selectedAnswer.querySelector('.w-8');
+                    circle.classList.remove('border-blue-500');
+                    circle.classList.add('border-green-500', 'bg-green-500', 'text-white');
+                    circle.innerHTML = '<i class="fas fa-check"></i>';
+                    
+                    // Celebrate correct answer
+                    createFireworks();
+                } else {
+                    quizFeedback.innerHTML = `
+                        <div class="flex items-center bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
+                            <i class="fas fa-times-circle text-red-500 text-2xl mr-4"></i>
+                            <div>
+                                <p class="font-bold text-red-800">Jawaban kurang tepat</p>
+                                <p class="text-red-700">${answerText} dapat memperbesar risiko keamanan. Pilihan terbaik adalah mengabaikan dan melaporkan email mencurigakan.</p>
+                            </div>
+                        </div>
+                    `;
+                    quizFeedback.classList.remove('hidden');
+                }
+            });
+            
+            // Close explosion animation
+            document.getElementById('close-explosion').addEventListener('click', function() {
+                document.getElementById('explosion').classList.add('hidden');
+            });
+            
+            // Function to create fireworks effect
+            function createFireworks() {
+                const colors = ['#FDCB00', '#FF6B6B', '#4CAF50', '#9C27B0', '#3F51B5'];
+                
+                for(let i = 0; i < 25; i++) {
+                    setTimeout(() => {
+                        const firework = document.createElement('div');
+                        firework.classList.add('firework');
+                        
+                        // Random position
+                        const posX = Math.random() * window.innerWidth;
+                        const posY = Math.random() * window.innerHeight;
+                        firework.style.left = `${posX}px`;
+                        firework.style.top = `${posY}px`;
+                        
+                        // Random color
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+                        firework.style.backgroundColor = color;
+                        
+                        document.body.appendChild(firework);
+                        
+                        // Remove firework after animation completes
+                        setTimeout(() => {
+                            firework.remove();
+                        }, 1000);
+                    }, i * 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

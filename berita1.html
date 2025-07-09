@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Structure & Language Features</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: translateY(-5px);
+        }
+        .highlight {
+            position: relative;
+            z-index: 1;
+        }
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: #93c5fd;
+            opacity: 0.3;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        .highlight:hover::after {
+            height: 100%;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-3xl sm:text-4xl font-bold text-blue-800 mb-3">Understanding News</h1>
+            <p class="text-lg text-blue-600 max-w-2xl mx-auto">Learn the structure and language features of news articles to become a more critical reader</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- News Structure Section -->
+            <section class="bg-white p-6 rounded-xl shadow-md hover-scale">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                        <i class="fas fa-newspaper text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-blue-700">Struktur Teks Berita</h2>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Teks berita memiliki struktur yang khas dan sistematis. Pemahaman terhadap struktur ini penting agar kamu bisa membedakan mana informasi inti dan mana pendukungnya.
+                </p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                    <li class="highlight"><strong class="text-blue-600">Judul:</strong> Singkat, padat, menarik, dan mewakili isi berita.</li>
+                    <li class="highlight"><strong class="text-blue-600">Teras:</strong> Paragraf pembuka yang berisi informasi paling penting (5W+1H).</li>
+                    <li class="highlight"><strong class="text-blue-600">Isi:</strong> Penjabaran lebih lanjut, menyajikan kronologi, data, dan kutipan narasumber.</li>
+                </ul>
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                    <p class="text-blue-700 italic">"Dengan memahami struktur ini, kamu bisa membaca berita dengan lebih fokus dan kritis."</p>
+                </div>
+            </section>
+
+            <!-- Language Features Section -->
+            <section class="bg-white p-6 rounded-xl shadow-md hover-scale">
+                <div class="flex items-center mb-4">
+                    <div class="bg-purple-100 text-purple-600 p-3 rounded-full mr-4">
+                        <i class="fas fa-language text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-purple-700">Kaidah Kebahasaan dalam Berita</h2>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Bahasa dalam teks berita memiliki karakteristik khusus yang membedakannya dari jenis teks lainnya. Berikut ciri-ciri kebahasaan yang umum ditemukan:
+                </p>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                    <li class="highlight"><strong class="text-purple-600">Verba transitif:</strong> Kata kerja yang memerlukan objek (contoh: "Polisi menangkap pelaku").</li>
+                    <li class="highlight"><strong class="text-purple-600">Verba pewarta:</strong> Kata kerja yang mengindikasikan kutipan (contoh: "ujar", "jelas", "tutur").</li>
+                    <li class="highlight"><strong class="text-purple-600">Bahasa baku:</strong> Menggunakan kaidah bahasa Indonesia yang benar dan formal.</li>
+                    <li class="highlight"><strong class="text-purple-600">Kalimat langsung/tidak langsung:</strong> Untuk menyampaikan pernyataan narasumber.</li>
+                </ul>
+                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                    <p class="text-purple-700 italic">"Memahami kaidah kebahasaan membantu kamu menganalisis keakuratan dan objektivitas sebuah berita."</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Additional Info Section -->
+        <section class="mt-12 bg-white p-6 rounded-xl shadow-md">
+            <div class="flex items-center mb-4">
+                <div class="bg-green-100 text-green-600 p-3 rounded-full mr-4">
+                    <i class="fas fa-lightbulb text-xl"></i>
+                </div>
+                <h2 class="text-xl font-bold text-green-700">Tips Membaca Berita Secara Kritis</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-green-700 mb-2 flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i> Verifikasi Sumber
+                    </h3>
+                    <p class="text-gray-700">Selalu periksa kredibilitas sumber berita dan bandingkan dengan media lain.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-green-700 mb-2 flex items-center">
+                        <i class="fas fa-search mr-2"></i> Identifikasi Bias
+                    </h3>
+                    <p class="text-gray-700">Waspadai bahasa yang emosional atau cenderung memihak.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-green-700 mb-2 flex items-center">
+                        <i class="fas fa-question-circle mr-2"></i> Ajukan Pertanyaan
+                    </h3>
+                    <p class="text-gray-700">Siapa yang diuntungkan? Apa yang tidak disebutkan?</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-green-700 mb-2 flex items-center">
+                        <i class="fas fa-clock mr-2"></i> Periksa Waktu
+                    </h3>
+                    <p class="text-gray-700">Pastikan berita masih relevan dan bukan informasi usang.</p>
+                </div>
+            </div>
+        </section>
+        tombol kembali
+    </div>
+
+    <script>
+        document.getElementById('quizBtn').addEventListener('click', function() {
+            alert('Fitur kuis akan segera hadir! Tetap pantau untuk pembaruan.');
+        });
+    </script>
+</body>
+</html>

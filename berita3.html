@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumber dan Kredibilitas Informasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse-hover:hover {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .highlight-box {
+            position: relative;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 0.75rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .highlight-box:hover::before {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-3xl w-full">
+        <!-- Main Card -->
+        <section class="bg-white p-6 rounded-xl shadow-lg mb-10 highlight-box transition-all duration-300">
+            <!-- Header -->
+            <div class="flex items-center mb-6">
+                <div class="bg-gradient-to-br from-purple-100 to-indigo-100 text-purple-600 p-3 rounded-full mr-4 shadow-sm">
+                    <i class="fas fa-shield-alt text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-purple-600">Sumber dan Kredibilitas Informasi</h2>
+                    <p class="text-sm text-purple-400">Panduan mengenali berita kredibel</p>
+                </div>
+            </div>
+
+            <div class="border-l-4 border-purple-200 pl-4 mb-6">
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Tidak semua berita berasal dari sumber yang kredibel. Dalam dunia digital yang penuh dengan informasi viral, kemampuan untuk menilai sumber informasi menjadi sangat penting. Berita yang berasal dari sumber tidak jelas berisiko menyebarkan informasi menyesatkan.
+                </p>
+            </div>
+
+            <!-- Grid Layout for Lists -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <h3 class="text-purple-700 font-semibold mb-3 flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i> Sumber Kredibel
+                    </h3>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2 text-sm">
+                        <li>Terverifikasi dan memiliki reputasi baik</li>
+                        <li>Menyebut nama institusi/jurnalis secara jelas</li>
+                        <li>Dapat ditelusuri kembali sumbernya</li>
+                        <li>Memiliki rekam jejak jurnalistik yang baik</li>
+                    </ul>
+                </div>
+
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <h3 class="text-red-700 font-semibold mb-3 flex items-center">
+                        <i class="fas fa-exclamation-triangle mr-2"></i> Sumber Tidak Kredibel
+                    </h3>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2 text-sm">
+                        <li>Menggunakan istilah bombastis dan sensasional</li>
+                        <li>Sumber anonim tanpa identitas jelas</li>
+                        <li>Tidak mencantumkan bukti atau referensi</li>
+                        <li>Domain mencurigakan (bukan .com/.co.id)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                <h3 class="text-blue-700 font-semibold mb-2 flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i> Jenis Sumber
+                </h3>
+                <div class="flex flex-wrap gap-4">
+                    <div class="flex-1 min-w-[200px]">
+                        <h4 class="text-blue-600 text-sm font-medium">Sumber Primer</h4>
+                        <p class="text-gray-700 text-sm">Narasumber langsung, laporan resmi, konferensi pers, dan data statistik dari institusi kredibel.</p>
+                    </div>
+                    <div class="flex-1 min-w-[200px]">
+                        <h4 class="text-blue-600 text-sm font-medium">Sumber Sekunder</h4>
+                        <p class="text-gray-700 text-sm">Interpretasi atau kutipan dari media lain atau narasumber tak langsung.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-gray-700 mt-4 mb-6 leading-relaxed">
+                Dengan mengenali kredibilitas sumber, kamu bisa menyaring informasi dan menghindari penyebaran berita palsu. Selalu verifikasi sebelum membagikan informasi.
+            </p>
+
+            <!-- Button and Expandable Content -->
+            <div class="mt-6">
+                <button onclick="toggleMoreMaterial()"
+                    class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-full hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-md pulse-hover flex items-center mx-auto">
+                    <i class="fas fa-book-open mr-2"></i> Pelajari Lebih Lanjut
+                </button>
+
+                <div id="moreMaterial" class="hidden mt-6 fade-in">
+                    <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-5 rounded-xl shadow-inner border border-purple-100">
+                        <h3 class="text-purple-700 font-semibold mb-3 text-lg flex items-center">
+                            <i class="fas fa-search mr-2"></i> Tips Mengecek Sumber Informasi
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-3 rounded-lg shadow-sm flex items-start">
+                                <div class="bg-purple-100 text-purple-600 p-2 rounded-full mr-3">
+                                    <i class="fas fa-globe text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-purple-600 font-medium text-sm">Telusuri Nama Situs</h4>
+                                    <p class="text-gray-700 text-xs">Cek apakah memiliki halaman resmi dan kontak yang jelas.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-3 rounded-lg shadow-sm flex items-start">
+                                <div class="bg-purple-100 text-purple-600 p-2 rounded-full mr-3">
+                                    <i class="fas fa-user-edit text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-purple-600 font-medium text-sm">Identitas Penulis</h4>
+                                    <p class="text-gray-700 text-xs">Cari tahu siapa penulisnya dan rekam jejaknya.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-3 rounded-lg shadow-sm flex items-start">
+                                <div class="bg-purple-100 text-purple-600 p-2 rounded-full mr-3">
+                                    <i class="fas fa-newspaper text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-purple-600 font-medium text-sm">Cross-Check Media</h4>
+                                    <p class="text-gray-700 text-xs">Periksa apakah dilaporkan oleh media arus utama.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-3 rounded-lg shadow-sm flex items-start">
+                                <div class="bg-purple-100 text-purple-600 p-2 rounded-full mr-3">
+                                    <i class="fas fa-tools text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-purple-600 font-medium text-sm">Gunakan Alat Bantu</h4>
+                                    <p class="text-gray-700 text-xs"> <a href= "https://toolbox.google.com/factcheck/explorer/search/list:recent;hl=in"></a>Google Fact Check atau TurnBackHoax.id.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded-r">
+                            <div class="flex items-start">
+                                <div class="text-yellow-600 mr-2">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <p class="text-yellow-800 text-sm">Waspadai media yang terlalu sering menampilkan judul sensasional tanpa isi yang sesuai.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Additional Resources -->
+        <div class="bg-white p-4 rounded-xl shadow-md">
+            <h3 class="text-purple-600 font-semibold mb-3 flex items-center">
+                <i class="fas fa-link mr-2"></i> Sumber Tambahan
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a href="https://originality.ai/" class="text-sm text-purple-600 hover:text-purple-800 flex items-center">
+                    <i class="fas fa-external-link-alt mr-2 text-xs"></i> Originality.ai
+                </a>
+                <a href="https://turnbackhoax.id/" class="text-sm text-purple-600 hover:text-purple-800 flex items-center">
+                    <i class="fas fa-external-link-alt mr-2 text-xs"></i> TurnBackHoax.id
+                </a>
+                <a href="https://toolbox.google.com/factcheck/explorer/search/list:recent;hl=in" class="text-sm text-purple-600 hover:text-purple-800 flex items-center">
+                    <i class="fas fa-external-link-alt mr-2 text-xs"></i> Google Fact Check Tools
+                </a>
+            </div>
+        </div>
+        tombol kembali
+    </div>
+
+    <script>
+        function toggleMoreMaterial() {
+            const box = document.getElementById('moreMaterial');
+            box.classList.toggle('hidden');
+            
+            // Smooth scroll to the expanded content
+            if (!box.classList.contains('hidden')) {
+                box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+        
+        // Add animation to cards on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.highlight-box');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

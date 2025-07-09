@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Literasi | Lingkasa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #F8F9FA;
+        }
+        .tab-active {
+            color: #2D5FFF;
+            border-bottom: 3px solid #FDCB00;
+        }
+        .tab-inactive {
+            color: #3A3A3A;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #E5E7EB;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background-color: #2D5FFF;
+            width: 30%;
+        }
+        .sidebar-link:hover {
+            background-color: #F8F9FA;
+        }
+        .social-icon:hover {
+            color: #FDCB00;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-[#2D5FFF] h-16 flex items-center px-6 text-white">
+        <div class="flex items-center space-x-4 w-full">
+            <!-- Logo -->
+            <div class=" relative w-12 h-12">
+               <img src="LingPNG.png">
+            </div>
+            <span class="font-bold ml-1 text-xl">Bedah Berita</span>
+            
+            <!-- Page Title -->
+            <h1 class="text-2xl font-bold flex-grow text-center"></h1>
+            
+            <!-- User Controls -->
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-bell text-xl"></i>
+                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+                    <i class="fas fa-user text-[#2D5FFF]"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-[#F8F9FA] px-6 py-3 border-b border-[#FDCB00]">
+        <p class="text-sm text-[#3A3A3A]"><a href="LINGKASAEDU (1).html" class="text-blue-500 hover:underline">Beranda</a><a href="#areapembelajararan" class="text-blue-500 hover:underline"></a> / Modul Literasi</p>
+        <!-- <div class="absolute bottom-0 left-0 right-0 h-1 bg-[#FDCB00]"></div> -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex flex-1">
+        <!-- Sidebar -->
+        <div class="hidden md:block w-56 bg-white border-r border-[#E0E0E0] p-4">
+            <div class="mb-8">
+                <h3 class="text-[#3A3A3A] font-bold mb-3">Statistik Belajar</h3>
+                <div class="flex items-center mb-2">
+                    <i class="fas fa-book text-[#2D5FFF] mr-2"></i>
+                    <span class="text-sm">Jumlah Modul Selesai: 2/5</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-bookmark text-[#2D5FFF] mr-2"></i>
+                    <span class="text-sm">Level Literasi: 3</span>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-[#3A3A3A] font-bold mb-3">Link Cepat Fitur Lain</h3>
+                <a href="Kontenadd.html" class="sidebar-link flex items-center p-2 rounded mb-2 text-sm">
+                    <i class="fas fa-comment text-green-500 mr-2"></i>
+                    <span>Konten Edukasi Digital</span>
+                </a>
+                <a href="Analisisadd.html" class="sidebar-link flex items-center p-2 rounded mb-2 text-sm">
+                    <i class="fas fa-shield-alt text-[#FDCB00] mr-2"></i>
+                    <span>Analisis dan Visualisasi Data</span>
+                </a>
+                <a href="cardmodulliterasi.html" class="sidebar-link flex items-center p-2 rounded text-sm">
+                    <i class="fas fa-search text-red-500 mr-2"></i>
+                    <span>Modul Literasi</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="flex-1 p-6 md:p-8 overflow-y-auto">
+            <!-- Section 1: Kategori Materi -->
+            <section class="mb-12">
+                <h2 class="text-xl font-bold text-[#3A3A3A] mb-6">Kategori Materi</h2>
+                <div class="flex flex-col md:flex-row gap-6"> 
+                    <!-- Card 1 -->
+                    <div class="category-card bg-white p-6 rounded-lg shadow-md transition-all duration-300 md:w-[48%]">
+                        <div class="flex items-start mb-4">
+                            <span class="text-3xl mr-3">🔍</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#2D5FFF]">Struktur Berita</h3>
+                                <p class="text-[#3A3A3A] mt-2">Pelajari Kunci Penulisan Berita Agar mudah dipahami Pembaca </p>
+                            </div>
+                        </div>
+                        <a href="berita1.html">
+                        <button class="mt-4 bg-[#FDCB00] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#e6b800] transition-colors">
+                            Jelajahi Materi
+                        </button>
+                    </a>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="category-card bg-white p-6 rounded-lg shadow-md transition-all duration-300 md:w-[48%]">
+                        <div class="flex items-start mb-4">
+                            <span class="text-3xl mr-3" style="color: #E53E3E;">✍️</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#2D5FFF]">Kaidah Kebahasaan </h3>
+                                <p class="text-[#3A3A3A] mt-2"> Pelajari ciri khas bahasa yang digunakan dalam teks berita untuk meningkatkan literasi media</p>
+                            </div>
+                        </div>
+                        <a href="Berita2.html">
+                        <button class="mt-4 bg-[#FDCB00] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#e6b800] transition-colors">
+                            Jelajahi Materi
+                        </button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-6 mt-6"> 
+                    <!-- Card 3 -->
+                    <div class="category-card bg-white p-6 rounded-lg shadow-md transition-all duration-300 md:w-[48%]">
+                        <div class="flex items-start mb-4">
+                            <span class="text-3xl mr-3">🔍</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#2D5FFF]">Sumber Kredibilitas</h3>
+                                <p class="text-[#3A3A3A] mt-2">Panduan Mengenali Berita Kredibel.</p>
+                            </div>
+                        </div>
+                        <a href="berita3.html">
+                        <button class="mt-4 bg-[#FDCB00] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#e6b800] transition-colors">
+                            Jelajahi Materi
+                        </button>
+                    </a>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="category-card bg-white p-6 rounded-lg shadow-md transition-all duration-300 md:w-[48%]">
+                        <div class="flex items-start mb-4">
+                            <span class="text-3xl mr-3">🔍</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#2D5FFF]">Latihan Identifikasi Struktur Berita</h3>
+                                <p class="text-[#3A3A3A] mt-2">Asah Keterampilan Analisis dan Ketepatanmu.</p>
+                            </div>
+                        </div>
+                        <a href="Berita4.html">
+                        <button class="mt-4 bg-[#FDCB00] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#e6b800] transition-colors">
+                            Jelajahi Kuis
+                        </button>
+                    </a>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="category-card bg-white p-6 rounded-lg shadow-md transition-all duration-300 md:w-[48%]">
+                        <div class="flex items-start mb-4">
+                            <span class="text-3xl mr-3">🔍</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#2D5FFF]">Latihan Menulis Objektif</h3>
+                                <p class="text-[#3A3A3A] mt-2">Asah Keterampilan Analisis dan Ketepatanmu.</p>
+                            </div>
+                        </div>
+                        <a href="Berita5.html">
+                        <button class="mt-4 bg-[#FDCB00] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#e6b800] transition-colors">
+                            Jelajahi Kuis
+                        </button>
+                    </a>
+                    </div>
+                    
+            
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-6 mt-6"> 
+ 
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-6 mt-6"> 
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-6 mt-6"> 
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#F8F9FA] py-4 px-6 text-[#3A3A3A] text-sm">
+        <div class="flex justify-between items-center">
+            <p>© 2025 Lingkasa – Literasi Bahasa dan Komunikasi di Era Digital.</p>
+            <div class="flex space-x-4">
+                <a href="#" class="social-icon text-[#3A3A3A] hover:text-[#FDCB00] transition-colors">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon text-[#3A3A3A] hover:text-[#FDCB00] transition-colors">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon text-[#3A3A3A] hover:text-[#FDCB00] transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function changeTab(tabIndex) {
+            // Update tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach((button, index) => {
+                if (index === tabIndex) {
+                    button.classList.remove('tab-inactive');
+                    button.classList.add('tab-active');
+                } else {
+                    button.classList.remove('tab-active');
+                    button.classList.add('tab-inactive');
+                }
+            });
+            
+            // Update tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach((content, index) => {
+                if (index === tabIndex) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</html>

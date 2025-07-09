@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical vs Unethical Comments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .comment-card {
+            transition: all 0.3s ease;
+        }
+        .comment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .ethical {
+            border-left: 4px solid #10B981;
+        }
+        .unethical {
+            border-left: 4px solid #EF4444;
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <section class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-10 relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-red-100 opacity-20"></div>
+            <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-green-100 opacity-20"></div>
+            
+            <div class="relative z-10">
+                <div class="flex items-center mb-6">
+                    <div class="bg-red-100 text-red-600 p-3 rounded-full mr-4 pulse-animation">
+                        <i class="fas fa-balance-scale text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-red-600">Komentar Etis vs Komentar Tidak Etis</h2>
+                        <p class="text-gray-500 text-sm">Pelajari perbedaan antara umpan balik yang membangun dan yang merugikan</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Ethical Comment -->
+                    <div class="comment-card ethical bg-gray-50 p-6 rounded-lg border-l-4 border-green-500">
+                        <div class="flex items-start mb-3">
+                            <div class="bg-green-100 text-green-600 p-2 rounded-full mr-3">
+                                <i class="fas fa-check-circle text-lg"></i>
+                            </div>
+                            <h3 class="font-semibold text-green-600 text-lg">Komentar Etis</h3>
+                        </div>
+                        <div class="pl-11">
+                            <p class="text-gray-700 mb-4">"Terima kasih telah berbagi perspektif Anda. Mungkin Anda dapat menambahkan beberapa data pendukung untuk memperkuat argumen Anda."</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-thumbs-up text-green-500 mr-2"></i>
+                                <span>Konstruktif</span>
+                                <i class="fas fa-heart text-green-500 mx-2"></i>
+                                <span>Hormat</span>
+                                <i class="fas fa-lightbulb text-green-500 ml-2"></i>
+                                <span>Bermanfaat</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Unethical Comment -->
+                    <div class="comment-card unethical bg-gray-50 p-6 rounded-lg border-l-4 border-red-500">
+                        <div class="flex items-start mb-3">
+                            <div class="bg-red-100 text-red-600 p-2 rounded-full mr-3">
+                                <i class="fas fa-times-circle text-lg"></i>
+                            </div>
+                            <h3 class="font-semibold text-red-600 text-lg">Komentar Tidak Etis</h3>
+                        </div>
+                        <div class="pl-11">
+                            <p class="text-gray-700 mb-4">"Pendapat Anda benar-benar konyol dan tidak masuk akal sama sekali!"</p>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-thumbs-down text-red-500 mr-2"></i>
+                                <span>Merusak</span>
+                                <i class="fas fa-angry text-red-500 mx-2"></i>
+                                <span>Agresif</span>
+                                <i class="fas fa-ban text-red-500 ml-2"></i>
+                                <span> Berbahaya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-3">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-blue-600 mb-1">Tips untuk Berkomentar secara Etis</h4>
+                            <p class="text-gray-700 text-sm">Fokuslah pada ide, bukan pada orangnya. Berikan kritik yang membangun. Gunakan pernyataan "saya". Bersikaplah hormat bahkan ketika tidak setuju.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Additional examples section -->
+        <section class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-6">Contoh Lainnya</h3>
+            
+            <div class="space-y-4">
+                <!-- Example 1 -->
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="ethical flex-1 bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="font-medium text-green-600">Etis</span>
+                        </div>
+                        <p class="text-gray-700">"Saya menghargai usaha Anda, tetapi saya melihat sesuatu dengan cara yang berbeda karena [alasan]. Apa pendapat Anda tentang alternatif ini?"</p>
+                    </div>
+                    <div class="unethical flex-1 bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            <span class="font-medium text-red-600">Tidak Etis</span>
+                        </div>
+                        <p class="text-gray-700">"Hanya orang bodoh yang berpikir seperti itu. Anda jelas tidak tahu apa yang Anda bicarakan."</p>
+                    </div>
+                </div>
+                
+                <!-- Example 2 -->
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="ethical flex-1 bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="font-medium text-green-600">Etis</span>
+                        </div>
+                        <p class="text-gray-700">"Itu poin yang menarik. Sudahkah Anda mempertimbangkan faktor lain yang dapat mengimbangi?"</p>
+                    </div>
+                    <div class="unethical flex-1 bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            <span class="font-medium text-red-600">Tidak Etis</span>
+                        </div>
+                        <p class="text-gray-700">"Ini adalah hal terbodoh yang pernah saya baca sepanjang hari. Hapus saja ini."</p>
+                    </div>
+                </div>
+                
+                <!-- Example 3 -->
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="ethical flex-1 bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span class="font-medium text-green-600">Etis</span>
+                        </div>
+                        <p class="text-gray-700">"Saya mengerti dari mana Anda berasal, tetapi pengalaman saya berbeda. Inilah alasannya..."</p>
+                    </div>
+                    <div class="unethical flex-1 bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            <span class="font-medium text-red-600">Tidak Etis</span>
+                        </div>
+                        <p class="text-gray-700">"Tidak ada yang peduli dengan pendapat bodoh Anda. Diamlah!"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-heart mr-2"></i> Sebarkan Kebaikan Secara Online
+                </button>
+            </div>
+        </section>
+        <section class="flex flex-col sm:flex-row justify-between gap-4 mb-12">
+    <div class="container mx-auto px-4 py-8">
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="cardkomentarmucerminanmu.html">
+                    <button class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center transition-all shadow-md hover:shadow-lg">
+                        <i class="fas fa-thumbtack mr-2"></i> Kembali ke Modul
+                    </button>
+                </div>
+            </a>
+    </section>
+    </div>
+</body>
+</html>

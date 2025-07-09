@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empat Pilar Literasi Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #3b82f6;
+            --pink: #ec4899;
+            --green: #10b981;
+            --red: #ef4444;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .bg-blob {
+            position: absolute;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        
+        .blob-blue {
+            background: var(--blue);
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+        
+        .blob-pink {
+            background: var(--pink);
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            left: -150px;
+        }
+        
+        .blob-green {
+            background: var(--green);
+            width: 250px;
+            height: 250px;
+            top: 50%;
+            left: 10%;
+        }
+        
+        .blob-red {
+            background: var(--red);
+            width: 350px;
+            height: 350px;
+            bottom: -100px;
+            right: 10%;
+        }
+        
+        .card {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+        
+        .card-blue {
+            box-shadow: 0 20px 30px -10px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        }
+        
+        .card-pink {
+            box-shadow: 0 20px 30px -10px rgba(236, 72, 153, 0.3);
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+        }
+        
+        .card-green {
+            box-shadow: 0 20px 30px -10px rgba(16, 185, 129, 0.3);
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+        }
+        
+        .card-red {
+            box-shadow: 0 20px 30px -10px rgba(239, 68, 68, 0.3);
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+        }
+        
+        .icon-container {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover .icon-container {
+            transform: scale(1.1) translateY(-5px);
+        }
+        
+        .tag {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover .tag {
+            transform: translateY(-3px);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+      
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Background blobs -->
+    <div class="bg-blob blob-blue"></div>
+    <div class="bg-blob blob-pink"></div>
+    <div class="bg-blob blob-green"></div>
+    <div class="bg-blob blob-red"></div>
+    
+    <div class="container mx-auto px-4 py-12 md:py-20">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <div class="flex items-center justify-center mb-4">
+                <h1 class="gradient-text text-4xl md:text-6xl font-bold mb-2">Empat Pilar Literasi Digital</h1>
+                <div class="ml-4 text-4xl text-purple-500 pulse">
+                    <i class="fas fa-globe-asia"></i>
+                </div>
+            </div>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                Membangun kompetensi digital masyarakat Indonesia melalui empat pilar fundamental untuk menghadapi era transformasi digital.
+            </p>
+        </header>
+        
+        <!-- Cards Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <!-- Digital Skills Card -->
+            <div class="card card-blue rounded-2xl p-6">
+                <div class="icon-container text-blue-500 text-5xl mb-6 text-center">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Digital Skills</h3>
+                <p class="text-gray-600 mb-4 text-center">
+                    Kemampuan menggunakan perangkat digital, aplikasi, dan platform untuk berkomunikasi, berkolaborasi, dan menciptakan konten.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Teknologi</span>
+                    <span class="tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Aplikasi</span>
+                    <span class="tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Koding</span>
+                </div>
+            </div>
+            
+            <!-- Digital Culture Card -->
+            <div class="card card-pink rounded-2xl p-6">
+                <div class="icon-container text-pink-500 text-5xl mb-6 text-center">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Digital Culture</h3>
+                <p class="text-gray-600 mb-4 text-center">
+                    Budaya bermedia digital yang mencerminkan nilai-nilai Pancasila dan Bhinneka Tunggal Ika dalam kehidupan sehari-hari.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="tag bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Pancasila</span>
+                    <span class="tag bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Budaya</span>
+                    <span class="tag bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Kolaborasi</span>
+                </div>
+            </div>
+            
+            <!-- Digital Ethics Card -->
+            <div class="card card-green rounded-2xl p-6">
+                <div class="icon-container text-green-500 text-5xl mb-6 text-center">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Digital Ethics</h3>
+                <p class="text-gray-600 mb-4 text-center">
+                    Etika dalam berkomunikasi dan berinteraksi di dunia digital, termasuk memahami hak digital dan kewajiban digital.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Etika</span>
+                    <span class="tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Hak Digital</span>
+                    <span class="tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Tanggung Jawab</span>
+                </div>
+            </div>
+            
+            <!-- Digital Safety Card -->
+            <div class="card card-red rounded-2xl p-6">
+                <div class="icon-container text-red-500 text-5xl mb-6 text-center">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Digital Safety</h3>
+                <p class="text-gray-600 mb-4 text-center">
+                    Kemampuan melindungi diri dari berbagai ancaman digital seperti penipuan, peretasan, hoaks, dan konten negatif.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Keamanan</span>
+                    <span class="tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Privasi</span>
+                    <span class="tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Proteksi</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="text-center">
+            <button class="btn-learn-more text-white font-semibold px-8 py-3 rounded-full shadow-lg">
+                Pelajari Lebih Lanjut
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Add ripple effect to button
+        document.querySelector('.btn-learn-more').addEventListener('click', function(e) {
+            // Create ripple element
+            const ripple = document.createElement('span');
+            ripple.classList.add('absolute', 'rounded-full', 'bg-white', 'animate-ripple');
+            
+            // Set position
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+            ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+            
+            // Add to button
+            this.appendChild(ripple);
+            
+            // Remove after animation
+            setTimeout(() => ripple.remove(), 1000);
+            
+            // You can add navigation or modal opening logic here
+            alert('Anda akan diarahkan ke materi lengkap tentang Empat Pilar Literasi Digital');
+        });
+        
+        // Add animation to cards on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

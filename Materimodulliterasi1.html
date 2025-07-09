@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengenali Informasi Valid - Platform LINGKASA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5FFF',
+                        accent: '#FDCB00',
+                        background: '#F8F9FA',
+                        dark: '#3A3A3A'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'lingkasa': '0 4px 12px rgba(0, 0, 0, 0.07)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #F8F9FA;
+            color: #3A3A3A;
+        }
+        
+        .header-gradient {
+            background: linear-gradient(135deg, #2D5FFF 0%, #1a3cce 100%);
+        }
+        
+        .lingkasa-card {
+            border-radius: 1rem;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .lingkasa-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+        }
+        
+        .principles-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 24px;
+        }
+        
+        .checklist-card li {
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-card li:hover {
+            background-color: rgba(253, 203, 0, 0.07);
+            transform: translateX(5px);
+        }
+        
+        .news-example {
+            border-left: 4px solid #2D5FFF;
+            padding-left: 20px;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .news-example:before {
+            content: '"';
+            font-size: 80px;
+            position: absolute;
+            left: -10px;
+            top: -25px;
+            color: rgba(45, 95, 255, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .truth-button {
+            transition: all 0.2s ease;
+        }
+        
+        .truth-button:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        
+        .accuracy-circle {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .circle-bg, .circle-progress {
+            fill: none;
+            stroke-width: 10;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        
+        .circle-bg {
+            stroke: #F0F0F0;
+        }
+        
+        .circle-progress {
+            stroke: #FDCB00;
+            stroke-dasharray: 283;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease;
+        }
+        
+        .nav-button {
+            transition: all 0.3s ease;
+            border-radius: 50px;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background flex flex-col">
+    <!-- Header Section -->
+    <header class="header-gradient text-white px-4 py-10 sm:px-10 md:px-20">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="w-14 h-14 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                    <span class="text-2xl">🔍</span>
+                </div>
+                <h1 class="font-poppins text-3xl md:text-4xl font-bold">Mengenali Informasi Valid</h1>
+            </div>
+            <p class="text-lg md:text-xl font-nunito max-w-2xl opacity-90">
+                Pelajari cara membedakan sumber terpercaya dari misinformasi di ruang digital
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow px-4 py-10 sm:px-6 md:px-8">
+        <div class="max-w-5xl mx-auto">
+            <!-- Principles Section -->
+            <section class="mb-16">
+                <h2 class="font-poppins text-2xl font-semibold mb-8 text-dark text-center">3 Prinsip Validitas Informasi</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Principle 1 -->
+                    <div class="lingkasa-card p-6 flex flex-col">
+                        <div class="principles-icon bg-primary bg-opacity-10 text-primary mb-4">
+                            🧠
+                        </div>
+                        <h3 class="font-poppins text-xl font-semibold mb-3 text-primary">Cek Sumber</h3>
+                        <p class="font-nunito">
+                            Telusuri siapa penerbitnya. Apakah lembaga terpercaya? Cek latar belakang penerbit dan reputasinya dalam menyediakan informasi akurat.
+                        </p>
+                    </div>
+                    
+                    <!-- Principle 2 -->
+                    <div class="lingkasa-card p-6 flex flex-col">
+                        <div class="principles-icon bg-primary bg-opacity-10 text-primary mb-4">
+                            📅
+                        </div>
+                        <h3 class="font-poppins text-xl font-semibold mb-3 text-primary">Periksa Waktu</h3>
+                        <p class="font-nunito">
+                            Apakah informasi masih relevan dan terkini? Informasi valid harus selalu diperbarui. Cek tanggal publikasi untuk memastikan keakuratannya.
+                        </p>
+                    </div>
+                    
+                    <!-- Principle 3 -->
+                    <div class="lingkasa-card p-6 flex flex-col">
+                        <div class="principles-icon bg-primary bg-opacity-10 text-primary mb-4">
+                            🔗
+                        </div>
+                        <h3 class="font-poppins text-xl font-semibold mb-3 text-primary">Bandingkan</h3>
+                        <p class="font-nunito">
+                            Cari sumber lain yang mendukung/menyanggah. Jangan percaya satu sumber saja. Bandingkan informasi dari berbagai sumber terpercaya.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Practice Section -->
+            <section class="mb-16">
+                <h2 class="font-poppins text-2xl font-semibold mb-8 text-center">
+                    <span class="text-primary">Latihan Interaktif:</span> Identifikasi Hoaks atau Fakta
+                </h2>
+                
+                <div class="lingkasa-card p-8 mb-8">
+                    <div class="news-example mb-8">
+                        <p class="font-nunito text-lg md:text-xl">
+                            "Minum es saat panas bisa bikin paru-paru membeku. Riset menunjukkan suhu dingin dapat memengaruhi organ pernapasan secara drastis. Para dokter menyarankan untuk menghindari minum es selama musim panas."
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-4">
+                        <button class="truth-button bg-green-500 hover:bg-green-600 text-white font-poppins font-medium py-3 px-8 rounded-full flex items-center justify-center gap-2">
+                            <i class="fas fa-check-circle"></i> Fakta
+                        </button>
+                        <button class="truth-button bg-red-500 hover:bg-red-600 text-white font-poppins font-medium py-3 px-8 rounded-full flex items-center justify-center gap-2">
+                            <i class="fas fa-times-circle"></i> Hoaks
+                        </button>
+                    </div>
+                    
+                    <div id="explanation" class="mt-6 p-4 bg-yellow-50 rounded-xl hidden">
+                        <h3 class="font-poppins font-semibold text-lg mb-2 text-amber-700">Analisis:</h3>
+                        <p class="font-nunito">
+                            Ini adalah misinformasi. Tidak ada bukti ilmiah bahwa minum es dapat membekukan paru-paru. Dokter spesialis hanya menyarankan untuk tidak minum es terlalu cepat saat cuaca panas karena dapat menyebabkan sakit tenggorokan, bukan paru-paru membeku.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Accuracy Score Display -->
+                <div class="flex justify-end">
+                    <div class="lingkasa-card p-4 flex items-center gap-4">
+                        <div class="relative">
+                            <div class="accuracy-circle">
+                                <svg viewBox="0 0 100 100" class="w-24 h-24">
+                                    <circle class="circle-bg" cx="50" cy="50" r="45" />
+                                    <circle class="circle-progress" cx="50" cy="50" r="45" stroke-dashoffset="56.6" /> <!-- 80% offset -->
+                                </svg>
+                                <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                    <span class="font-poppins font-bold text-xl text-dark">80%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-poppins font-semibold text-lg">Skor Akurasi</h3>
+                            <p class="font-nunito text-gray-600">Hasil identifikasi Anda</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Checklist Section -->
+            <section class="mb-16">
+                <h2 class="font-poppins text-2xl font-semibold mb-8 text-center">
+                    Checklist Mandiri Verifikasi Informasi
+                </h2>
+                
+                <div class="lingkasa-card p-6">
+                    <ul class="checklist-card space-y-4">
+                        <li class="flex items-start gap-3 p-3 rounded-lg">
+                            <div class="flex items-center justify-center mt-1 w-7 h-7 bg-primary bg-opacity-10 text-primary rounded-full flex-shrink-0">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-poppins font-semibold">Sumber Resmi</h3>
+                                <p class="font-nunito">Apakah sumbernya media resmi? Cek domain website dan reputasi institusi.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 p-3 rounded-lg">
+                            <div class="flex items-center justify-center mt-1 w-7 h-7 bg-primary bg-opacity-10 text-primary rounded-full flex-shrink-0">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-poppins font-semibold">Penulis Jelas</h3>
+                                <p class="font-nunito">Adakah nama penulis/jurnalis? Informasi valid biasanya mencantumkan penulis yang dapat dipertanggungjawabkan.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 p-3 rounded-lg">
+                            <div class="flex items-center justify-center mt-1 w-7 h-7 bg-primary bg-opacity-10 text-primary rounded-full flex-shrink-0">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-poppins font-semibold">Tanggal Publikasi</h3>
+                                <p class="font-nunito">Ada tanggal publikasi? Periksa kesegaran informasi, terutama untuk topik yang berkembang cepat.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 p-3 rounded-lg">
+                            <div class="flex items-center justify-center mt-1 w-7 h-7 bg-primary bg-opacity-10 text-primary rounded-full flex-shrink-0">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-poppins font-semibold">Verifikasi Silang</h3>
+                                <p class="font-nunito">Informasinya bisa dikonfirmasi di tempat lain? Jika hanya satu sumber, tingkatkan kewaspadaan.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 p-3 rounded-lg">
+                            <div class="flex items-center justify-center mt-1 w-7 h-7 bg-primary bg-opacity-10 text-primary rounded-full flex-shrink-0">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-poppins font-semibold">Bahasa Netral</h3>
+                                <p class="font-nunito">Bahasa yang digunakan netral? Hindari yang provokatif, hiperbola, atau emosional yang berlebihan.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Conclusion Section -->
+            <section class="mb-16">
+                <div class="lingkasa-card bg-gradient-to-br from-accent to-amber-300 p-8">
+                    <div class="text-center max-w-3xl mx-auto">
+                        <i class="fas fa-quote-left text-white text-3xl opacity-30 mb-4"></i>
+                        <p class="font-nunito text-lg md:text-xl font-semibold text-white">
+                            "Informasi valid bukan sekadar populer. Kita harus kritis, tidak mudah percaya, dan membandingkan banyak sumber sebelum menyebarkan informasi."
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Navigation Buttons -->
+            <section class="mt-10">
+                <div class="flex flex-col sm:flex-row gap-4 justify-between">
+                    <a href="cardmodulliterasi.html" class="nav-button bg-white border-2 border-primary hover:bg-primary hover:text-white text-primary font-poppins py-3 px-6 text-center flex items-center justify-center gap-2">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Modul Literasi
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Interactive buttons functionality
+        const truthButtons = document.querySelectorAll('.truth-button');
+        const explanation = document.getElementById('explanation');
+        
+        truthButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                explanation.classList.remove('hidden');
+                explanation.classList.add('animate-pulse');
+                
+                // Remove active state from all buttons
+                truthButtons.forEach(btn => btn.classList.remove('ring-4', 'ring-opacity-50'));
+                
+                // Add active state to clicked button
+                if(button.classList.contains('bg-green-500')) {
+                    explanation.innerHTML = `
+                        <h3 class="font-poppins font-semibold text-lg mb-2 text-green-700">Pilihan Anda: Fakta</h3>
+                        <div class="bg-red-50 p-4 rounded-xl">
+                            <h4 class="font-poppins font-semibold text-amber-700 mb-2">✖️ Jawaban Anda Salah!</h4>
+                            <p class="font-nunito">
+                                Ini adalah misinformasi. Tidak ada bukti ilmiah bahwa minum es dapat membekukan paru-paru. Dokter spesialis hanya menyarankan untuk tidak minum es terlalu cepat saat cuaca panas karena dapat menyebabkan sakit tenggorokan, bukan paru-paru membeku.
+                            </p>
+                        </div>
+                        <div class="mt-4 bg-blue-50 p-3 rounded-lg">
+                            <h4 class="font-poppins font-semibold text-primary mb-1">Tips Verifikasi:</h4>
+                            <p class="font-nunito">
+                                Informasi kesehatan seharusnya datang dari dokter atau lembaga kesehatan resmi. Cek fakta ini di situs resmi Kementerian Kesehatan atau konsultasikan dengan profesional medis.
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    explanation.innerHTML = `
+                        <h3 class="font-poppins font-semibold text-lg mb-2 text-red-700">Pilihan Anda: Hoaks</h3>
+                        <div class="bg-green-50 p-4 rounded-xl">
+                            <h4 class="font-poppins font-semibold text-green-700 mb-2">✓ Jawaban Anda Benar!</h4>
+                            <p class="font-nunito">
+                                Ini memang adalah contoh misinformasi. Tidak ada bukti ilmiah yang mendukung klaim tersebut. Seorang dokter spesialis menyatakan bahwa paru-paru tidak dapat membeku karena udara yang masuk sudah dihangatkan oleh tubuh sebelum mencapai organ tersebut.
+                            </p>
+                        </div>
+                        <div class="mt-4 bg-blue-50 p-3 rounded-lg">
+                            <h4 class="font-poppins font-semibold text-primary mb-1">Tips Verifikasi:</h4>
+                            <p class="font-nunito">
+                                Informasi kesehatan seharusnya datang dari dokter atau lembaga kesehatan resmi. Berita ini bisa dikonfirmasi dengan mencari artikel medis resmi tentang efek minuman dingin pada sistem pernapasan.
+                            </p>
+                        </div>
+                    `;
+                }
+                
+                // Remove animation after first iteration
+                setTimeout(() => {
+                    explanation.classList.remove('animate-pulse');
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
